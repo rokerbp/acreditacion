@@ -25,10 +25,10 @@ security:
                 check_path: login
             logout:
                 path:   /logout/
-                target: /
+                target: /login
 
     access_control:
-        - { path: ^/admin/registro/, roles: ROLE_ADMIN}
+        - { path: ^/admin/, roles: ROLE_ADMIN}
 
             # activate different ways to authenticate
 

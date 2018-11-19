@@ -28,7 +28,7 @@ class DefaultController extends Controller
     public function adminAction(Request $request)
     {
         // replace this example code with whatever you need
-        return $this->render('admin/index.html.twig');
+        return $this->render('/admin/index.html.twig');
     }
 
     /**
@@ -69,6 +69,15 @@ class DefaultController extends Controller
      * @Route("/tablas", name="tablas")
      */
     public function tablasAction(Request $request)
+    {
+        // replace this example code with whatever you need
+        return $this->render('/admin/index.html.twig');
+    }
+
+    /**
+     * @Route("/admin/programas/", name="programas")
+     */
+    public function programasction(Request $request)
     {
         // replace this example code with whatever you need
         return $this->render('/admin/index.html.twig');
