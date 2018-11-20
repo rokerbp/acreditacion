@@ -77,7 +77,7 @@ class DefaultController extends Controller
     /**
      * @Route("/admin/programas/", name="programas")
      */
-    public function programasction(Request $request)
+    public function programasAction(Request $request)
     {
         // replace this example code with whatever you need
         return $this->render('/admin/index.html.twig');
