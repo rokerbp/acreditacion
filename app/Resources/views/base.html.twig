@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block titulo %}Welcome!{% endblock %}</title>
+        <title>{% block titulo %}Sistema de Apoyo a la Autoevaluacion{% endblock %}</title>
         <!-- Bootstrap Core CSS -->
         <link href="{{ asset ('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 
@@ -38,7 +38,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="{{ path('admin') }}">Acreditacion</a>
+                <a class="navbar-brand" href="{{ path('admin') }}">Sistema de Apoyo a la Autoevaluación V1.0</a>
             </div>
             <!-- /.navbar-header -->
             <ul class="nav navbar-top-links navbar-right">
@@ -86,13 +86,16 @@
                                 <a href="{{ path('admin') }}"><i class="fa fa-repeat fa-fw"></i> Plan de Mejoramiento</a>
                             </li>
                             <li>
-                                <a href="{{ path('programas') }}"><i class="fa fa-university fa-fw"></i> Gestión de Programas<span class="fa arrow"></span></a>
+                                <a href="{{ path('programas') }}"><i class="fa fa-university fa-fw"></i> Acreditacion<span class="fa arrow"></span></a>
                                     <ul class="nav nav-second-level">
                                         <li>
                                             <a href="{{ path('maestria') }}"><i class="fa fa-graduation-cap fa-fw"></i> Programas de Maestría</a>
                                         </li>
                                         <li>
                                             <a href="{{ path('doctorado') }}"><i class="fa fa-graduation-cap fa-fw"></i> Programas de Doctorado</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ path('verestudiantes') }}"><i class="fa fa-user fa-fw"></i> Estudiantes</a>
                                         </li>
                                     </ul>
                                 <!-- /.nav-second-level -->
@@ -164,14 +167,11 @@
         <!-- Metis Menu Plugin JavaScript -->
         <script src="{{ asset ('vendor/metisMenu/metisMenu.min.js') }}"></script>
 
-        <!-- Morris Charts JavaScript -->
-        <script src="{{ asset ('vendor/raphael/raphael.min.js') }}"></script>
-        <script src="{{ asset ('vendor/morrisjs/morris.min.js') }}"></script>
-        <script src="{{ asset ('data/morris-data.js') }}"></script>
 
-        <!-- Custom Theme JavaScript -->
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script type="text/javascript" src="{{asset('js/controlBorrado.js')}}"></script>
         <script src="{{ asset ('js/sb-admin-2.js') }}"></script>
-
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+        {% endblock %}
     </body>
 </html>

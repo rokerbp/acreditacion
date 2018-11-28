@@ -1,0 +1,32 @@
+{# Plantilla de la aplicación #}
+{% extends 'base.html.twig' %}
+{% form_theme form 'form/estudianteForm.html.twig' %}
+{# Titulo #}
+{% block titulo %}
+  Nuevo Estudiante
+{% endblock %}
+{# Contenido #}
+{% block contenido %}
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header"> Nuevo Estudiante</h1>
+        </div>
+    </div>
+    <div class="row">    
+        <div class="col-md-8">
+            {{ form_start(form)}}
+            {{ form_widget(form)}}
+            {{ form_end(form)}}
+            <a href="{{ path('verestudiantes') }}" class="btn btn-warning" type="button" >Cancelar</a>
+        </div>
+    </div>
+</div>
+
+<div class="panel-footer"></div>
+
+{% endblock %}
+
+{% block javascripts %}
+  <script type="text/javascript" src="{{asset('js/nuevoEstudiante.js')}}"></script>
+{% endblock %}

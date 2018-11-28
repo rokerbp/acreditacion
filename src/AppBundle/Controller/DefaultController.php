@@ -61,7 +61,7 @@ class DefaultController extends Controller
             return $this->redirectToRoute('login');
         }
 
-        return $this->render('frontal/registro.html.twig',array('form'=>$form->createView()));
+        return $this->render('admin/registro.html.twig',array('form'=>$form->createView()));
     }
 
 
