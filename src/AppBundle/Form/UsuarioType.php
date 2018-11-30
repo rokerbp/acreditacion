@@ -34,7 +34,7 @@ class UsuarioType extends AbstractType
                     'Empleado' => 'ROLE_EMPLEADO'
                 ]))
             //->add('roles', ChoiceType::class, array('multiple'=>true,'choices' => array('Administrador' => '["ROLE_ADMIN"]', 'Profesor' => '["ROLE_PROFESOR"]', 'Empleado'=>'["ROLE_EMPLEADO"]', 'Monitor'=>'["ROLE_MONITOR"]'), 'required' => true))
-            ->add('registrar', SubmitType::class, array('label' => 'Registrar'))
+            ->add('salvar', SubmitType::class, array('label' => 'Registrar'))
         ;
     }
 }

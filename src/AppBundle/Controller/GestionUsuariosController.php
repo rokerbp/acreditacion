@@ -16,9 +16,9 @@ class GestionUsuariosController extends Controller
 {
 
     /**
-     * @Route("/admin/registro/", name="registro")
+     * @Route("/admin/registro/{id}", name="registro")
      */
-    public function registroAction(Request $request, UserPasswordEncoderInterface $passwordEncoder, $id=null)
+    public function registroAction(Request $request ,$id=null, UserPasswordEncoderInterface $passwordEncoder)
     {
         if($id)
         {
@@ -53,7 +53,7 @@ class GestionUsuariosController extends Controller
             $entityManager->flush();
             return $this->redirectToRoute('verusuarios');
         }
-
+        //Renderizamos el formulario
         return $this->render('admin/registro.html.twig',array('form'=>$form->createView()));
     }
 
