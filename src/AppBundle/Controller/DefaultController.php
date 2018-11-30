@@ -31,39 +31,7 @@ class DefaultController extends Controller
         return $this->render('/admin/index.html.twig');
     }
 
-    /**
-     * @Route("/admin/registro/", name="registro")
-     */
-    public function registroAction(Request $request, UserPasswordEncoderInterface $passwordEncoder)
-    {
-        $usuario = new Usuario();
-        //Construyendo el formulario
-        $form = $this->createForm(UsuarioType::class, $usuario);
-
-        //Reogemos la informacion
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            // 3) Encode the password (you could also do this via Doctrine listener)
-            $password = $passwordEncoder->encodePassword($usuario, $usuario->getPlainPassword());
-            $usuario->setPassword($password);
-
-            //3b) $username = $email
-            $usuario->setUsername($usuario->getEmail());
-
-            //3c) $roles
-            //$usuario->setRoles(array('ROLE_USER'));
-
-            // 4) save the User!
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($usuario);
-            $entityManager->flush();
-  
-            return $this->redirectToRoute('login');
-        }
-
-        return $this->render('admin/registro.html.twig',array('form'=>$form->createView()));
-    }
-
+    
 
     /**
      * @Route("/tablas", name="tablas")

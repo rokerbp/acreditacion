@@ -57,6 +57,13 @@ class Usuario implements UserInterface, \Serializable
     private $email;
 
     /**
+     * @var string
+     * 
+     * @ORM\Column(name="roles", type="json_array")
+     */
+    private $roles = array();
+
+    /**
      * @ORM\Column(name="is_active", type="boolean")
      */
     private $isActive;
@@ -115,9 +122,23 @@ class Usuario implements UserInterface, \Serializable
         $this->password = $password;
     }
 
+    /**
+     * set roles
+     * 
+     * @param string $roles
+     * 
+     * @return Usuario
+     */
+    public function setRoles(array $roles)
+    {
+        $this->roles = $roles;
+        return $this;
+    }
+
     public function getRoles()
     {
-        return array('ROLE_ADMIN');
+        //return array('ROLE_ADMIN');
+        return $this->roles;
     }
 
     public function eraseCredentials()

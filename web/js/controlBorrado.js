@@ -15,6 +15,23 @@ function controlBorrado(path, estudiante)
         return false;
 }
 
+function controlBorradoUsuario(path, usuario)
+{
+    swal({
+        title: "¿Esta Seguro?",
+        text: "Va a eliminar al usuario "+usuario,
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+        })
+        .then((willDelete) => {
+        if (willDelete) {
+            window.location.replace(path);
+            };
+        });
+        return false;
+}
+
 function controlGuardado(path, estudiante)
 {
     swal("Guardado", "El estudiante "+estudiante+" ha sido agregado", "success");

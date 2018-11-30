@@ -19,11 +19,19 @@ Registro Usuario
             {{ form_start(form)}}
             {{ form_widget(form)}}
             {{ form_end(form)}}
+            <a href="{{ path('verusuarios') }}" class="btn btn-warning" type="button" >Cancelar</a>
         </div>
         <div class="col-lg-6">
-            <h2>¿Para qué registrarse?</h2>
-            <p>Con el registro de usuario se podrá realizar la compra de nuestros distintos productos de una forma rápida y sencilla</p>
-            <p>Mediante la introducción del correo electrónico y la contraseña, podrás realizar una nueva compra de producto o anulación de la misma.</p>
+            <h2>Tener en cuenta</h2>
+            <p>Los roles tienen jerarquía, los roles superiores tienen permisos de los roles inferiores, pero no viceversa:</p>
+            <p>|_ <b>Administrador</b></p>
+            <p>|_ _ _ Coordinador de Programa</p>
+            <p>|_ _ _ Coordinador de Autoevaluacion</p>
+            <p>|_ _ _ Monitor</p>
+            <p>|_ _ _ _ _ Profesor</p>
+            <p>|_ _ _ _ _ Egresado</p>
+            <p>|_ _ _ _ _ Estudiante</p>
+            <p>|_ _ _ _ _ _ _ Empleado</p>
         </div>
     <!-- /.row -->
     </div>
