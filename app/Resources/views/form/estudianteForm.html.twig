@@ -49,8 +49,8 @@
         <div {{ block('widget_container_attributes') }}>
             {{ date_pattern|replace({
                 '{{ year }}':  form_widget(form.year),
-                '{{ month }}': '',
-                '{{ day }}': '',
+                '{{ month }}': form_widget(form.month),
+                '{{ day }}': form_widget(form.day),
             })|raw }}
         </div>
     {% endif %}

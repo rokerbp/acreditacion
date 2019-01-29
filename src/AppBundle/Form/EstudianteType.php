@@ -20,7 +20,8 @@ class EstudianteType extends AbstractType
             ->add('identificacion', TextType::class, array('required' => true))
             ->add('anioingreso', DateType::class, array( 'placeholder' => array(
                 'year' => 'Año', 'month' => 'Mes', 'day' => 'Día',
-            ), 'label' => 'Año de Ingreso',  'years' => range(2010,2018 )))
+            ), 'label' => 'Año de Ingreso',  'years' => range(2010,2018 )
+            , 'data' => new \DateTime('2010-01-01') ))
             ->add('estado', ChoiceType::class, array(
                 'choices' => array(
                     'Inscrito' => 'Inscrito',
