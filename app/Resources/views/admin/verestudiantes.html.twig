@@ -83,7 +83,8 @@
         $(document).ready( function () {
             $('#dataTables-example').DataTable({
                 dom: 'Bfrtip',
-                buttons: [
+                buttons: 
+                    [
                         'csv',
                         {
                             extend: 'pdfHtml5',
@@ -97,14 +98,8 @@
                                 ]
                             }
                         }
-                        {
-                            extend: 'copyHhtml5',
-                            exportOptions:
-                            {
-                                columns: [0,1,2,3,4,5,6,7,8, :'visible']
-                            }
-                        }
-                ]
+
+                    ]
             })
         });
 
