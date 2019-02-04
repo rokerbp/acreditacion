@@ -1,7 +1,8 @@
 {% block stylesheets %}
     <link href="{{ asset ('vendor/datatables-plugins/dataTables.bootstrap.css') }}" rel="stylesheet">
     <link href="{{ asset ('vendor/datatables-responsive/dataTables.responsive.css') }}" rel="stylesheet">
-    <link href="{{ asset ('vendor/datatables-responsive/jquery.dataTables.css') }}" rel="stylesheet">
+    <link href="{{ asset ('vendor/datatables/datatables.css') }}" rel="stylesheet">
+
 {% endblock %}
 
 {# Plantilla de la aplicación #}
@@ -76,14 +77,29 @@
 {% endblock %}
     
 {% block javascripts %}
-    <script src="{{ asset ('vendor/datatables-responsive/jquery.dataTables.js') }}"></script>
+    <script src="{{ asset ('vendor/datatables/datatables.js') }}"></script>
 
     <script>
         $(document).ready( function () {
-            $('#dataTables-example').DataTable();
+            $('#dataTables-example').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                        'csv',
+                        {
+                            extend: 'pdfHtml5',
+                            download: 'open',
+                            pageSize: 'A3',
+                            exportOptions: 
+                            {
+                                columns:
+                                [
+                                    0, 1, 2, 3, 4, 5, 6, 7, 8
+                                ]
+                            }
+                        }
+                ]
+            })
         });
-        $('#dataTables-example').DataTable( {
-            colReorder: true
-        } );
+
     </script>
 {% endblock %}
