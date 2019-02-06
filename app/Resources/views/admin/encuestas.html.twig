@@ -23,26 +23,51 @@
     <div class="row">  
     <div class="col-lg-12">  
         <div class="panel-body">
-            <table width="100%" class="table table-striped table-bordered table-hover dataTable dtr-inline" id="dataTables-example" role="grid">
-                <!-- <thead>
+            <table width="100%" class="table table-bordered table-hover dataTable display responsive nowrap" id="dataTables-example" role="grid" style="width:100%">
+                <thead>
                     <tr role="row">
-                        <th class="shorting_desc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descendind">Nombre</th>
-                        <th>Identificacion</th>
-                        <th>Año de Ingreso</th>
-                        <th>Estado</th>
-                        <th>Año de Graduacion</th>
-                        <th>Ciudad de Origen</th>
-                        <th>Correo</th>
-                        <th>Telefono</th>
-                        <th>Ciudad Actual</th>
-                        <th>Editar</th>
+                        <th>Nombre</th>
+                        <th>Email</th>
+                        <th>Actividad Productiva y tiempo de vinculacion</th>
+                        <th>Relacion con los programas de postgrado</th>
+                        <th>¿Los objetivos del programa son coherentes con el PEI de la Unicauca?</th>
+                        <th>¿Los perfiles de los admitidos al programa corresponden con aquellos esperados en el proceso de selección?</th>
+                        <th>¿El desempeño académico de los estudiantes refleja la consecución de los objetivos de formación?</th>
+                        <th>¿El perfil que se espera satisfaga el estudiante al culminar sus estudios es factible de conseguir al finalizar el proceso de formación?</th>
+                        <th>¿Los perfiles de los profesores corresponden con los niveles de formación y experticia que requiere el programa?</th>
+                        <th>¿La composición del equipo profesoral cumple con lo requerido por el programa?</th>
+                        <th>¿Existe un proceso de admisión y acompañamiento al estudiante claro y ajustado a las exigencias del programa?</th>
+                        <th>¿El proceso de selección y seguimiento de los profesores del programa es riguroso y adecuado a las necesidades del programa?</th>
+                        <th>¿Los procesos pedagógicos (enseñanza y aprendizaje) son adecuados para la consecución de los objetivos de formación del programa?</th>
+                        <th>¿El plan de estudios y la oferta de act académicas son lo suficientemente flexibles para ajustarse a las necesidades de formación de los estudiantes?</th>
+                        <th>¿Existe un proceso de evaluación permanente del programa con miras a su mejoramiento continuo?</th>
+                        <th>¿Cómo califica la aplicación del conocimiento generado en el programa en el sector productivo?</th>
+                        <th>¿Los mecanismos y estrategias que usa el programa para involucrar a los estudiantes en los proyectos de investigación son adecuados y suficientes?</th>
+                        <th>¿La producción investigativa y académica de los profesores y estudiantes es suficiente y pertinente?</th>
+                        <th>¿Cómo califica la interacción del programa con el entorno?</th>
+                        <th>¿Cómo califica el impacto en la comunidad local, regional o nacional del desarrollo de las líneas de investigación a partir de las investigaciones de profesores y estudiantes del programa?</th>
+                        <th>¿El programa se articula de manera significativa al sistema educativo nacional y/o productivo del país?</th>
+                        <th>¿El programa ha logrado internacionalizarse según las expectativas para este nivel de formación de posgrado?</th>
+                        <th>¿Se utilizan mecanismos y estrategias en el programa para promover el mejoramiento del nivel de dominio en una segunda lengua?</th>
+                        <th>¿Existen condiciones institucionales que contribuyan al bienestar de los estudiantes y profesores vinculados al programa?</th>
+                        <th>¿Hay un ambiente institucional adecuado para el desarrollo de los procesos de formación a nivel posgradual?</th>
+                        <th>¿Considera que el ambiente institucional y del programa facilita las condiciones para tener acceso a actividades académicas integrales como por ejemplo: cambios en la tecnología relevantes para el entorno social, económico y ambiental, entre otros?</th>
+                        <th>¿Cómo califica el impacto de la inserción ocupacional del egresado en el país?</th>
+                        <th>¿Cómo califica el impacto de la producción científica de los egresados en el entorno y en la disciplina?</th>
+                        <th>¿Es efectivo el proceso de seguimiento y vinculación con los egresados?</th>
+                        <th>¿El programa cuenta con estrategias de consecución de recursos suficientes y adecuados para los requerimientos del proceso de formación?</th>
+                        <th>¿La gestión administrativa apoya adecuadamente las labores de docencia, investigación, proyección e internacionalización del programa?</th>
+                        <th>En promedio, ¿cuál fue su dedicación al  programa?</th>
+                        <th>Favor nombrar las redes y comunidades científicas en las cuales participa o se encuentra vinculado en los últimos cuatro años:</th>
+                        <th>Favor describa los premios y distinciones recibidos en los últimos cuatro años</th>
+                        <th>Favor nombrar su participación en Comités Editoriales, Académicos, Científicos y de Programas en los últimos cuatro años:</th>
+                        <th>¿Con qué frecuencia actualiza su CvLAC?</th>
                     </tr>
-                </thead> -->
+                </thead>
                 <tbody>
                 {% for encuesta in encuestas %}
                     <tr class="odd gradeA">
                         <td>{{ encuesta.nombre }}</td>
-                        <td>{{ encuesta.planestudios }}</td>
                         <td>{{ encuesta.email}}</td>
                         <td>{{ encuesta.actproductiva }}</td>
                         <td>{{ encuesta.relprograma }}</td>
@@ -53,7 +78,9 @@
                         <td>{{ encuesta.perfprofesores }}</td>
                         <td>{{ encuesta.numprofesores }}</td>
                         <td>{{ encuesta.proacompanamiento }}</td>
+                        <td>{{ encuesta.proprofesores }}</td>
                         <td>{{ encuesta.propedagogicos }}</td>
+                        <td>{{ encuesta.planestudios }}</td>
                         <td>{{ encuesta.procevaluacion }}</td>
                         <td>{{ encuesta.aplconocimiento }}</td>
                         <td>{{ encuesta.mecinvestigacion }}</td>
@@ -76,7 +103,6 @@
                         <td>{{ encuesta.premiosrecibidos }}</td>
                         <td>{{ encuesta.comiteeditorial }}</td>
                         <td>{{ encuesta.freccvlac }}</td>
-
                     </tr>
                 {% endfor %}
                 </tbody>
@@ -98,20 +124,15 @@
         $(document).ready( function () {
             $('#dataTables-example').DataTable({
                 dom: 'Bfrtip',
-                buttons: [
-                        'csv',
-                        {
-                            extend: 'pdfHtml5',
-                            download: 'open',
-                            pageSize: 'A3',
-                            exportOptions: 
-                            {
-                                columns:
-                                [
-                                    0, 1, 2, 3, 4, 5, 6, 7, 8
-                                ]
-                            }
-                        }
+                buttons: 
+                [
+                    'csv',
+                    {
+                        extend: 'pdfHtml5',
+                        download: 'open',
+                        pageSize: 'A1',
+                        orientation: 'landscape'
+                    }
                 ]
             })
         });
