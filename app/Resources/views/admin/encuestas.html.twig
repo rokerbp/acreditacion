@@ -23,7 +23,7 @@
     <div class="row">  
     <div class="col-lg-12">  
         <div class="panel-body">
-            <table width="100%" class="table table-bordered table-hover dataTable display responsive nowrap" id="dataTables-example" role="grid" style="width:100%">
+            <table width="100%" class="table table-bordered table-hover dataTable display responsive compact nowrap" id="dataTables-example" role="grid" style="width:100%">
                 <thead>
                     <tr role="row">
                         <th>Nombre</th>
@@ -133,7 +133,11 @@
                         pageSize: 'A1',
                         orientation: 'landscape'
                     }
-                ]
+                ],
+                select: 
+                {
+                    style: 'multi'
+                }
             })
         });
 
