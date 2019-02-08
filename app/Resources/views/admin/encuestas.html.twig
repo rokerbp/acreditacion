@@ -1,7 +1,5 @@
 {% block stylesheets %}
 
-    <link href="{{ asset ('vendor/datatables/datatables.css') }}" rel="stylesheet">
-
 {% endblock %}
 
 {# Plantilla de la aplicación #}
@@ -22,7 +20,7 @@
     <div class="row">  
     <div class="col-lg-12">  
         <div class="panel-body">
-            <table width="100%" class="table table-bordered table-hover dataTable display responsive compact nowrap" id="dataTables-example" role="grid" style="width:100%">
+            <table width="100%" class="table table-bordered table-hover dataTable stripe order-column display responsive compact nowrap" id="dataTables-example" role="grid">
                 <thead>
                     <tr role="row">
                         <th>Nombre</th>
@@ -65,7 +63,7 @@
                 </thead>
                 <tbody>
                 {% for encuesta in encuestas %}
-                    <tr class="odd gradeA">
+                    <tr >
                         <td>{{ encuesta.nombre }}</td>
                         <td>{{ encuesta.email}}</td>
                         <td>{{ encuesta.actproductiva }}</td>
@@ -117,7 +115,8 @@
 {% endblock %}
     
 {% block javascripts %}
-    <script src="{{ asset ('vendor/datatables/datatables.js') }}"></script>
+
+    
 
     <script>
         $(document).ready( function () {
@@ -125,7 +124,7 @@
                 dom: 'Bfrtip',
                 buttons: 
                 [
-                    'csv','excel', 
+                    'excel','colvis',
                     {
                         extend: 'pdfHtml5',
                         download: 'open',
@@ -136,7 +135,35 @@
                 select: 
                 {
                     style: 'multi'
+                },
+                responsive: {
+                    details: 
+                    {
+                        display: $.fn.dataTable.Responsive.display.modal(
+                            {
+                                header: function ( row ) 
+                                {
+                                    var data = row.data();
+                                    return 'Detalles de '+data[0];
+                                }
+                            }
+                        ),
+                        renderer: $.fn.dataTable.Responsive.renderer.tableAll( {
+                            tableClass: 'table'
+                        } )
+                    }
+                },
+                colReorder: true,
+                scrollY:        "300px",
+                scrollX:        true,
+                scrollCollapse: true,
+                paging:         false,
+                fixedColumns:   
+                {
+                    leftColumns: 2
                 }
+
+
             })
         });
 

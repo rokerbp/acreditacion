@@ -9,6 +9,9 @@
         <!-- MetisMenu CSS -->
         <link href="{{ asset ('vendor/metisMenu/metisMenu.min.css') }}" rel="stylesheet">
 
+        <!-- dataTable C SS-->
+        <link href="{{ asset ('vendor/datatables/datatables.css') }}" rel="stylesheet">
+
         <!-- Custom CSS -->
         <link href="{{ asset ('css/sb-admin-2.css') }}" rel="stylesheet">
 
@@ -119,16 +122,20 @@
         <!-- jQuery -->
         <script src="{{ asset ('vendor/jquery/jquery.min.js') }}"></script>
 
-        <!-- Bootstrap Core JavaScript -->
-        <script src="{{ asset ('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset ('vendor/datatables/datatables.js') }}"></script>
 
         <!-- Metis Menu Plugin JavaScript -->
         <script src="{{ asset ('vendor/metisMenu/metisMenu.min.js') }}"></script>
 
-
+<!-- Bootstrap Core JavaScript -->
+        <script src="{{ asset ('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script type="text/javascript" src="{{asset('js/controlBorrado.js')}}"></script>
+        
         <script src="{{ asset ('js/sb-admin-2.js') }}"></script>
+        
+        
+
         {% block javascripts %}
         {% endblock %}
     </body>
