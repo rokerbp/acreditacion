@@ -20,9 +20,9 @@
     <div class="row">  
     <div class="col-lg-12">  
         <div class="panel-body">
-            <table width="100%" class="table table-bordered table-hover dataTable stripe order-column display responsive compact nowrap" id="dataTables-example" role="grid">
+            <table width="100%" class="table table-bordered table-hover dataTable display responsive nowrap" id="dataTables-example" role="grid">
                 <thead>
-                    <tr role="row">
+                    <tr>
                         <th>Nombre</th>
                         <th>Email</th>
                         <th>Actividad Productiva y tiempo de vinculacion</th>
@@ -106,6 +106,26 @@
             </table>
         </div>
     </div>
+
+    
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="col-lg-6"> 
+                <div class="panel panel-default">
+                    <div class="panel-heading">        
+                        Titulo de la grafica
+                    </div>
+                    {# cabecera del panel #}
+                    <div class="panel-body">
+                        <div class="flot-chart">
+                            <div class="flot-chart-content" id="placeholder"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 </div>
 
@@ -115,57 +135,113 @@
 {% endblock %}
     
 {% block javascripts %}
-
+    
+    <script src="{{ asset ('vendor/flot/excanvas.js') }}"></script>
+    <script src="{{ asset ('vendor/flot/jquery.flot.js') }}"></script>
+    <script src="{{ asset ('vendor/flot/jquery.flot.pie.js') }}"></script>
+    <script src="{{ asset ('vendor/flot/jquery.flot.resize.js') }}"></script>
+    <script src="{{ asset ('vendor/flot-tooltip/jquery.flot.tooltip.min.js') }}"></script>
     
 
     <script>
-        $(document).ready( function () {
-            $('#dataTables-example').DataTable({
-                dom: 'Bfrtip',
-                buttons: 
-                [
-                    'excel','colvis',
-                    {
-                        extend: 'pdfHtml5',
-                        download: 'open',
-                        pageSize: 'A1',
-                        orientation: 'landscape'
-                    }
-                ],
-                select: 
+
+    // Opciones para la tabla
+    
+    $(document).ready( function () {
+        
+        //DataTable
+        var table = $('#dataTables-example').DataTable({
+            dom: 'Bfrtip',
+            'select': 'api',
+
+        //Botones de exportar
+            buttons: 
+            [
+                'excel','colvis',
                 {
-                    style: 'multi'
-                },
-                responsive: {
-                    details: 
-                    {
-                        display: $.fn.dataTable.Responsive.display.modal(
-                            {
-                                header: function ( row ) 
-                                {
-                                    var data = row.data();
-                                    return 'Detalles de '+data[0];
-                                }
-                            }
-                        ),
-                        renderer: $.fn.dataTable.Responsive.renderer.tableAll( {
-                            tableClass: 'table'
-                        } )
-                    }
-                },
-                colReorder: true,
-                scrollY:        "300px",
-                scrollX:        true,
-                scrollCollapse: true,
-                paging:         false,
-                fixedColumns:   
-                {
-                    leftColumns: 2
+                    extend: 'pdfHtml5',
+                    download: 'open',
+                    pageSize: 'A1',
+                    orientation: 'landscape'
                 }
-
-
-            })
+            ],
+            select: 
+            {
+                style: 'multi'
+            },
+                responsive: {
+                details: 
+                {
+                    display: $.fn.dataTable.Responsive.display.modal(
+                        {
+                            header: function ( row ) 
+                            {
+                                var data = row.data();
+                                return 'Detalles de '+data[0];
+                            }
+                        }
+                    ),
+                    renderer: $.fn.dataTable.Responsive.renderer.tableAll( {
+                        tableClass: 'table'
+                    } )
+                }
+            }
         });
 
+        $('#dataTable-example').on('click', 'tbody td', function()
+        {
+            // If this column is selected
+            if(table.column(this, { selected: true }).length){
+                table.column(this).deselect();
+                
+            // Otherwise, if this column is not selected
+            } else {
+                table.column(this).select();      
+            }
+        });
+
+    });
+
+
+//Funcion para mostrar grafica de torta
+
+    // Declaración de datos
+    var data = 
+    [
+        {
+            label: "Opcion 0",
+            data: 1
+        }, {
+            label: "Opcion 1",
+            data: 3
+        }, {
+            label: "Opcion 2",
+            data: 9
+        }, {
+            label: "Opcion 3",
+            data: 20
+        }
+    ];
+    
+    // Opciones de visualizacion
+    var options =
+    {
+        series: 
+        {
+            pie:
+            {
+                show:true,
+                radious: 1
+            }
+        },
+        legend:
+            {
+                show: false
+            }
+    };
+    
+    // Graficar la Torta
+    $.plot($('#placeholder'), data, options);
+    
     </script>
 {% endblock %}
