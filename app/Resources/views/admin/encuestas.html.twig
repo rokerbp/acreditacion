@@ -1,0 +1,264 @@
+{% block stylesheets %}
+
+{% endblock %}
+
+{# Plantilla de la aplicación #}
+{% extends 'base.html.twig' %}
+{# Titulo #}
+{% block titulo %}
+ Encuestas
+{% endblock %}
+{# Contenido #}
+{% block contenido %}
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header"> Encuestas</h1>
+        </div>
+    </div>
+
+    <div class="row">  
+    <div class="col-lg-12">  
+        <div class="panel-body">
+            <table width="100%" class="table table-bordered table-hover dataTable display responsive nowrap" id="dataTables-example" role="grid">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Email</th>
+                        <th>Actividad Productiva y tiempo de vinculacion</th>
+                        <th>Relacion con los programas de postgrado</th>
+                        <th>¿Los objetivos del programa son coherentes con el PEI de la Unicauca?</th>
+                        <th>¿Los perfiles de los admitidos al programa corresponden con aquellos esperados en el proceso de selección?</th>
+                        <th>¿El desempeño académico de los estudiantes refleja la consecución de los objetivos de formación?</th>
+                        <th>¿El perfil que se espera satisfaga el estudiante al culminar sus estudios es factible de conseguir al finalizar el proceso de formación?</th>
+                        <th>¿Los perfiles de los profesores corresponden con los niveles de formación y experticia que requiere el programa?</th>
+                        <th>¿La composición del equipo profesoral cumple con lo requerido por el programa?</th>
+                        <th>¿Existe un proceso de admisión y acompañamiento al estudiante claro y ajustado a las exigencias del programa?</th>
+                        <th>¿El proceso de selección y seguimiento de los profesores del programa es riguroso y adecuado a las necesidades del programa?</th>
+                        <th>¿Los procesos pedagógicos (enseñanza y aprendizaje) son adecuados para la consecución de los objetivos de formación del programa?</th>
+                        <th>¿El plan de estudios y la oferta de act académicas son lo suficientemente flexibles para ajustarse a las necesidades de formación de los estudiantes?</th>
+                        <th>¿Existe un proceso de evaluación permanente del programa con miras a su mejoramiento continuo?</th>
+                        <th>¿Cómo califica la aplicación del conocimiento generado en el programa en el sector productivo?</th>
+                        <th>¿Los mecanismos y estrategias que usa el programa para involucrar a los estudiantes en los proyectos de investigación son adecuados y suficientes?</th>
+                        <th>¿La producción investigativa y académica de los profesores y estudiantes es suficiente y pertinente?</th>
+                        <th>¿Cómo califica la interacción del programa con el entorno?</th>
+                        <th>¿Cómo califica el impacto en la comunidad local, regional o nacional del desarrollo de las líneas de investigación a partir de las investigaciones de profesores y estudiantes del programa?</th>
+                        <th>¿El programa se articula de manera significativa al sistema educativo nacional y/o productivo del país?</th>
+                        <th>¿El programa ha logrado internacionalizarse según las expectativas para este nivel de formación de posgrado?</th>
+                        <th>¿Se utilizan mecanismos y estrategias en el programa para promover el mejoramiento del nivel de dominio en una segunda lengua?</th>
+                        <th>¿Existen condiciones institucionales que contribuyan al bienestar de los estudiantes y profesores vinculados al programa?</th>
+                        <th>¿Hay un ambiente institucional adecuado para el desarrollo de los procesos de formación a nivel posgradual?</th>
+                        <th>¿Considera que el ambiente institucional y del programa facilita las condiciones para tener acceso a actividades académicas integrales como por ejemplo: cambios en la tecnología relevantes para el entorno social, económico y ambiental, entre otros?</th>
+                        <th>¿Cómo califica el impacto de la inserción ocupacional del egresado en el país?</th>
+                        <th>¿Cómo califica el impacto de la producción científica de los egresados en el entorno y en la disciplina?</th>
+                        <th>¿Es efectivo el proceso de seguimiento y vinculación con los egresados?</th>
+                        <th>¿El programa cuenta con estrategias de consecución de recursos suficientes y adecuados para los requerimientos del proceso de formación?</th>
+                        <th>¿La gestión administrativa apoya adecuadamente las labores de docencia, investigación, proyección e internacionalización del programa?</th>
+                        <th>En promedio, ¿cuál fue su dedicación al  programa?</th>
+                        <th>Favor nombrar las redes y comunidades científicas en las cuales participa o se encuentra vinculado en los últimos cuatro años:</th>
+                        <th>Favor describa los premios y distinciones recibidos en los últimos cuatro años</th>
+                        <th>Favor nombrar su participación en Comités Editoriales, Académicos, Científicos y de Programas en los últimos cuatro años:</th>
+                        <th>¿Con qué frecuencia actualiza su CvLAC?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for encuesta in encuestas %}
+                    <tr >
+                        <td>{{ encuesta.nombre }}</td>
+                        <td>{{ encuesta.email}}</td>
+                        <td>{{ encuesta.actproductiva }}</td>
+                        <td>{{ encuesta.relprograma }}</td>
+                        <td>{{ encuesta.objprograma }}</td>
+                        <td>{{ encuesta.perfadmitidos }}</td>
+                        <td>{{ encuesta.desempeno }}</td>
+                        <td>{{ encuesta.perfegresado }}</td>
+                        <td>{{ encuesta.perfprofesores }}</td>
+                        <td>{{ encuesta.numprofesores }}</td>
+                        <td>{{ encuesta.proacompanamiento }}</td>
+                        <td>{{ encuesta.proprofesores }}</td>
+                        <td>{{ encuesta.propedagogicos }}</td>
+                        <td>{{ encuesta.planestudios }}</td>
+                        <td>{{ encuesta.procevaluacion }}</td>
+                        <td>{{ encuesta.aplconocimiento }}</td>
+                        <td>{{ encuesta.mecinvestigacion }}</td>
+                        <td>{{ encuesta.prodinvestigativa }}</td>
+                        <td>{{ encuesta.interprograma }}</td>
+                        <td>{{ encuesta.impacinvestigacion }}</td>
+                        <td>{{ encuesta.articprograma }}</td>
+                        <td>{{ encuesta.internalprograma }}</td>
+                        <td>{{ encuesta.mecanlengua }}</td>
+                        <td>{{ encuesta.bienestudiantil }}</td>
+                        <td>{{ encuesta.ambienteinsti }}</td>
+                        <td>{{ encuesta.ambienteconsidera }}</td>
+                        <td>{{ encuesta.impactoocupacional }}</td>
+                        <td>{{ encuesta.impactocientifica }}</td>
+                        <td>{{ encuesta.segvincegresados }}</td>
+                        <td>{{ encuesta.consecrecursos }}</td>
+                        <td>{{ encuesta.apoyoadministrativo }}</td>
+                        <td>{{ encuesta.dedicacionprograma }}</td>
+                        <td>{{ encuesta.redescientificas }}</td>
+                        <td>{{ encuesta.premiosrecibidos }}</td>
+                        <td>{{ encuesta.comiteeditorial }}</td>
+                        <td>{{ encuesta.freccvlac }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="col-lg-6"> 
+                <div class="panel panel-default">
+                    <div class="panel-heading">        
+                        Titulo de la grafica
+                    </div>
+                    {# cabecera del panel #}
+                    <div class="panel-body">
+                        <div class="flot-chart">
+                            <div class="flot-chart-content" id="placeholder"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+{% for encuesta in encuestas %}
+<div class="js-data" data-nombre="{{ encuesta.nombre }}">
+
+</div>
+{% endfor %}
+
+<div class="panel-footer"></div>
+
+{% endblock %}
+    
+{% block javascripts %}
+    
+    <script src="{{ asset ('vendor/flot/excanvas.js') }}"></script>
+    <script src="{{ asset ('vendor/flot/jquery.flot.js') }}"></script>
+    <script src="{{ asset ('vendor/flot/jquery.flot.pie.js') }}"></script>
+    <script src="{{ asset ('vendor/flot/jquery.flot.resize.js') }}"></script>
+    <script src="{{ asset ('vendor/flot-tooltip/jquery.flot.tooltip.min.js') }}"></script>
+    
+
+    <script>
+
+    // Opciones para la tabla
+    
+    $(document).ready( function () {
+        
+        //DataTable
+        var table = $('#dataTables-example').DataTable({
+            dom: 'Bfrtip',
+            'select': 'api',
+
+        //Botones de exportar
+            buttons: 
+            [
+                'excel','colvis',
+                {
+                    extend: 'pdfHtml5',
+                    download: 'open',
+                    pageSize: 'A1',
+                    orientation: 'landscape'
+                }
+            ],
+            select: 
+            {
+                style: 'multi'
+            },
+                responsive: {
+                details: 
+                {
+                    display: $.fn.dataTable.Responsive.display.modal(
+                        {
+                            header: function ( row ) 
+                            {
+                                var data = row.data();
+                                return 'Detalles de '+data[0];
+                            }
+                        }
+                    ),
+                    renderer: $.fn.dataTable.Responsive.renderer.tableAll( {
+                        tableClass: 'table'
+                    } )
+                }
+            }
+        });
+
+    $('#dataTables-example').on('click', 'tbody td', function(){
+        console.log("entro a seleccionar datos")
+       // If this column is selected
+       if(table.column(this, { selected: true }).length){
+          table.column(this).deselect();
+          
+       // Otherwise, if this column is not selected
+       } else {
+          table.column(this).select();      
+       }
+    });
+});
+
+
+
+    
+
+
+//Funcion para mostrar grafica de torta
+
+    // Declaración de datos
+    var data = 
+    [
+        {
+            label: "Opcion 0",
+            data: 1
+        }, {
+            label: "Opcion 1",
+            data: 3
+        }, {
+            label: "Opcion 2",
+            data: 9
+        }, {
+            label: "Opcion 3",
+            data: 20
+        }
+    ];
+    
+    // Opciones de visualizacion
+    var options =
+    {
+        series: 
+        {
+            pie:
+            {
+                show:true,
+                radious: 1
+            }
+        },
+        legend:
+            {
+                show: false
+            }
+    };
+    
+    // Graficar la Torta
+    $.plot($('#placeholder'), data, options);
+    
+    </script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var jsData = document.querySelector('.js-data');
+        var nombre = jsData.dataset.nombre;
+        console.log(nombre);
+    });
+
+    </script>
+{% endblock %}
