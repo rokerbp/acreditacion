@@ -170,10 +170,6 @@
                     orientation: 'landscape'
                 }
             ],
-            select: 
-            {
-                style: 'multi'
-            },
                 responsive: {
                 details: 
                 {
@@ -193,19 +189,18 @@
             }
         });
 
-        $('#dataTable-example').on('click', 'tbody td', function()
-        {
-            // If this column is selected
-            if(table.column(this, { selected: true }).length){
-                table.column(this).deselect();
-                
-            // Otherwise, if this column is not selected
-            } else {
-                table.column(this).select();      
-            }
-        });
-
+        $('#dataTables-example').on('click', 'tbody td', function(){
+        console.log("entro a seleccionar datos")
+       // If this column is selected
+       if(table.column(this, { selected: true }).length){
+          table.column(this).deselect();
+          
+       // Otherwise, if this column is not selected
+       } else {
+          table.column(this).select();      
+       }
     });
+});
 
 
 //Funcion para mostrar grafica de torta
