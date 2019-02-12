@@ -129,6 +129,11 @@
 </div>
 </div>
 
+{% for encuesta in encuestas %}
+<div class="js-data" data-nombre="{{ encuesta.nombre }}">
+
+</div>
+{% endfor %}
 
 <div class="panel-footer"></div>
 
@@ -243,5 +248,14 @@
     // Graficar la Torta
     $.plot($('#placeholder'), data, options);
     
+    </script>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var jsData = document.querySelector('.js-data');
+        var nombre = jsData.dataset.nombre;
+        console.log(nombre);
+    });
+
     </script>
 {% endblock %}
