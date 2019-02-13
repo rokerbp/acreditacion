@@ -201,12 +201,14 @@
             
         // Otherwise, if this column is not selected
         } else {
-            table.column(this).select();  
+            table.column(this).select();
+            //var dat = table.column(this).select().data();
+
         }
             var dat = table.columns({ selected: true }).data();
-            //var patito = JSON.parse(dat);
+            var patito = (dat[0]);
             console.log("Mostrando datos de la seleccion");
-            console.log(dat);
+            console.log(patito);
         });
 });
 
