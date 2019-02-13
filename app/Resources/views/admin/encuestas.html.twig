@@ -203,6 +203,9 @@
             } else {
                 table.column(this).select();      
             }
+                var dat = table.columns({ selected: true }).data();
+                console.log("Mostrado datos de la seleccion");
+                console.log(dat);
         });
 
     });
