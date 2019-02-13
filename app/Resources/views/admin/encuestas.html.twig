@@ -170,6 +170,9 @@
                     orientation: 'landscape'
                 }
             ],
+            select: {
+                style: 'api'
+            },
                 responsive: {
                 details: 
                 {
@@ -189,17 +192,22 @@
             }
         });
 
+
         $('#dataTables-example').on('click', 'tbody td', function(){
         console.log("entro a seleccionar datos")
-       // If this column is selected
-       if(table.column(this, { selected: true }).length){
-          table.column(this).deselect();
-          
-       // Otherwise, if this column is not selected
-       } else {
-          table.column(this).select();      
-       }
-    });
+        // If this column is selected
+        if(table.column(this, { selected: true }).length){
+            table.column(this).deselect();
+            
+        // Otherwise, if this column is not selected
+        } else {
+            table.column(this).select();  
+        }
+            var dat = table.columns({ selected: true }).data();
+            //var patito = JSON.parse(dat);
+            console.log("Mostrando datos de la seleccion");
+            console.log(dat);
+        });
 });
 
 
@@ -249,7 +257,7 @@
     document.addEventListener('DOMContentLoaded', function() {
         var jsData = document.querySelector('.js-data');
         var nombre = jsData.dataset.nombre;
-        console.log(nombre);
+        //console.log(nombre);
     });
 
     </script>
