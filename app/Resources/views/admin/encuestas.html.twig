@@ -189,22 +189,22 @@
             }
         });
 
-        $('#dataTable-example').on('click', 'tbody td', function()
-        {
+    $('#dataTables-example').on('click', 'tbody td', function(){
+            console.log("entro a seleccionar datos")
             // If this column is selected
             if(table.column(this, { selected: true }).length){
                 table.column(this).deselect();
                 
             // Otherwise, if this column is not selected
             } else {
-                table.column(this).select();      
+                table.column(this).select();  
             }
                 var dat = table.columns({ selected: true }).data();
-                console.log("Mostrado datos de la seleccion");
+                //var patito = JSON.parse(dat);
+                console.log("Mostrando datos de la seleccion");
                 console.log(dat);
-        });
-
-    });
+            });
+});
 
 
 //Funcion para mostrar grafica de torta
