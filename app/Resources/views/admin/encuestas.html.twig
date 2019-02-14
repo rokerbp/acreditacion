@@ -192,7 +192,8 @@
             }
         });
 
-
+        var patito = [];
+        var cantidadRespuestas = [];
         $('#dataTables-example').on('click', 'tbody td', function(){
         console.log("entro a seleccionar datos")
         // If this column is selected
@@ -206,17 +207,72 @@
 
         }
             var dat = table.columns({ selected: true }).data();
-            var patito = (dat[0]);
+            patito = (dat[0]);
             console.log("Mostrando datos de la seleccion");
-            console.log(patito);
+            //console.log(patito);
+            agrupar();
+            dataFormat();
         });
-});
 
+
+        //Agrupar y contar
+        function agrupar()
+        {
+            console.log("agrupar");
+            cantidadRespuestas = patito.reduce((contadorRespuesta, respuesta) => 
+            {contadorRespuesta[respuesta] = (contadorRespuesta[respuesta] || 0) + 1 ;
+            return contadorRespuesta;
+            }, {});
+            console.log(cantidadRespuestas);
+        }
+
+        // Funcion para pasar los datos de columna al formato de PIE
+        var datal = [];
+        function dataFormat()
+        {
+            // Opciones de visualizacion
+            var options =
+            {
+                series: 
+                {
+                    pie:
+                    {
+                        show:true,
+                        radious: 1
+                    }
+                },
+                legend:
+                    {
+                        show: false
+                    }
+            };
+            for (let label of Object.keys(cantidadRespuestas))
+            {
+                var data = cantidadRespuestas[label];
+                datal.push({label,data});
+                //data.push('{label:'+label+',data:'+datal+'}');
+                //console.log(label, datal);
+            }
+            /*for (( var i = 0; i < cantidadRespuestas.length; i++) 
+            {
+                data[i] =
+                {
+                    label: Object.key(cantidadRespuestas),
+                    data : parseInt(Object.value(cantidadRespuestas))
+                }
+            }*/
+            //console.log("aqui va el data para pie")
+            //console.log(Object.keys(cantidadRespuestas));
+            console.log(datal);
+            $.plot($('#placeholder'), datal, options);
+        }
 
 //Funcion para mostrar grafica de torta
 
+    
+    // ** FIN **
     // Declaración de datos
-    var data = 
+    /*var data = 
     [
         {
             label: "Opcion 0",
@@ -231,7 +287,7 @@
             label: "Opcion 3",
             data: 20
         }
-    ];
+    ];*/
     
     // Opciones de visualizacion
     var options =
@@ -251,16 +307,9 @@
     };
     
     // Graficar la Torta
-    $.plot($('#placeholder'), data, options);
+    //$.plot($('#placeholder'), data, options);
+
+});
     
-    </script>
-
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var jsData = document.querySelector('.js-data');
-        var nombre = jsData.dataset.nombre;
-        //console.log(nombre);
-    });
-
     </script>
 {% endblock %}
