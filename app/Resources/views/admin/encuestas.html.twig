@@ -189,45 +189,49 @@
                         tableClass: 'table'
                     } )
                 }
-            }
+            },
         });
 
         var patito = [];
         var cantidadRespuestas = [];
+        var dataP = [];
         $('#dataTables-example').on('click', 'tbody td', function(){
         console.log("entro a seleccionar datos")
         // If this column is selected
         if(table.column(this, { selected: true }).length){
             table.column(this).deselect();
+            dataP.length = 0;
             
         // Otherwise, if this column is not selected
         } else {
+            table.columns().deselect();
             table.column(this).select();
-            //var dat = table.column(this).select().data();
-
-        }
-            var dat = table.columns({ selected: true }).data();
+            dataP.length = 0;
+            var dat = table.columns(this).select().data();
             patito = (dat[0]);
-            console.log("Mostrando datos de la seleccion");
-            //console.log(patito);
             agrupar();
             dataFormat();
+            }   
         });
 
+        // Identificar columna seleccionada y ponerla como titulo de la grafica
+        $('#dataTables-example tbody').on( 'click', 'td', function () {
+            var idx = table.cell( this ).index().column;
+            var title = table.column( idx ).header();
+            alert( 'Column title clicked on: '+$(title).html() ); });
 
-        //Agrupar y contar
+
+
+        //Agrupar y contar elementos repetidos
         function agrupar()
         {
-            console.log("agrupar");
             cantidadRespuestas = patito.reduce((contadorRespuesta, respuesta) => 
             {contadorRespuesta[respuesta] = (contadorRespuesta[respuesta] || 0) + 1 ;
             return contadorRespuesta;
             }, {});
-            console.log(cantidadRespuestas);
         }
 
         // Funcion para pasar los datos de columna al formato de PIE
-        var datal = [];
         function dataFormat()
         {
             // Opciones de visualizacion
@@ -246,68 +250,15 @@
                         show: false
                     }
             };
+
             for (let label of Object.keys(cantidadRespuestas))
             {
                 var data = cantidadRespuestas[label];
-                datal.push({label,data});
-                //data.push('{label:'+label+',data:'+datal+'}');
-                //console.log(label, datal);
+                dataP.push({label,data});
             }
-            /*for (( var i = 0; i < cantidadRespuestas.length; i++) 
-            {
-                data[i] =
-                {
-                    label: Object.key(cantidadRespuestas),
-                    data : parseInt(Object.value(cantidadRespuestas))
-                }
-            }*/
-            //console.log("aqui va el data para pie")
-            //console.log(Object.keys(cantidadRespuestas));
-            console.log(datal);
-            $.plot($('#placeholder'), datal, options);
+            console.log(dataP);
+            $.plot($('#placeholder'), dataP, options);
         }
-
-//Funcion para mostrar grafica de torta
-
-    
-    // ** FIN **
-    // Declaración de datos
-    /*var data = 
-    [
-        {
-            label: "Opcion 0",
-            data: 1
-        }, {
-            label: "Opcion 1",
-            data: 3
-        }, {
-            label: "Opcion 2",
-            data: 9
-        }, {
-            label: "Opcion 3",
-            data: 20
-        }
-    ];*/
-    
-    // Opciones de visualizacion
-    var options =
-    {
-        series: 
-        {
-            pie:
-            {
-                show:true,
-                radious: 1
-            }
-        },
-        legend:
-            {
-                show: false
-            }
-    };
-    
-    // Graficar la Torta
-    //$.plot($('#placeholder'), data, options);
 
 });
     
