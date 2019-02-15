@@ -88094,17 +88094,17 @@ var DataTable = $.fn.dataTable;
 $.extend( true, DataTable.Buttons.defaults, {
 	dom: {
 		container: {
-			className: 'dt-buttons btn-group'
+			className: 'btn-group'
 		},
 		button: {
-			className: 'btn btn-secondary'
+			className: 'btn btn-primary dropdown-toggle'
 		},
 		collection: {
 			tag: 'div',
-			className: 'dt-button-collection dropdown-menu',
+			className: 'dropdown-menu',
 			button: {
 				tag: 'a',
-				className: 'dt-button dropdown-item',
+				className: 'btn dropdown-item btn-info',
 				active: 'active',
 				disabled: 'disabled'
 			}

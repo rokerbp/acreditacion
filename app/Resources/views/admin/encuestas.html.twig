@@ -20,7 +20,7 @@
     <div class="row">  
     <div class="col-lg-12">  
         <div class="panel-body">
-            <table width="100%" class="table table-bordered table-hover dataTable display responsive nowrap" id="dataTables-example" role="grid">
+            <table width="100%" class="table table-bordered table-hover dataTable display nowrap" id="dataTables-example" role="grid">
                 <thead>
                     <tr>
                         <th>Nombre</th>
@@ -113,8 +113,8 @@
         <div class="col-lg-12">
             <div class="col-lg-6"> 
                 <div class="panel panel-default">
-                    <div class="panel-heading">        
-                        Titulo de la grafica
+                    <div id="titulo-grafica"class="panel-heading">        
+                        Grafica
                     </div>
                     {# cabecera del panel #}
                     <div class="panel-body">
@@ -158,19 +158,32 @@
         var table = $('#dataTables-example').DataTable({
             dom: 'Bfrtip',
             'select': 'api',
-
         //Botones de exportar
             buttons: 
             [
-                'excel','colvis',
+                'excel',
                 {
                     extend: 'pdfHtml5',
                     download: 'open',
                     pageSize: 'A1',
                     orientation: 'landscape'
-                }
+                },
+                {
+                    extend: 'colvis',
+                    columns: [0, 1, 2, 3]
+                },   
             ],
-                responsive: {
+            // Columnas ocultas por defecto
+            columnDefs:
+            [
+                {
+                    targets: [0,1,2,3],
+                    visible: false
+                },
+            ],
+            // **
+            "scrollX": true,
+                /*responsive: {
                 details: 
                 {
                     display: $.fn.dataTable.Responsive.display.modal(
@@ -186,76 +199,88 @@
                         tableClass: 'table'
                     } )
                 }
-            }
+            },*/
+            
+        });
+ 
+        var patito = [];
+        var cantidadRespuestas = [];
+        var dataP = [];
+        $('#dataTables-example').on('click', 'tbody td', function(){
+        // If this column is selected
+        if(table.column(this, { selected: true }).length){
+            table.column(this).deselect();
+            dataP.length = 0;
+            
+        // Otherwise, if this column is not selected
+        } else {
+            table.columns().deselect();
+            table.column(this).select();
+            dataP.length = 0;
+            var dat = table.columns(this).select().data();
+            patito = (dat[0]);
+            agrupar();
+            dataFormat();
+            }   
         });
 
-    $('#dataTables-example').on('click', 'tbody td', function(){
-            console.log("entro a seleccionar datos")
-            // If this column is selected
-            if(table.column(this, { selected: true }).length){
-                table.column(this).deselect();
-                
-            // Otherwise, if this column is not selected
-            } else {
-                table.column(this).select();  
-            }
-                var dat = table.columns({ selected: true }).data();
-                //var patito = JSON.parse(dat);
-                console.log("Mostrando datos de la seleccion");
-                console.log(dat[0]);
+        // Identificar columna seleccionada y ponerla como titulo de la grafica
+        $('#dataTables-example tbody').on( 'click', 'td', function () {
+            var idx = table.cell( this ).index().column;
+            var title = table.column( idx ).header();
+            let div=document.getElementById("titulo-grafica");
+            div.innerHTML=$(title).html();
+        });
 
-            });
-});
-
-
-//Funcion para mostrar grafica de torta
-
-    // Declaración de datos
-    var data = 
-    [
+        //Agrupar y contar elementos repetidos
+        function agrupar()
         {
-            label: "Opcion 0",
-            data: 1
-        }, {
-            label: "Opcion 1",
-            data: 3
-        }, {
-            label: "Opcion 2",
-            data: 9
-        }, {
-            label: "Opcion 3",
-            data: 20
+            cantidadRespuestas = patito.reduce((contadorRespuesta, respuesta) => 
+            {contadorRespuesta[respuesta] = (contadorRespuesta[respuesta] || 0) + 1 ;
+            return contadorRespuesta;
+            }, {});
         }
-    ];
-    
-    // Opciones de visualizacion
-    var options =
-    {
-        series: 
+
+        // Funcion para pasar los datos de columna al formato de PIE
+        function dataFormat()
         {
-            pie:
+            // Opciones de visualizacion
+            var options =
             {
-                show:true,
-                radious: 1
-            }
-        },
-        legend:
+                series: 
+                {
+                    pie:
+                    {
+                        show:true,
+                        radious: 1
+                    }
+                },
+                legend:
+                    {
+                        show: false
+                    }
+            };
+
+            for (let label of Object.keys(cantidadRespuestas))
             {
-                show: false
+                var data = cantidadRespuestas[label];
+                dataP.push({label,data});
             }
-    };
-    
-    // Graficar la Torta
-    $.plot($('#placeholder'), data, options);
-    
-    </script>
+            $.plot($('#placeholder'), dataP, options);
+        }
+        /*
+        // Ocultar columnas
+        $('a.toggle-vis').on( 'click', function (e) {
+        e.preventDefault();
+ 
+        // Get the column API object
+        var column = table.column( $(this).attr('data-column') );
+ 
+        // Toggle the visibility
+        column.visible( ! column.visible() );
+        } );*/
 
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var jsData = document.querySelector('.js-data');
-        var nombre = jsData.dataset.nombre;
-        //console.log(nombre);
-    });
-
+});
+    
     </script>
 {% endblock %}

@@ -10,7 +10,7 @@
  *   jQuery 1 1.12.4, JSZip 2.5.0, pdfmake 0.1.36, DataTables 1.10.18, Buttons 1.5.4, Column visibility 1.5.4, Flash export 1.5.4, HTML5 export 1.5.4, Print view 1.5.4, ColReorder 1.5.0, Responsive 2.2.2, RowGroup 1.1.0, RowReorder 1.2.4, Scroller 1.5.0, Select 1.2.6
  */
 
-table.dataTable {
+ table.dataTable {
   clear: both;
   margin-top: 6px !important;
   margin-bottom: 6px !important;
