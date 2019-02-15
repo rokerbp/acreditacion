@@ -156,6 +156,9 @@
         
         //DataTable
         var table = $('#dataTables-example').DataTable({
+            "language": {
+                        "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+            },
             dom: 'Bfrtip',
             'select': 'api',
         //Botones de exportar
@@ -170,6 +173,7 @@
                 },
                 {
                     extend: 'colvis',
+                    text: 'Mostrar columnas',
                     columns: [0, 1, 2, 3]
                 },   
             ],
