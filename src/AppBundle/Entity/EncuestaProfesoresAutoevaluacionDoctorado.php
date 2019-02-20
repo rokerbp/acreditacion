@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * EncuestaProfesoresAutoevaluacionDoctorado
  *
  * @ORM\Table(name="Encuesta_Profesores_autoevaluacion_Doctorado")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\EncuestaProfesoresAutoevaluacionDoctoradoRepository")
  */
 class EncuestaProfesoresAutoevaluacionDoctorado
 {
