@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * EncuestaProfesoresAutoevaluacionDoctorado
+ * Encuesta
  *
- * @ORM\Table(name="Encuesta_Profesores_autoevaluacion_Doctorado")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\EncuestaProfesoresAutoevaluacionDoctoradoRepository")
+ * @ORM\Table(name="Encuesta")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\EncuestaRepository")
  */
-class EncuestaProfesoresAutoevaluacionDoctorado
+class Encuesta
 {
     /**
      * @var integer
@@ -274,6 +274,13 @@ class EncuestaProfesoresAutoevaluacionDoctorado
     /**
      * @var string
      *
+     * @ORM\Column(name="Sugerencias", type="text", length=65535, nullable=true)
+     */
+    private $sugerencias = 'NULL';
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="Timest", type="string", length=64)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
@@ -285,7 +292,7 @@ class EncuestaProfesoresAutoevaluacionDoctorado
      *
      * @param string $nombre
      *
-     * @return EncuestaProfesoresAutoevaluacionDoctorado
+     * @return Encuesta
      */
     public function setNombre($nombre)
     {
@@ -311,7 +318,7 @@ class EncuestaProfesoresAutoevaluacionDoctorado
      *
      * @param integer $score
      *
-     * @return EncuestaProfesoresAutoevaluacionDoctorado
+     * @return Encuesta
      */
     public function setScore($score)
     {
@@ -335,7 +342,7 @@ class EncuestaProfesoresAutoevaluacionDoctorado
      *
      * @param string $planestudios
      *
-     * @return EncuestaProfesoresAutoevaluacionDoctorado
+     * @return Encuesta
      */
     public function setPlanestudios($planestudios)
     {
@@ -359,7 +366,7 @@ class EncuestaProfesoresAutoevaluacionDoctorado
      *
      * @param string $email
      *
-     * @return EncuestaProfesoresAutoevaluacionDoctorado
+     * @return Encuesta
      */
     public function setEmail($email)
     {
@@ -383,7 +390,7 @@ class EncuestaProfesoresAutoevaluacionDoctorado
      *
      * @param string $actproductiva
      *
-     * @return EncuestaProfesoresAutoevaluacionDoctorado
+     * @return Encuesta
      */
     public function setActproductiva($actproductiva)
     {
@@ -407,7 +414,7 @@ class EncuestaProfesoresAutoevaluacionDoctorado
      *
      * @param string $relprograma
      *
-     * @return EncuestaProfesoresAutoevaluacionDoctorado
+     * @return Encuesta
      */
     public function setRelprograma($relprograma)
     {
@@ -431,7 +438,7 @@ class EncuestaProfesoresAutoevaluacionDoctorado
      *
      * @param string $objprograma
      *
-     * @return EncuestaProfesoresAutoevaluacionDoctorado
+     * @return Encuesta
      */
     public function setObjprograma($objprograma)
     {
@@ -455,7 +462,7 @@ class EncuestaProfesoresAutoevaluacionDoctorado
      *
      * @param string $perfadmitidos
      *
-     * @return EncuestaProfesoresAutoevaluacionDoctorado
+     * @return Encuesta
      */
     public function setPerfadmitidos($perfadmitidos)
     {
@@ -479,7 +486,7 @@ class EncuestaProfesoresAutoevaluacionDoctorado
      *
      * @param string $desempeno
      *
-     * @return EncuestaProfesoresAutoevaluacionDoctorado
+     * @return Encuesta
      */
     public function setDesempeno($desempeno)
     {
@@ -503,7 +510,7 @@ class EncuestaProfesoresAutoevaluacionDoctorado
      *
      * @param string $perfegresado
      *
-     * @return EncuestaProfesoresAutoevaluacionDoctorado
+     * @return Encuesta
      */
     public function setPerfegresado($perfegresado)
     {
@@ -527,7 +534,7 @@ class EncuestaProfesoresAutoevaluacionDoctorado
      *
      * @param string $perfprofesores
      *
-     * @return EncuestaProfesoresAutoevaluacionDoctorado
+     * @return Encuesta
      */
     public function setPerfprofesores($perfprofesores)
     {
@@ -551,7 +558,7 @@ class EncuestaProfesoresAutoevaluacionDoctorado
      *
      * @param string $numprofesores
      *
-     * @return EncuestaProfesoresAutoevaluacionDoctorado
+     * @return Encuesta
      */
     public function setNumprofesores($numprofesores)
     {
@@ -575,7 +582,7 @@ class EncuestaProfesoresAutoevaluacionDoctorado
      *
      * @param string $proacompanamiento
      *
-     * @return EncuestaProfesoresAutoevaluacionDoctorado
+     * @return Encuesta
      */
     public function setProacompanamiento($proacompanamiento)
     {
@@ -599,7 +606,7 @@ class EncuestaProfesoresAutoevaluacionDoctorado
      *
      * @param string $proprofesores
      *
-     * @return EncuestaProfesoresAutoevaluacionDoctorado
+     * @return Encuesta
      */
     public function setProprofesores($proprofesores)
     {
@@ -623,7 +630,7 @@ class EncuestaProfesoresAutoevaluacionDoctorado
      *
      * @param string $propedagogicos
      *
-     * @return EncuestaProfesoresAutoevaluacionDoctorado
+     * @return Encuesta
      */
     public function setPropedagogicos($propedagogicos)
     {
@@ -647,7 +654,7 @@ class EncuestaProfesoresAutoevaluacionDoctorado
      *
      * @param string $procevaluacion
      *
-     * @return EncuestaProfesoresAutoevaluacionDoctorado
+     * @return Encuesta
      */
     public function setProcevaluacion($procevaluacion)
     {
@@ -671,7 +678,7 @@ class EncuestaProfesoresAutoevaluacionDoctorado
      *
      * @param string $aplconocimiento
      *
-     * @return EncuestaProfesoresAutoevaluacionDoctorado
+     * @return Encuesta
      */
     public function setAplconocimiento($aplconocimiento)
     {
@@ -695,7 +702,7 @@ class EncuestaProfesoresAutoevaluacionDoctorado
      *
      * @param string $mecinvestigacion
      *
-     * @return EncuestaProfesoresAutoevaluacionDoctorado
+     * @return Encuesta
      */
     public function setMecinvestigacion($mecinvestigacion)
     {
@@ -719,7 +726,7 @@ class EncuestaProfesoresAutoevaluacionDoctorado
      *
      * @param string $prodinvestigativa
      *
-     * @return EncuestaProfesoresAutoevaluacionDoctorado
+     * @return Encuesta
      */
     public function setProdinvestigativa($prodinvestigativa)
     {
@@ -743,7 +750,7 @@ class EncuestaProfesoresAutoevaluacionDoctorado
      *
      * @param string $interprograma
      *
-     * @return EncuestaProfesoresAutoevaluacionDoctorado
+     * @return Encuesta
      */
     public function setInterprograma($interprograma)
     {
@@ -767,7 +774,7 @@ class EncuestaProfesoresAutoevaluacionDoctorado
      *
      * @param string $impacinvestigacion
      *
-     * @return EncuestaProfesoresAutoevaluacionDoctorado
+     * @return Encuesta
      */
     public function setImpacinvestigacion($impacinvestigacion)
     {
@@ -791,7 +798,7 @@ class EncuestaProfesoresAutoevaluacionDoctorado
      *
      * @param string $articprograma
      *
-     * @return EncuestaProfesoresAutoevaluacionDoctorado
+     * @return Encuesta
      */
     public function setArticprograma($articprograma)
     {
@@ -815,7 +822,7 @@ class EncuestaProfesoresAutoevaluacionDoctorado
      *
      * @param string $internalprograma
      *
-     * @return EncuestaProfesoresAutoevaluacionDoctorado
+     * @return Encuesta
      */
     public function setInternalprograma($internalprograma)
     {
@@ -839,7 +846,7 @@ class EncuestaProfesoresAutoevaluacionDoctorado
      *
      * @param string $mecanlengua
      *
-     * @return EncuestaProfesoresAutoevaluacionDoctorado
+     * @return Encuesta
      */
     public function setMecanlengua($mecanlengua)
     {
@@ -863,7 +870,7 @@ class EncuestaProfesoresAutoevaluacionDoctorado
      *
      * @param string $bienestudiantil
      *
-     * @return EncuestaProfesoresAutoevaluacionDoctorado
+     * @return Encuesta
      */
     public function setBienestudiantil($bienestudiantil)
     {
@@ -887,7 +894,7 @@ class EncuestaProfesoresAutoevaluacionDoctorado
      *
      * @param string $ambienteinsti
      *
-     * @return EncuestaProfesoresAutoevaluacionDoctorado
+     * @return Encuesta
      */
     public function setAmbienteinsti($ambienteinsti)
     {
@@ -911,7 +918,7 @@ class EncuestaProfesoresAutoevaluacionDoctorado
      *
      * @param string $ambienteconsidera
      *
-     * @return EncuestaProfesoresAutoevaluacionDoctorado
+     * @return Encuesta
      */
     public function setAmbienteconsidera($ambienteconsidera)
     {
@@ -935,7 +942,7 @@ class EncuestaProfesoresAutoevaluacionDoctorado
      *
      * @param string $impactoocupacional
      *
-     * @return EncuestaProfesoresAutoevaluacionDoctorado
+     * @return Encuesta
      */
     public function setImpactoocupacional($impactoocupacional)
     {
@@ -959,7 +966,7 @@ class EncuestaProfesoresAutoevaluacionDoctorado
      *
      * @param string $impactocientifica
      *
-     * @return EncuestaProfesoresAutoevaluacionDoctorado
+     * @return Encuesta
      */
     public function setImpactocientifica($impactocientifica)
     {
@@ -983,7 +990,7 @@ class EncuestaProfesoresAutoevaluacionDoctorado
      *
      * @param string $segvincegresados
      *
-     * @return EncuestaProfesoresAutoevaluacionDoctorado
+     * @return Encuesta
      */
     public function setSegvincegresados($segvincegresados)
     {
@@ -1007,7 +1014,7 @@ class EncuestaProfesoresAutoevaluacionDoctorado
      *
      * @param string $consecrecursos
      *
-     * @return EncuestaProfesoresAutoevaluacionDoctorado
+     * @return Encuesta
      */
     public function setConsecrecursos($consecrecursos)
     {
@@ -1031,7 +1038,7 @@ class EncuestaProfesoresAutoevaluacionDoctorado
      *
      * @param string $apoyoadministrativo
      *
-     * @return EncuestaProfesoresAutoevaluacionDoctorado
+     * @return Encuesta
      */
     public function setApoyoadministrativo($apoyoadministrativo)
     {
@@ -1055,7 +1062,7 @@ class EncuestaProfesoresAutoevaluacionDoctorado
      *
      * @param string $dedicacionprograma
      *
-     * @return EncuestaProfesoresAutoevaluacionDoctorado
+     * @return Encuesta
      */
     public function setDedicacionprograma($dedicacionprograma)
     {
@@ -1079,7 +1086,7 @@ class EncuestaProfesoresAutoevaluacionDoctorado
      *
      * @param string $redescientificas
      *
-     * @return EncuestaProfesoresAutoevaluacionDoctorado
+     * @return Encuesta
      */
     public function setRedescientificas($redescientificas)
     {
@@ -1103,7 +1110,7 @@ class EncuestaProfesoresAutoevaluacionDoctorado
      *
      * @param string $premiosrecibidos
      *
-     * @return EncuestaProfesoresAutoevaluacionDoctorado
+     * @return Encuesta
      */
     public function setPremiosrecibidos($premiosrecibidos)
     {
@@ -1127,7 +1134,7 @@ class EncuestaProfesoresAutoevaluacionDoctorado
      *
      * @param string $comiteeditorial
      *
-     * @return EncuestaProfesoresAutoevaluacionDoctorado
+     * @return Encuesta
      */
     public function setComiteeditorial($comiteeditorial)
     {
@@ -1151,7 +1158,7 @@ class EncuestaProfesoresAutoevaluacionDoctorado
      *
      * @param string $freccvlac
      *
-     * @return EncuestaProfesoresAutoevaluacionDoctorado
+     * @return Encuesta
      */
     public function setFreccvlac($freccvlac)
     {
@@ -1168,6 +1175,30 @@ class EncuestaProfesoresAutoevaluacionDoctorado
     public function getFreccvlac()
     {
         return $this->freccvlac;
+    }
+
+     /**
+     * Set sugerencias
+     *
+     * @param string $sugerencias
+     *
+     * @return Encuesta
+     */
+    public function setSugerencias($sugerencias)
+    {
+        $this->sugerencias = $sugerencias;
+
+        return $this;
+    }
+
+    /**
+     * Get sugerencias
+     *
+     * @return string
+     */
+    public function getSugerencias()
+    {
+        return $this->sugerencias;
     }
 
     /**

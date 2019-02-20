@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * EncuestaProfesoresAutoevaluacionDoctorado
+ * Encuesta
  *
- * @ORM\Table(name="Encuesta_Profesores_autoevaluacion_Doctorado")
+ * @ORM\Table(name="Encuesta")
  * @ORM\Entity
  */
-class EncuestaProfesoresAutoevaluacionDoctorado
+class Encuesta
 {
     /**
      * @var integer
@@ -285,7 +285,7 @@ class EncuestaProfesoresAutoevaluacionDoctorado
      *
      * @param string $nombre
      *
-     * @return EncuestaProfesoresAutoevaluacionDoctorado
+     * @return Encuesta
      */
     public function setNombre($nombre)
     {
