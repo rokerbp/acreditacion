@@ -20,4 +20,19 @@ class EncuestasController extends Controller
         var_dump($encuestas);
         return $this->render('admin/encuestas.html.twig',array('encuestas'=>$encuestas));
     }
+
+    /**
+     * @Route("/admin/encuestas/{score}", name="perfil")
+     */
+    public function perfilAction(Request $request,$score=null)
+    {
+        if($score!=null){
+            $encuestaRepository = $this->getDoctrine()->getRepository(Encuesta::class);
+            $encuestas = $encuestaRepository->findBy(['score'=>$score], ['nombre'=>'DESC']);
+            var_dump($encuestas);
+            return $this->render('admin/encuestas.html.twig',array("encuestas"=>$encuestas));
+        }else{
+            return $this->redirectToRoute('homepage');
+        }
+    }
 }
