@@ -15,10 +15,14 @@ class EncuestasController extends Controller
      */
     public function encuestasAction(Request $request)
     {
+        return $this->render('admin/encuesta.html.twig');
+        /*
+        Codigo Original del index
         $encuestaRepository = $this->getDoctrine()->getRepository(Encuesta::class);
         $encuestas = $encuestaRepository->findAll();
         var_dump($encuestas);
         return $this->render('admin/encuestas.html.twig',array('encuestas'=>$encuestas));
+        */
     }
 
     /**
@@ -29,7 +33,7 @@ class EncuestasController extends Controller
         if($score!=null){
             $encuestaRepository = $this->getDoctrine()->getRepository(Encuesta::class);
             $encuestas = $encuestaRepository->findBy(['score'=>$score], ['nombre'=>'DESC']);
-            var_dump($encuestas);
+            //var_dump($encuestas);
             return $this->render('admin/encuestas.html.twig',array("encuestas"=>$encuestas));
         }else{
             return $this->redirectToRoute('homepage');

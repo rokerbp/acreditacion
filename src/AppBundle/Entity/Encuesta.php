@@ -20,6 +20,12 @@ class Encuesta
     private $score = 'NULL';
 
     /**
+     * @ORM\ManyToOne(targetEntity="Perfil", inversedBy="encuestas")
+     * @ORM\JoinColumn(name="score", referencedColumnName="id")
+     */
+    private $perfil;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="Nombre", type="string", length=128, nullable=true)
