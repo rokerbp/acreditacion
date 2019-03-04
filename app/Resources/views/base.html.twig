@@ -129,13 +129,13 @@
 
         <!-- Bootstrap Core JavaScript -->
         <script src="{{ asset ('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+        <script type="text/javascript" src="{{asset('js/sweetalert.min.js')}}"></script>
         <script type="text/javascript" src="{{asset('js/controlBorrado.js')}}"></script>
         
         <script src="{{ asset ('js/sb-admin-2.js') }}"></script>
         
-        
-
+    
         {% block javascripts %}
         {% endblock %}
     </body>

@@ -52,7 +52,7 @@ class Estudiante
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="anioGraduacion", type="datetimetz", nullable=true)
+     * @ORM\Column(name="anioGraduacion", type="datetime", nullable=true)
      */
     private $anioGraduacion;
 
