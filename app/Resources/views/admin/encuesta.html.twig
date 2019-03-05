@@ -9,26 +9,325 @@
     <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Encuestas Autoevaluacion</h1>
+                    <h1 class="page-header">Encuestas Autoevaluacion Doctorado</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
-            <!-- /.row -->
+           
+             <!-- /.row -->
             <div class="row">
-                <!--Aqui debe ir un FOR que traiga el nombre de cada encuesta dependiendo
-                    dependiendo del score que actua como ID de la encuesta -->
-                <div class="col-md-3">
-                    <a type="button" class="btn btn-primary" href="{{path('perfil', {'score':'1'})}}"><i class="fa fa-th-list "></i> Nombre de la encuesta</a>
-                </div>
-                <div class="col-md-3">
-                    <a type="button" class="btn btn-primary" href="{{path('perfil', {'score':'2'})}}"><i class="fa fa-th-list "></i> Nombre de la encuesta</a>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-red">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-indent fa-3x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div>Estudiantes de Maestría</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="{{path('perfil', {'relprograma':"Estudiante de Maestría"})}}">
+                            <div class="panel-footer">
+                                <span class="pull-left">Ver Encuesta</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
                     </div>
-                <div class="col-md-3">
-                    <a type="button" class="btn btn-primary" href="{{path('perfil', {'score':'3'})}}"><i class="fa fa-th-list "></i> Nombre de la encuesta</a>
                 </div>
-                <div class="col-md-3">
-                    <a type="button" class="btn btn-primary" href="{{path('perfil', {'score':'0'})}}"><i class="fa fa-th-list "></i> Nombre de la encuesta</a>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-red">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-indent fa-3x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div>Estudiantes de Doctorado</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="{{path('perfil', {'relprograma':'Estudiante de Doctorado'})}}">
+                            <div class="panel-footer">
+                                <span class="pull-left">Ver Encuesta</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
                 </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-red">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-indent fa-3x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div>Egresados de Maestría</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="{{path('perfil', {'relprograma':'Egresado de Maestría'})}}">
+                            <div class="panel-footer">
+                                <span class="pull-left">Ver Encuesta</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-red">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-indent fa-3x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div>Egresados del Doctorado</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="{{path('perfil', {'relprograma':'Egresado de Doctorado'})}}">
+                            <div class="panel-footer">
+                                <span class="pull-left">Ver Encuesta</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-red">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-indent fa-3x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div>Profesor de Maestría</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="{{path('perfil', {'relprograma':'Profesor de Maestría'})}}">
+                            <div class="panel-footer">
+                                <span class="pull-left">Ver Encuesta</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-red">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-indent fa-3x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div>Profesor de Doctorado</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="{{path('perfil', {'relprograma':'Profesor de Doctorado'})}}">
+                            <div class="panel-footer">
+                                <span class="pull-left">Ver Encuesta</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-red">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-indent fa-3x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div>Profesor de Maestría y/o Doctorado</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="{{path('perfil', {'relprograma':'Profesor Colaborador'})}}">
+                            <div class="panel-footer">
+                                <span class="pull-left">Ver Encuesta</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
             </div>
             <!-- /.row -->
+
+            <!-- / Sección Maestría -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Encuestas Autoevaluacion Maestría</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+           
+             <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-red">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-indent fa-3x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div>Estudiantes de Maestría</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="{{path('perfil', {'relprograma':"Estudiante de Maestría"})}}">
+                            <div class="panel-footer">
+                                <span class="pull-left">Ver Encuesta</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-red">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-indent fa-3x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div>Estudiantes de Doctorado</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="{{path('perfil', {'relprograma':'Estudiante de Doctorado'})}}">
+                            <div class="panel-footer">
+                                <span class="pull-left">Ver Encuesta</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-red">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-indent fa-3x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div>Egresados de Maestría</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="{{path('perfil', {'relprograma':'Egresado de Maestría'})}}">
+                            <div class="panel-footer">
+                                <span class="pull-left">Ver Encuesta</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-red">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-indent fa-3x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div>Egresados del Doctorado</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="{{path('perfil', {'relprograma':'Egresado de Doctorado'})}}">
+                            <div class="panel-footer">
+                                <span class="pull-left">Ver Encuesta</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-red">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-indent fa-3x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div>Profesor de Maestría</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="{{path('perfil', {'relprograma':'Profesor de Maestría'})}}">
+                            <div class="panel-footer">
+                                <span class="pull-left">Ver Encuesta</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-red">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-indent fa-3x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div>Profesor de Doctorado</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="{{path('perfil', {'relprograma':'Profesor de Doctorado'})}}">
+                            <div class="panel-footer">
+                                <span class="pull-left">Ver Encuesta</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-red">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-indent fa-3x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div>Profesor de Maestría y/o Doctorado</div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="{{path('perfil', {'relprograma':'Profesor Colaborador'})}}">
+                            <div class="panel-footer">
+                                <span class="pull-left">Ver Encuesta</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.row -->
+            
 {% endblock %}
