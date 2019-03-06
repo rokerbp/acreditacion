@@ -59,6 +59,7 @@
                         <th>Favor describa los premios y distinciones recibidos en los últimos cuatro años</th>
                         <th>Favor nombrar su participación en Comités Editoriales, Académicos, Científicos y de Programas en los últimos cuatro años:</th>
                         <th>¿Con qué frecuencia actualiza su CvLAC?</th>
+                        <th>Sugerencias para el mejoramiento del programa</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -100,6 +101,7 @@
                         <td>{{ encuesta.premiosrecibidos }}</td>
                         <td>{{ encuesta.comiteeditorial }}</td>
                         <td>{{ encuesta.freccvlac }}</td>
+                        <td>{{ encuesta.sugerencias }}</td>
                     </tr>
                 {% endfor %}
                 </tbody>
@@ -272,17 +274,6 @@
             }
             $.plot($('#placeholder'), dataP, options);
         }
-        /*
-        // Ocultar columnas
-        $('a.toggle-vis').on( 'click', function (e) {
-        e.preventDefault();
- 
-        // Get the column API object
-        var column = table.column( $(this).attr('data-column') );
- 
-        // Toggle the visibility
-        column.visible( ! column.visible() );
-        } );*/
 
 });
     
