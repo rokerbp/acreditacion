@@ -208,23 +208,26 @@
             },*/
             
         });
- 
-        var patito = [];
+
+        // opc[] almacena el array de los elementos de la columna seleccionada
+        // cantidadRespuestas[] almacena clave valor de cuantas veces se repite una respuesta
+        // dataPie[] formatea cantRta para enviarlo a la funcion grafica de dataPie
+        var opc = [];
         var cantidadRespuestas = [];
-        var dataP = [];
+        var dataPie = [];
         $('#dataTables-example').on('click', 'tbody td', function(){
         // If this column is selected
         if(table.column(this, { selected: true }).length){
             table.column(this).deselect();
-            dataP.length = 0;
+            dataPie.length = 0;
             
         // Otherwise, if this column is not selected
         } else {
             table.columns().deselect();
             table.column(this).select();
-            dataP.length = 0;
+            dataPie.length = 0;
             var dat = table.columns(this).select().data();
-            patito = (dat[0]);
+            opc = (dat[0])
             agrupar();
             dataFormat();
             }   
@@ -241,7 +244,7 @@
         //Agrupar y contar elementos repetidos
         function agrupar()
         {
-            cantidadRespuestas = patito.reduce((contadorRespuesta, respuesta) => 
+            cantidadRespuestas = opc.reduce((contadorRespuesta, respuesta) => 
             {contadorRespuesta[respuesta] = (contadorRespuesta[respuesta] || 0) + 1 ;
             return contadorRespuesta;
             }, {});
@@ -270,9 +273,9 @@
             for (let label of Object.keys(cantidadRespuestas))
             {
                 var data = cantidadRespuestas[label];
-                dataP.push({label,data});
+                dataPie.push({label,data});
             }
-            $.plot($('#placeholder'), dataP, options);
+            $.plot($('#placeholder'), dataPie, options);
         }
 
 });
