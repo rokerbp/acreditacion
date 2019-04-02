@@ -13,7 +13,7 @@
 <div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header"> Encuestas {{ relprograma }} </h1>
+            <h1 class="page-header" id="titulo">Encuestas {{ relprograma }}</h1>
         </div>
     </div>
 
@@ -166,12 +166,17 @@
         //Botones de exportar
             buttons: 
             [
-                'excel',
+                {
+                    extend: 'excel',
+                    filename: document.getElementById("titulo").innerHTML
+                }
+                ,
                 {
                     extend: 'pdfHtml5',
                     download: 'open',
                     pageSize: 'A1',
-                    orientation: 'landscape'
+                    orientation: 'landscape',
+                    title: document.getElementById("titulo").innerHTML,
                 },
                 {
                     extend: 'colvis',
@@ -276,6 +281,7 @@
                 dataPie.push({label,data});
             }
             $.plot($('#placeholder'), dataPie, options);
+            
         }
 
 });
