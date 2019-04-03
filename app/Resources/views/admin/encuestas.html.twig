@@ -108,12 +108,10 @@
             </table>
         </div>
     </div>
-
-    
-
     <div class="row">
         <div class="col-lg-12">
             <div class="col-lg-6"> 
+                <a class="btn btn-primary" type id="download" download="GraficaTorta.png" href="" onclick="download_img(this);">Descargar </a>
                 <div class="panel panel-default">
                     <div id="titulo-grafica"class="panel-heading">        
                         Grafica
@@ -148,7 +146,7 @@
     <script src="{{ asset ('vendor/flot/jquery.flot.pie.js') }}"></script>
     <script src="{{ asset ('vendor/flot/jquery.flot.resize.js') }}"></script>
     <script src="{{ asset ('vendor/flot-tooltip/jquery.flot.tooltip.min.js') }}"></script>
-    
+    <script src="{{ asset ('js/html2canvas.js') }}"></script>
 
     <script>
 
@@ -280,8 +278,24 @@
                 var data = cantidadRespuestas[label];
                 dataPie.push({label,data});
             }
-            $.plot($('#placeholder'), dataPie, options);
-            
+
+            // Se hace la grafica torta de la columna seleccionada
+            $.plot($('#placeholder'), dataPie, options);  
+
+            // Se permite descargar la gráfica como archivo png
+            var _canvas = null;
+            $(function(e) {
+                html2canvas($("#placeholder").get(0), {
+                    onrendered: function(canvas) {
+                        var imgData = canvas.toDataURL('image/png');
+                        download_img = function(el)
+                        {
+                            el.href = imgData;
+                        }
+                    }
+                });
+            });
+
         }
 
 });
