@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * EncuestaMaestria
+ * EncuestaDoctorado
  *
- * @ORM\Table(name="EncuestaMaestria")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\EncuestaMaestriaRepository")
+ * @ORM\Table(name="EncuestaDoctorado")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\EncuestaDoctoradoRepository")
  */
-class EncuestaMaestria
+class EncuestaDoctorado
 {
     /**
      * @var integer
@@ -39,13 +39,6 @@ class EncuestaMaestria
      * @ORM\Column(name="Email", type="string", length=128, nullable=true)
      */
     private $email = 'NULL';
-
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="anioGraduacion", type="datetimetz")
-     */
-    private $anioIngreso;
 
     /**
      * @var string
@@ -299,7 +292,7 @@ class EncuestaMaestria
      *
      * @param string $nombre
      *
-     * @return Encuesta
+     * @return EncuestaDoctorado
      */
     public function setNombre($nombre)
     {
@@ -325,7 +318,7 @@ class EncuestaMaestria
      *
      * @param integer $score
      *
-     * @return EncuestaMaestria
+     * @return EncuestaDoctorado
      */
     public function setScore($score)
     {
@@ -349,7 +342,7 @@ class EncuestaMaestria
      *
      * @param string $planestudios
      *
-     * @return EncuestaMaestria
+     * @return EncuestaDoctorado
      */
     public function setPlanestudios($planestudios)
     {
@@ -373,7 +366,7 @@ class EncuestaMaestria
      *
      * @param string $email
      *
-     * @return EncuestaMaestria
+     * @return EncuestaDoctorado
      */
     public function setEmail($email)
     {
@@ -397,7 +390,7 @@ class EncuestaMaestria
      *
      * @param string $actproductiva
      *
-     * @return EncuestaMaestria
+     * @return EncuestaDoctorado
      */
     public function setActproductiva($actproductiva)
     {
@@ -421,7 +414,7 @@ class EncuestaMaestria
      *
      * @param string $relprograma
      *
-     * @return EncuestaMaestria
+     * @return EncuestaDoctorado
      */
     public function setRelprograma($relprograma)
     {
@@ -445,7 +438,7 @@ class EncuestaMaestria
      *
      * @param string $objprograma
      *
-     * @return EncuestaMaestria
+     * @return EncuestaDoctorado
      */
     public function setObjprograma($objprograma)
     {
@@ -469,7 +462,7 @@ class EncuestaMaestria
      *
      * @param string $perfadmitidos
      *
-     * @return EncuestaMaestria
+     * @return EncuestaDoctorado
      */
     public function setPerfadmitidos($perfadmitidos)
     {
@@ -493,7 +486,7 @@ class EncuestaMaestria
      *
      * @param string $desempeno
      *
-     * @return EncuestaMaestria
+     * @return EncuestaDoctorado
      */
     public function setDesempeno($desempeno)
     {
@@ -517,7 +510,7 @@ class EncuestaMaestria
      *
      * @param string $perfegresado
      *
-     * @return EncuestaMaestria
+     * @return EncuestaDoctorado
      */
     public function setPerfegresado($perfegresado)
     {
@@ -541,7 +534,7 @@ class EncuestaMaestria
      *
      * @param string $perfprofesores
      *
-     * @return EncuestaMaestria
+     * @return EncuestaDoctorado
      */
     public function setPerfprofesores($perfprofesores)
     {
@@ -565,7 +558,7 @@ class EncuestaMaestria
      *
      * @param string $numprofesores
      *
-     * @return EncuestaMaestria
+     * @return EncuestaDoctorado
      */
     public function setNumprofesores($numprofesores)
     {
@@ -589,7 +582,7 @@ class EncuestaMaestria
      *
      * @param string $proacompanamiento
      *
-     * @return EncuestaMaestria
+     * @return EncuestaDoctorado
      */
     public function setProacompanamiento($proacompanamiento)
     {
@@ -613,7 +606,7 @@ class EncuestaMaestria
      *
      * @param string $proprofesores
      *
-     * @return EncuestaMaestria
+     * @return EncuestaDoctorado
      */
     public function setProprofesores($proprofesores)
     {
@@ -637,7 +630,7 @@ class EncuestaMaestria
      *
      * @param string $propedagogicos
      *
-     * @return EncuestaMaestria
+     * @return EncuestaDoctorado
      */
     public function setPropedagogicos($propedagogicos)
     {
@@ -661,7 +654,7 @@ class EncuestaMaestria
      *
      * @param string $procevaluacion
      *
-     * @return EncuestaMaestria
+     * @return EncuestaDoctorado
      */
     public function setProcevaluacion($procevaluacion)
     {
@@ -685,7 +678,7 @@ class EncuestaMaestria
      *
      * @param string $aplconocimiento
      *
-     * @return EncuestaMaestria
+     * @return EncuestaDoctorado
      */
     public function setAplconocimiento($aplconocimiento)
     {
@@ -709,7 +702,7 @@ class EncuestaMaestria
      *
      * @param string $mecinvestigacion
      *
-     * @return EncuestaMaestria
+     * @return EncuestaDoctorado
      */
     public function setMecinvestigacion($mecinvestigacion)
     {
@@ -733,7 +726,7 @@ class EncuestaMaestria
      *
      * @param string $prodinvestigativa
      *
-     * @return EncuestaMaestria
+     * @return EncuestaDoctorado
      */
     public function setProdinvestigativa($prodinvestigativa)
     {
@@ -757,7 +750,7 @@ class EncuestaMaestria
      *
      * @param string $interprograma
      *
-     * @return EncuestaMaestria
+     * @return EncuestaDoctorado
      */
     public function setInterprograma($interprograma)
     {
@@ -781,7 +774,7 @@ class EncuestaMaestria
      *
      * @param string $impacinvestigacion
      *
-     * @return EncuestaMaestria
+     * @return EncuestaDoctorado
      */
     public function setImpacinvestigacion($impacinvestigacion)
     {
@@ -805,7 +798,7 @@ class EncuestaMaestria
      *
      * @param string $articprograma
      *
-     * @return EncuestaMaestria
+     * @return EncuestaDoctorado
      */
     public function setArticprograma($articprograma)
     {
@@ -829,7 +822,7 @@ class EncuestaMaestria
      *
      * @param string $internalprograma
      *
-     * @return EncuestaMaestria
+     * @return EncuestaDoctorado
      */
     public function setInternalprograma($internalprograma)
     {
@@ -853,7 +846,7 @@ class EncuestaMaestria
      *
      * @param string $mecanlengua
      *
-     * @return EncuestaMaestria
+     * @return EncuestaDoctorado
      */
     public function setMecanlengua($mecanlengua)
     {
@@ -877,7 +870,7 @@ class EncuestaMaestria
      *
      * @param string $bienestudiantil
      *
-     * @return EncuestaMaestria
+     * @return EncuestaDoctorado
      */
     public function setBienestudiantil($bienestudiantil)
     {
@@ -901,7 +894,7 @@ class EncuestaMaestria
      *
      * @param string $ambienteinsti
      *
-     * @return EncuestaMaestria
+     * @return EncuestaDoctorado
      */
     public function setAmbienteinsti($ambienteinsti)
     {
@@ -925,7 +918,7 @@ class EncuestaMaestria
      *
      * @param string $ambienteconsidera
      *
-     * @return EncuestaMaestria
+     * @return EncuestaDoctorado
      */
     public function setAmbienteconsidera($ambienteconsidera)
     {
@@ -949,7 +942,7 @@ class EncuestaMaestria
      *
      * @param string $impactoocupacional
      *
-     * @return EncuestaMaestria
+     * @return EncuestaDoctorado
      */
     public function setImpactoocupacional($impactoocupacional)
     {
@@ -973,7 +966,7 @@ class EncuestaMaestria
      *
      * @param string $impactocientifica
      *
-     * @return EncuestaMaestria
+     * @return EncuestaDoctorado
      */
     public function setImpactocientifica($impactocientifica)
     {
@@ -997,7 +990,7 @@ class EncuestaMaestria
      *
      * @param string $segvincegresados
      *
-     * @return EncuestaMaestria
+     * @return EncuestaDoctorado
      */
     public function setSegvincegresados($segvincegresados)
     {
@@ -1021,7 +1014,7 @@ class EncuestaMaestria
      *
      * @param string $consecrecursos
      *
-     * @return EncuestaMaestria
+     * @return EncuestaDoctorado
      */
     public function setConsecrecursos($consecrecursos)
     {
@@ -1045,7 +1038,7 @@ class EncuestaMaestria
      *
      * @param string $apoyoadministrativo
      *
-     * @return EncuestaMaestria
+     * @return EncuestaDoctorado
      */
     public function setApoyoadministrativo($apoyoadministrativo)
     {
@@ -1069,7 +1062,7 @@ class EncuestaMaestria
      *
      * @param string $dedicacionprograma
      *
-     * @return EncuestaMaestria
+     * @return EncuestaDoctorado
      */
     public function setDedicacionprograma($dedicacionprograma)
     {
@@ -1093,7 +1086,7 @@ class EncuestaMaestria
      *
      * @param string $redescientificas
      *
-     * @return EncuestaMaestria
+     * @return EncuestaDoctorado
      */
     public function setRedescientificas($redescientificas)
     {
@@ -1117,7 +1110,7 @@ class EncuestaMaestria
      *
      * @param string $premiosrecibidos
      *
-     * @return EncuestaMaestria
+     * @return EncuestaDoctorado
      */
     public function setPremiosrecibidos($premiosrecibidos)
     {
@@ -1141,7 +1134,7 @@ class EncuestaMaestria
      *
      * @param string $comiteeditorial
      *
-     * @return EncuestaMaestria
+     * @return EncuestaDoctorado
      */
     public function setComiteeditorial($comiteeditorial)
     {
@@ -1165,7 +1158,7 @@ class EncuestaMaestria
      *
      * @param string $freccvlac
      *
-     * @return EncuestaMaestria
+     * @return EncuestaDoctorado
      */
     public function setFreccvlac($freccvlac)
     {
@@ -1189,7 +1182,7 @@ class EncuestaMaestria
      *
      * @param string $sugerencias
      *
-     * @return EncuestaMaestria
+     * @return EncuestaDoctorado
      */
     public function setSugerencias($sugerencias)
     {
@@ -1216,29 +1209,5 @@ class EncuestaMaestria
     public function getTimest()
     {
         return $this->timest;
-    }
-
-    /**
-     * Set anioIngreso
-     *
-     * @param \DateTime $anioIngreso
-     *
-     * @return EncuestaMaestria
-     */
-    public function setAnioIngreso($anioIngreso)
-    {
-        $this->anioIngreso = $anioIngreso;
-
-        return $this;
-    }
-
-    /**
-     * Get anioIngreso
-     *
-     * @return \DateTime
-     */
-    public function getAnioIngreso()
-    {
-        return $this->anioIngreso;
     }
 }
