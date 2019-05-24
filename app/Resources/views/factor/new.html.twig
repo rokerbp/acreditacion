@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block contenido %}
+<div id="page-wrapper">
+    <div class="row">
+    <h1>Nuevo Factor</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input class="btn btn-success" type="submit" value="Crear" />
+    {{ form_end(form) }}
+
+    <a class="btn btn-primary" href="{{ path('factor_index') }}">Regresar a lista de factores</a>
+</div>
+</div>
+{% endblock %}

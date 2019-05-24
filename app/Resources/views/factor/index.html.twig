@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block titulo %}
+    Factores
+{% endblock %}
+
+{% block contenido %}
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Factores</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nombre</th>
+                        <th>Ponderacion</th>
+                        <th>Justificacion</th>
+                        <th>Valor</th>
+                        <th>Porcentaje</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for factor in factors %}
+                        <tr>
+                            <td>{{ factor.id }}</td>
+                            <td><a href="{{ path('factor_show', { 'id': factor.id }) }}">{{ factor.nombre }}</a></td>
+                            <td>{{ factor.ponderacion }}</td>
+                            <td>{{ factor.justificacion }}</td>
+                            <td>{{ factor.valor }}</td>
+                            <td>{{ factor.porcentaje }}</td>
+                            <td>
+                                <ul>
+                                    <li>
+                                        <a href="{{ path('factor_show', { 'id': factor.id }) }}">ver</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('factor_edit', { 'id': factor.id }) }}">editar</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <a class="btn btn-success" href="{{ path('factor_new') }}">Crear nuevo factor</a>
+
+        </div> 
+    </div>
+</div>
+{% endblock %}

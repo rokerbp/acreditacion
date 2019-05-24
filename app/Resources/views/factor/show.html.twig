@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block contenido %}
+<div id="page-wrapper">
+        <div class="row">
+    <h1>Factor</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ factor.id }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ factor.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Ponderacion</th>
+                <td>{{ factor.ponderacion }}</td>
+            </tr>
+            <tr>
+                <th>Justificacion</th>
+                <td>{{ factor.justificacion }}</td>
+            </tr>
+            <tr>
+                <th>Valor</th>
+                <td>{{ factor.valor }}</td>
+            </tr>
+            <tr>
+                <th>Porcentaje</th>
+                <td>{{ factor.porcentaje }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('factor_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('factor_edit', { 'id': factor.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+    </div>
+    </div>
+{% endblock %}

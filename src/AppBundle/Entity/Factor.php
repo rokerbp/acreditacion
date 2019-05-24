@@ -217,4 +217,9 @@ class Factor
     {
         return $this->modelo;
     }
+    
+    public function whereis(){
+        $hasModelo = ( empty($this->getNombre()) ) ? '' : $this->getNombre();
+        return $hasModelo;
+    }
 }

@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Modelo
@@ -137,5 +138,23 @@ class Modelo
     public function getFacts()
     {
         return $this->facts;
+    }
+
+    /**
+     * Generates the magic method
+     * 
+     */
+    public function __toString(){
+        // to show the name of the Category in the select
+        return $this->nombre;
+        // to show the id of the Category in the select
+        // return $this->id;
+    }
+
+    /**
+     * @Assert\IsTrue(message="Excede el límite de factores")
+     */
+    public function isLleno(){
+        return count( $this->getFacts() ) <= $this->getLimiteFactor();
     }
 }

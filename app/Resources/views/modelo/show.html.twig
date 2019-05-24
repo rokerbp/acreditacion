@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block contenido %}
+<div id="page-wrapper">
+        <div class="row">
+    <h1>Modelo</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ modelo.id }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ modelo.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Limitefactor</th>
+                <td>{{ modelo.limiteFactor }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('modelo_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('modelo_edit', { 'id': modelo.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+    </div>
+    </div>
+{% endblock %}
