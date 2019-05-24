@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Modelo
@@ -30,17 +31,17 @@ class Modelo
     private $nombre;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="limiteFactor", type="integer")
-     */
-    private $limiteFactor;
-
-    /**
      * One Product has Many Features.
-     * @ORM\OneToMany(targetEntity="Factor", mappedBy="modelo")
+     * @ORM\OneToMany(targetEntity="Factor", mappedBy="modelo", cascade={"persist", "remove"})
      */
     private $facts;
+
+    /**
+     * Un Modelo tiene Un Programa.
+     * @ORM\OneToOne(targetEntity="Programa", inversedBy="modelo")
+     * @ORM\JoinColumn(name="programa", referencedColumnName="id")
+     */
+    private $programa;
 
 
     /**
@@ -77,32 +78,77 @@ class Modelo
         return $this->nombre;
     }
 
+    public function __construct() {
+        $this->facts = new ArrayCollection();
+    }
+
     /**
-     * Set limiteFactor
+     * Add fact
      *
-     * @param integer $limiteFactor
+     * @param \AppBundle\Entity\Factor $fact
      *
      * @return Modelo
      */
-    public function setLimiteFactor($limiteFactor)
+    public function addFact(\AppBundle\Entity\Factor $fact)
     {
-        $this->limiteFactor = $limiteFactor;
+        $this->facts[] = $fact;
 
         return $this;
     }
 
     /**
-     * Get limiteFactor
+     * Remove fact
      *
-     * @return int
+     * @param \AppBundle\Entity\Factor $fact
      */
-    public function getLimiteFactor()
+    public function removeFact(\AppBundle\Entity\Factor $fact)
     {
-        return $this->limiteFactor;
+        $this->facts->removeElement($fact);
     }
 
-    public function __construct() {
-        $this->facts = new ArrayCollection();
+    /**
+     * Get facts
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getFacts()
+    {
+        return $this->facts;
+    }
+
+    /**
+     * Generates the magic method
+     * 
+     */
+    public function __toString(){
+        // to show the name of the Category in the select
+        return $this->nombre;
+        // to show the id of the Category in the select
+        // return $this->id;
+    }
+
+
+    /**
+     * Set programa
+     *
+     * @param \AppBundle\Entity\Programa $programa
+     *
+     * @return Modelo
+     */
+    public function setPrograma(\AppBundle\Entity\Programa $programa = null)
+    {
+        $this->programa = $programa;
+
+        return $this;
+    }
+
+    /**
+     * Get programa
+     *
+     * @return \AppBundle\Entity\Programa
+     */
+    public function getPrograma()
+    {
+        return $this->programa;
     }
 }
-

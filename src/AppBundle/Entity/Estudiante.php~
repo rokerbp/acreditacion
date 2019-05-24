@@ -311,4 +311,3 @@ class Estudiante
         return $this->ciudadActual;
     }
 }
-

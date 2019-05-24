@@ -9,8 +9,8 @@
         <thead>
             <tr>
                 <th>Id</th>
+                <th>Programa</th>
                 <th>Nombre</th>
-                <th>Máximo factores</th>
                 <th>Factores</th>
                 <th>Actions</th>
             </tr>
@@ -19,8 +19,8 @@
         {% for modelo in modelos %}
             <tr>
                 <td>{{ modelo.id }}</td>
+                <td>{{ modelo.programa }}</td>
                 <td><a href="{{ path('modelo_show', { 'id': modelo.id }) }}">{{ modelo.nombre }}</a></td>
-                <td>{{ modelo.limiteFactor }}</td>
                 <td><ul>
                     {% for factor in modelo.facts %}
                         <li><a href="{{ path('factor_show', { 'id': factor.id }) }}">

@@ -1217,4 +1217,28 @@ class EncuestaMaestria
     {
         return $this->timest;
     }
+
+    /**
+     * Set anioIngreso
+     *
+     * @param \DateTime $anioIngreso
+     *
+     * @return EncuestaMaestria
+     */
+    public function setAnioIngreso($anioIngreso)
+    {
+        $this->anioIngreso = $anioIngreso;
+
+        return $this;
+    }
+
+    /**
+     * Get anioIngreso
+     *
+     * @return \DateTime
+     */
+    public function getAnioIngreso()
+    {
+        return $this->anioIngreso;
+    }
 }

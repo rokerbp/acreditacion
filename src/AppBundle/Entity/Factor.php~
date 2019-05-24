@@ -193,5 +193,33 @@ class Factor
     {
         return $this->porcentaje;
     }
-}
 
+    /**
+     * Set modelo
+     *
+     * @param \AppBundle\Entity\Modelo $modelo
+     *
+     * @return Factor
+     */
+    public function setModelo(\AppBundle\Entity\Modelo $modelo = null)
+    {
+        $this->modelo = $modelo;
+
+        return $this;
+    }
+
+    /**
+     * Get modelo
+     *
+     * @return \AppBundle\Entity\Modelo
+     */
+    public function getModelo()
+    {
+        return $this->modelo;
+    }
+    
+    public function whereis(){
+        $hasModelo = ( empty($this->getNombre()) ) ? '' : $this->getNombre();
+        return $hasModelo;
+    }
+}

@@ -31,17 +31,17 @@ class Modelo
     private $nombre;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="limiteFactor", type="integer")
-     */
-    private $limiteFactor;
-
-    /**
      * One Product has Many Features.
      * @ORM\OneToMany(targetEntity="Factor", mappedBy="modelo", cascade={"persist", "remove"})
      */
     private $facts;
+
+    /**
+     * Un Modelo tiene Un Programa.
+     * @ORM\OneToOne(targetEntity="Programa", inversedBy="modelo")
+     * @ORM\JoinColumn(name="programa", referencedColumnName="id")
+     */
+    private $programa;
 
 
     /**
@@ -76,30 +76,6 @@ class Modelo
     public function getNombre()
     {
         return $this->nombre;
-    }
-
-    /**
-     * Set limiteFactor
-     *
-     * @param integer $limiteFactor
-     *
-     * @return Modelo
-     */
-    public function setLimiteFactor($limiteFactor)
-    {
-        $this->limiteFactor = $limiteFactor;
-
-        return $this;
-    }
-
-    /**
-     * Get limiteFactor
-     *
-     * @return int
-     */
-    public function getLimiteFactor()
-    {
-        return $this->limiteFactor;
     }
 
     public function __construct() {
@@ -151,10 +127,28 @@ class Modelo
         // return $this->id;
     }
 
+
     /**
-     * @Assert\IsTrue(message="Excede el límite de factores")
+     * Set programa
+     *
+     * @param \AppBundle\Entity\Programa $programa
+     *
+     * @return Modelo
      */
-    public function isLleno(){
-        return count( $this->getFacts() ) <= $this->getLimiteFactor();
+    public function setPrograma(\AppBundle\Entity\Programa $programa = null)
+    {
+        $this->programa = $programa;
+
+        return $this;
+    }
+
+    /**
+     * Get programa
+     *
+     * @return \AppBundle\Entity\Programa
+     */
+    public function getPrograma()
+    {
+        return $this->programa;
     }
 }
