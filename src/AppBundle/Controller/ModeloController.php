@@ -127,7 +127,7 @@ class ModeloController extends Controller
     /**
      * Deletes a modelo entity.
      *
-     * @Route("/{id}", name="modelo_delete")
+     * @Route("/delete/{id}", name="modelo_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Modelo $modelo)

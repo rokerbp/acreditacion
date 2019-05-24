@@ -19,6 +19,7 @@
                 <thead>
                     <tr>
                         <th>Id</th>
+                        <th>Modelo</th>
                         <th>Nombre</th>
                         <th>Ponderacion</th>
                         <th>Justificacion</th>
@@ -31,6 +32,7 @@
                     {% for factor in factors %}
                         <tr>
                             <td>{{ factor.id }}</td>
+                            <td>{{ factor.modelo }}</td>
                             <td><a href="{{ path('factor_show', { 'id': factor.id }) }}">{{ factor.nombre }}</a></td>
                             <td>{{ factor.ponderacion }}</td>
                             <td>{{ factor.justificacion }}</td>

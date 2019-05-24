@@ -39,7 +39,7 @@ class Modelo
 
     /**
      * One Product has Many Features.
-     * @ORM\OneToMany(targetEntity="Factor", mappedBy="modelo")
+     * @ORM\OneToMany(targetEntity="Factor", mappedBy="modelo", cascade={"persist", "remove"})
      */
     private $facts;
 

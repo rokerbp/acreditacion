@@ -101,7 +101,7 @@ class FactorController extends Controller
     /**
      * Deletes a factor entity.
      *
-     * @Route("/{id}", name="factor_delete")
+     * @Route("/del/{id}", name="factor_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Factor $factor)
