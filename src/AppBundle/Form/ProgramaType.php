@@ -2,8 +2,11 @@
 
 namespace AppBundle\Form;
 
+//use AppBundle\Entity\Modelo;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ProgramaType extends AbstractType
@@ -13,7 +16,19 @@ class ProgramaType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nombre')->add('titulo')->add('norma')->add('codigo')->add('nivel')->add('jornada')->add('metodologia')->add('duracion')->add('periodicidad')->add('facultad')->add('lugar')->add('modelo');
+        $builder->add('nombre')
+                ->add('titulo')
+                ->add('norma')
+                ->add('codigo')
+                ->add('nivel')
+                ->add('jornada')
+                ->add('metodologia')
+                ->add('duracion')
+                ->add('periodicidad')
+                ->add('facultad')
+                ->add('lugar')
+                ->add('modelo')
+                ;
     }/**
      * {@inheritdoc}
      */

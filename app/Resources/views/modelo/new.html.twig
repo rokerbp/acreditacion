@@ -3,18 +3,14 @@
 {% block contenido %}
 <div id="page-wrapper">
         <div class="row">
-    <h1>Modelo creation</h1>
+    <h1>Nuevo Modelo</h1>
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
-        <input type="submit" value="Create" />
+        <input type="submit" class="btn btn-success" value="Create" />
     {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('modelo_index') }}">Back to the list</a>
-        </li>
-    </ul>
+    <a class="btn btn-warning" href="{{ path('modelo_index') }}">Back to the list</a>
 </div>
 </div>
 {% endblock %}

@@ -17,12 +17,14 @@ class ModeloType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('nombre')
-                ->add('facts', EntityType::class, array(
-                    'class' => Factor::class,
-                    'required' => false,
-                    'choice_label' => 'whereis',
-                    'multiple' => true
-                ));
+                ->add('programa')
+                //->add('facts', EntityType::class, array(
+                //    'class' => Factor::class,
+                //    'required' => false,
+                //    'choice_label' => 'whereis',
+                //    'multiple' => true
+                //))
+                ;
     }/**
      * {@inheritdoc}
      */

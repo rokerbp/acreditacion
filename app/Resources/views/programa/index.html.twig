@@ -4,14 +4,14 @@
 <div id="page-wrapper">
         <div class="row">
     <h1>Programas</h1>
-
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Nombre</th>
+                <th>Nombre Programa</th>
+                <th>Modelo</th>
+                
                 <th>Titulo</th>
-                <th>Norma</th>
+                <!-- <th>Norma</th> -->
                 <th>Codigo</th>
                 <th>Nivel</th>
                 <th>Jornada</th>
@@ -26,10 +26,11 @@
         <tbody>
         {% for programa in programas %}
             <tr>
-                <td><a href="{{ path('programa_show', { 'id': programa.id }) }}">{{ programa.id }}</a></td>
-                <td>{{ programa.nombre }}</td>
+                <td><a href="{{ path('programa_show', { 'id': programa.id }) }}">{{ programa.nombre }}</a></td>
+                <td>{{ programa.modelo }}</td>
+                
                 <td>{{ programa.titulo }}</td>
-                <td>{{ programa.norma }}</td>
+                <!-- <td>{{ programa.norma }}</td> -->
                 <td>{{ programa.codigo }}</td>
                 <td>{{ programa.nivel }}</td>
                 <td>{{ programa.jornada }}</td>
@@ -53,11 +54,8 @@
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('programa_new') }}">Create a new programa</a>
-        </li>
-    </ul>
+    <a class="btn btn-success" href="{{ path('programa_new') }}">Crear Nuevo Programa</a>
+
 </div>
 </div>
 {% endblock %}

@@ -100,7 +100,7 @@ class Programa
 
     /**
      * One Programa has One Modelo.
-     * @ORM\OneToOne(targetEntity="Modelo", mappedBy="programa")
+     * @ORM\OneToOne(targetEntity="Modelo", mappedBy="programa", orphanRemoval=true)
      */
     private $modelo;
 
@@ -383,10 +383,21 @@ class Programa
      * 
      */
     public function __toString(){
-        // to show the name of the Category in the select
         return $this->nombre;
-        // to show the id of the Category in the select
-        // return $this->id;
+    }
+
+    /**
+     * Add modelo
+     *
+     * @param \AppBundle\Entity\Modelo $modelo
+     *
+     * @return Programa
+     */
+    public function addModelo(\AppBundle\Entity\Modelo $modelo)
+    {
+        $this->modelo[] = $modelo;
+
+        return $this;
     }
 
     /**

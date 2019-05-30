@@ -151,4 +151,9 @@ class Modelo
     {
         return $this->programa;
     }
+
+    public function whereis(){
+        $hasPrograma = ( empty($this->getNombre()) ) ? '' : $this->getNombre();
+        return $hasPrograma;
+    }
 }

@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Factor;
+use AppBundle\Entity\Factor_model;
 use AppBundle\Entity\Modelo;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -64,6 +65,61 @@ class ModeloController extends Controller
             'form' => $form->createView(),
         ));
     }
+
+    // ****INICIO PRUEBA INSTANCIACION
+
+    /**
+     * Creates un nuevo modelo instanciando 10 factores.
+     *
+     * @Route("/nuevo", name="modelo_nuevo")
+     * @Method({"GET", "POST"})
+     */
+    public function nuevoAction(Request $request)
+    {
+        $modelo = new Modelo();
+        $f_m = new Factor();
+        $em = $this->getDoctrine()->getManager();
+        $factor_model = $em->getRepository('AppBundle:Factor_model')->findAll();
+        //var_dump($factor_model);
+
+        $form = $this->createForm('AppBundle\Form\ModeloType', $modelo);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            //$factor->setNombre("factor 44");
+            //$factor->setPonderacion(0);
+            //$factor->setJustificacion("justificacion 44");
+
+            $em->persist($modelo);
+            $em->flush();
+
+            $model=$f_m->getModelo();
+            $model=$modelo;
+            foreach ($factor_model as $factor_m)
+            {
+                $factor = new Factor();
+                $factor->setNombre($factor_m->getNombre());
+                $factor->setPonderacion($factor_m->getPonderacion());
+                $factor->setJustificacion($factor_m->getjustificacion());
+                $factor->setValor($factor_m->getvalor());
+                $factor->setPorcentaje($factor_m->getporcentaje());
+                $factor->setModelo($model);
+                $em->persist($factor);
+                $em->flush();
+            }
+
+            return $this->redirectToRoute('modelo_show', array('id' => $modelo->getId()));
+        }
+
+        return $this->render('modelo/new.html.twig', array(
+            'modelo' => $modelo,
+            'form' => $form->createView(),
+        ));
+    }
+
+    // ****FIN PRUEBA INSTANCIACION
+
 
     /**
      * Finds and displays a modelo entity.

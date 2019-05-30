@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Modelo;
 use AppBundle\Entity\Programa;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -10,7 +11,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 /**
  * Programa controller.
  *
- * @Route("programa")
+ * @Route("admin/programa")
  */
 class ProgramaController extends Controller
 {
@@ -25,7 +26,7 @@ class ProgramaController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $programas = $em->getRepository('AppBundle:Programa')->findAll();
-
+        //var_dump ($programas);
         return $this->render('programa/index.html.twig', array(
             'programas' => $programas,
         ));
@@ -45,6 +46,7 @@ class ProgramaController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+
             $em->persist($programa);
             $em->flush();
 
@@ -86,7 +88,21 @@ class ProgramaController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+        
+            $em = $this->getDoctrine()->getManager();
+ 
+            $oldmodels=$em->getRepository('AppBundle:Modelo')->findby(array(
+                "programa"=>$programa
+            ));
+    
+            /** @var Modelo $modelo */
+                $modelo = $programa->getModelo();
+                $modelo->setPrograma($programa);
+                $em->persist($modelo);
+            
+    
+            $em->persist($programa);
+            $em->flush();
 
             return $this->redirectToRoute('programa_edit', array('id' => $programa->getId()));
         }
@@ -101,7 +117,7 @@ class ProgramaController extends Controller
     /**
      * Deletes a programa entity.
      *
-     * @Route("/{id}", name="programa_delete")
+     * @Route("/delete/{id}", name="programa_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Programa $programa)
