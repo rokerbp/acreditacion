@@ -2,49 +2,54 @@
 
 {% block contenido %}
 <div id="page-wrapper">
-        <div class="row">
-    <h1>Modelos</h1>
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Modelos</h1>
+        </div>
+    </div>
 
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Programa</th>
-                <th>Nombre</th>
-                <th>Factores</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for modelo in modelos %}
-            <tr>
-                <td>{{ modelo.id }}</td>
-                <td>{{ modelo.programa }}</td>
-                <td><a href="{{ path('modelo_show', { 'id': modelo.id }) }}">{{ modelo.nombre }}</a></td>
-                <td><ul>
-                    {% for factor in modelo.facts %}
-                        <li><a href="{{ path('factor_show', { 'id': factor.id }) }}">
-                            {{ factor.nombre}}
-                        </a></li><br>
-                    {% endfor %}</ul>
-                </td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('modelo_show', { 'id': modelo.id }) }}">ver</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('modelo_edit', { 'id': modelo.id }) }}">editar</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+     <div class="row">
+        <div class="col-lg-12">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <!-- <th>Id</th> -->
+                        <th>Programa</th>
+                        <th>Nombre</th>
+                        <th>Factores</th>
+                        <!-- <th>Actions</th> -->
+                    </tr>
+                </thead>
+                <tbody>
+                {% for modelo in modelos %}
+                    <tr>
+                        <!-- <td>{{ modelo.id }}</td> -->
+                        <td>{{ modelo.programa }}</td>
+                        <td><a href="{{ path('modelo_show', { 'id': modelo.id }) }}">{{ modelo.nombre }}</a></td>
+                        <td><ul>
+                            {% for factor in modelo.facts %}
+                                <li><a href="{{ path('factor_show', { 'id': factor.id }) }}">
+                                    {{ factor.nombre}}
+                                </a></li><br>
+                            {% endfor %}</ul>
+                        </td>
+                        <!-- <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('modelo_show', { 'id': modelo.id }) }}">ver</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('modelo_edit', { 'id': modelo.id }) }}">editar</a>
+                                </li>
+                            </ul>
+                        </td> -->
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
 
     <ul>
-        <a class="btn btn-success" href="{{ path('modelo_new') }}">Crear a new modelo</a>
+        <a class="btn btn-success" href="{{ path('modelo_nuevo') }}">Crear a new modelo</a>
     </ul>
 </div>
 </div>

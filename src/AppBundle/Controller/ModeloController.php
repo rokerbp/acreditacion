@@ -87,10 +87,6 @@ class ModeloController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            //$factor->setNombre("factor 44");
-            //$factor->setPonderacion(0);
-            //$factor->setJustificacion("justificacion 44");
-
             $em->persist($modelo);
             $em->flush();
 
@@ -100,8 +96,9 @@ class ModeloController extends Controller
             {
                 $factor = new Factor();
                 $factor->setNombre($factor_m->getNombre());
+                $factor->setDescripcion($factor_m->getDescripcion());
                 $factor->setPonderacion($factor_m->getPonderacion());
-                $factor->setJustificacion($factor_m->getjustificacion());
+                $factor->setJustificacion($factor_m->getJustificacion());
                 $factor->setValor($factor_m->getvalor());
                 $factor->setPorcentaje($factor_m->getporcentaje());
                 $factor->setModelo($model);

@@ -13,14 +13,10 @@
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
-        <input type="submit" value="Create" />
+        <input type="submit" class="btn btn-success" value="Create" />
     {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('programa_index') }}">Back to the list</a>
-        </li>
-    </ul>
+    <a class="btn btn-warning" href="{{ path('programa_index') }}">Back to the list</a>
 </div>
 </div>
 {% endblock %}

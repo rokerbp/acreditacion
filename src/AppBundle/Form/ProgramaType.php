@@ -27,7 +27,7 @@ class ProgramaType extends AbstractType
                 ->add('periodicidad')
                 ->add('facultad')
                 ->add('lugar')
-                ->add('modelo')
+                //->add('modelos')
                 ;
     }/**
      * {@inheritdoc}

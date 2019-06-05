@@ -3,13 +3,12 @@
 {% block contenido %}
 <div id="page-wrapper">
         <div class="row">
-    <h1>Programas</h1>
+    <h1 class="page-header">Programas</h1>
     <table class="table table-bordered">
         <thead>
             <tr>
                 <th>Nombre Programa</th>
                 <th>Modelo</th>
-                
                 <th>Titulo</th>
                 <!-- <th>Norma</th> -->
                 <th>Codigo</th>
@@ -20,15 +19,20 @@
                 <th>Periodicidad</th>
                 <th>Facultad</th>
                 <th>Lugar</th>
-                <th>Actions</th>
+                <!-- <th>Actions</th> -->
             </tr>
         </thead>
         <tbody>
         {% for programa in programas %}
             <tr>
                 <td><a href="{{ path('programa_show', { 'id': programa.id }) }}">{{ programa.nombre }}</a></td>
-                <td>{{ programa.modelo }}</td>
-                
+                <td><ul>
+                    {% for modelo in programa.modelos %}
+                        <li><a href="{{ path('modelo_show', { 'id': modelo.id }) }}">
+                            {{ modelo.nombre}}</a>
+                        </li><br>
+                    {% endfor %}
+                </ul></td>
                 <td>{{ programa.titulo }}</td>
                 <!-- <td>{{ programa.norma }}</td> -->
                 <td>{{ programa.codigo }}</td>
@@ -39,7 +43,7 @@
                 <td>{{ programa.periodicidad }}</td>
                 <td>{{ programa.facultad }}</td>
                 <td>{{ programa.lugar }}</td>
-                <td>
+                <!-- <td>
                     <ul>
                         <li>
                             <a href="{{ path('programa_show', { 'id': programa.id }) }}">show</a>
@@ -48,7 +52,7 @@
                             <a href="{{ path('programa_edit', { 'id': programa.id }) }}">edit</a>
                         </li>
                     </ul>
-                </td>
+                </td> -->
             </tr>
         {% endfor %}
         </tbody>

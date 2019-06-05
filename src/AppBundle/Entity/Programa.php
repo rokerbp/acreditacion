@@ -3,6 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Programa
@@ -99,10 +101,10 @@ class Programa
     private $lugar;
 
     /**
-     * One Programa has One Modelo.
-     * @ORM\OneToOne(targetEntity="Modelo", mappedBy="programa", orphanRemoval=true)
+     * One Programa has many Modelos.
+     * @ORM\OneToMany(targetEntity="Modelo", mappedBy="programa", orphanRemoval=true)
      */
-    private $modelo;
+    private $modelos;
 
     /**
      * Get id
@@ -378,12 +380,8 @@ class Programa
         return $this->lugar;
     }
 
-    /**
-     * Generates the magic method
-     * 
-     */
-    public function __toString(){
-        return $this->nombre;
+    public function __construct() {
+        $this->modelos = new ArrayCollection();
     }
 
     /**
@@ -395,7 +393,7 @@ class Programa
      */
     public function addModelo(\AppBundle\Entity\Modelo $modelo)
     {
-        $this->modelo[] = $modelo;
+        $this->modelos[] = $modelo;
 
         return $this;
     }
@@ -415,12 +413,20 @@ class Programa
     }
 
     /**
-     * Get modelo
-     *
-     * @return \AppBundle\Entity\Modelo
-     */
-    public function getModelo()
+    * Get modelos
+    *
+   * @return \Doctrine\Common\Collections\Collection
+    */
+    public function getModelos()
     {
-        return $this->modelo;
+        return $this->modelos;
+    }
+    
+    /**
+     * Generates the magic method
+     * 
+     */
+    public function __toString(){
+        return $this->nombre;
     }
 }

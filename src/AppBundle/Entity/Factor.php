@@ -29,9 +29,16 @@ class Factor
     private $nombre;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="descripcion", type="text", nullable=true)
+     */
+    private $descripcion;
+
+    /**
      * @var int
      *
-     * @ORM\Column(name="ponderacion", type="integer")
+     * @ORM\Column(name="ponderacion", type="integer", nullable=true)
      */
     private $ponderacion;
 
@@ -96,6 +103,30 @@ class Factor
     public function getNombre()
     {
         return $this->nombre;
+    }
+
+    /**
+     * Set descripcion
+     *
+     * @param string $descripcion
+     *
+     * @return Factor
+     */
+    public function setDescripcion($descripcion)
+    {
+        $this->descripcion = $descripcion;
+
+        return $this;
+    }
+
+    /**
+     * Get descripcion
+     *
+     * @return string
+     */
+    public function getDescripcion()
+    {
+        return $this->descripcion;
     }
 
     /**

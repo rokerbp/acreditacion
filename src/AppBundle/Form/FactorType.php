@@ -16,10 +16,12 @@ class FactorType extends AbstractType
     {
         $builder->add('nombre', TextType::class, array('label' => 'Nombre del factor', 'required' => true))
                 ->add('ponderacion')
+                ->add('descripcion')
                 ->add('justificacion')
-                ->add('valor')
-                ->add('porcentaje')
-                ->add('modelo');
+                //->add('valor')
+                //->add('porcentaje')
+                //->add('modelo')
+            ;
     }/**
      * {@inheritdoc}
      */

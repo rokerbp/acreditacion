@@ -37,8 +37,8 @@ class Modelo
     private $facts;
 
     /**
-     * Un Modelo tiene Un Programa.
-     * @ORM\OneToOne(targetEntity="Programa", inversedBy="modelo")
+     * Muchos Modelo tiene Un Programa.
+     * @ORM\ManyToOne(targetEntity="Programa", inversedBy="modelos")
      * @ORM\JoinColumn(name="programa", referencedColumnName="id")
      */
     private $programa;
