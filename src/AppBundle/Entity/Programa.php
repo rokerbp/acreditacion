@@ -429,4 +429,14 @@ class Programa
     public function __toString(){
         return $this->nombre;
     }
+
+    /**
+     * Remove modelo
+     *
+     * @param \AppBundle\Entity\Modelo $modelo
+     */
+    public function removeModelo(\AppBundle\Entity\Modelo $modelo)
+    {
+        $this->modelos->removeElement($modelo);
+    }
 }

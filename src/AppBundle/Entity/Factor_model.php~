@@ -2,16 +2,15 @@
 
 namespace AppBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM; 	
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Factor
  *
- * @ORM\Table(name="factor")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\FactorRepository")
+ * @ORM\Table(name="factor_model")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\Factor_modelRepository")
  */
-class Factor
+class Factor_model
 {
     /**
      * @var int
@@ -39,7 +38,7 @@ class Factor
     /**
      * @var int
      *
-     * @ORM\Column(name="ponderacion", type="integer", nullable=true)
+     * @ORM\Column(name="ponderacion", type="integer")
      */
     private $ponderacion;
 
@@ -65,12 +64,10 @@ class Factor
     private $porcentaje;
 
     /**
-     * Many Features have One Product.
-     * @ORM\ManyToOne(targetEntity="Modelo", inversedBy="facts")
-     * @ORM\JoinColumn(name="modelo", referencedColumnName="id")
+     * One Factor has Many Caracteristicas.
+     * @ORM\OneToMany(targetEntity="Caracteristica_model", mappedBy="factor_model")
      */
-    private $modelo;
-
+    private $caracteristicas_model;
 
     /**
      * Get id
@@ -106,7 +103,7 @@ class Factor
         return $this->nombre;
     }
 
-    /**
+        /**
      * Set descripcion
      *
      * @param string $descripcion
@@ -225,36 +222,7 @@ class Factor
     {
         return $this->porcentaje;
     }
-
-    /**
-     * Set modelo
-     *
-     * @param \AppBundle\Entity\Modelo $modelo
-     *
-     * @return Factor
-     */
-    public function setModelo(\AppBundle\Entity\Modelo $modelo = null)
-    {
-        $this->modelo = $modelo;
-
-        return $this;
-    }
-
-    /**
-     * Get modelo
-     *
-     * @return \AppBundle\Entity\Modelo
-     */
-    public function getModelo()
-    {
-        return $this->modelo;
-    }
     
-    public function whereis(){
-        $hasModelo = ( empty($this->getNombre()) ) ? '' : $this->getNombre();
-        return $hasModelo;
-    }
-
      /**
      * Generates the magic method
      * 

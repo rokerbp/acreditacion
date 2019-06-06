@@ -64,6 +64,12 @@ class Factor_model
     private $porcentaje;
 
     /**
+     * One Factor has Many Caracteristicas.
+     * @ORM\OneToMany(targetEntity="Caracteristica_model", mappedBy="factor_model")
+     */
+    private $caracteristicas_model;
+
+    /**
      * Get id
      *
      * @return int
@@ -217,4 +223,52 @@ class Factor_model
         return $this->porcentaje;
     }
     
+     /**
+     * Generates the magic method
+     * 
+     */
+    public function __toString(){
+        return $this->nombre;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->caracteristicas_model = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add caracteristicasModel
+     *
+     * @param \AppBundle\Entity\Caracteristica_model $caracteristicasModel
+     *
+     * @return Factor_model
+     */
+    public function addCaracteristicasModel(\AppBundle\Entity\Caracteristica_model $caracteristicasModel)
+    {
+        $this->caracteristicas_model[] = $caracteristicasModel;
+
+        return $this;
+    }
+
+    /**
+     * Remove caracteristicasModel
+     *
+     * @param \AppBundle\Entity\Caracteristica_model $caracteristicasModel
+     */
+    public function removeCaracteristicasModel(\AppBundle\Entity\Caracteristica_model $caracteristicasModel)
+    {
+        $this->caracteristicas_model->removeElement($caracteristicasModel);
+    }
+
+    /**
+     * Get caracteristicasModel
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCaracteristicasModel()
+    {
+        return $this->caracteristicas_model;
+    }
 }

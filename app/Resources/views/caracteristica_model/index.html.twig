@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block titulo %}
+    Caracteristicas
+{% endblock %}
+
+{% block contenido %}
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Caracteristicas</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Factor</th>
+                        <th>Nombre</th>
+                        <th>Descripcion</th>
+                        <th>Ponderacion</th>
+                        <th>Valor</th>
+                        <th>Porcentaje</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for caracteristica_model in caracteristica_models %}
+                    <tr>
+                        <td><a href="{{ path('caracteristica_model_show', { 'id': caracteristica_model.id }) }}">{{ caracteristica_model.id }}</a></td>
+                        <td>{{ caracteristica_model.factor_model }}</td>
+                        <td>{{ caracteristica_model.nombre }}</td>
+                        <td>{{ caracteristica_model.descripcion }}</td>
+                        <td>{{ caracteristica_model.ponderacion }}</td>
+                        <td>{{ caracteristica_model.valor }}</td>
+                        <td>{{ caracteristica_model.porcentaje }}</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('caracteristica_model_show', { 'id': caracteristica_model.id }) }}">show</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('caracteristica_model_edit', { 'id': caracteristica_model.id }) }}">edit</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+        <a class="btn btn-success" href="{{ path('caracteristica_model_new') }}">Nueva caracteristica_model</a>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

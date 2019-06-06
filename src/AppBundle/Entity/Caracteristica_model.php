@@ -2,16 +2,15 @@
 
 namespace AppBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM; 	
-use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Factor
+ * Caracteristica_model
  *
- * @ORM\Table(name="factor")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\FactorRepository")
+ * @ORM\Table(name="caracteristica_model")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\Caracteristica_modelRepository")
  */
-class Factor
+class Caracteristica_model
 {
     /**
      * @var int
@@ -37,18 +36,11 @@ class Factor
     private $descripcion;
 
     /**
-     * @var int
+     * @var float
      *
-     * @ORM\Column(name="ponderacion", type="integer", nullable=true)
+     * @ORM\Column(name="ponderacion", type="float", nullable=true)
      */
     private $ponderacion;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="justificacion", type="text")
-     */
-    private $justificacion;
 
     /**
      * @var float
@@ -65,11 +57,11 @@ class Factor
     private $porcentaje;
 
     /**
-     * Many Features have One Product.
-     * @ORM\ManyToOne(targetEntity="Modelo", inversedBy="facts")
-     * @ORM\JoinColumn(name="modelo", referencedColumnName="id")
+     * Many Caracteristicas have One Factor.
+     * @ORM\ManyToOne(targetEntity="Factor_model", inversedBy="caracteristicas_model")
+     * @ORM\JoinColumn(name="factor_model", referencedColumnName="id")
      */
-    private $modelo;
+    private $factor_model;
 
 
     /**
@@ -87,7 +79,7 @@ class Factor
      *
      * @param string $nombre
      *
-     * @return Factor
+     * @return Caracteristica_model
      */
     public function setNombre($nombre)
     {
@@ -111,7 +103,7 @@ class Factor
      *
      * @param string $descripcion
      *
-     * @return Factor
+     * @return Caracteristica_model
      */
     public function setDescripcion($descripcion)
     {
@@ -133,9 +125,9 @@ class Factor
     /**
      * Set ponderacion
      *
-     * @param integer $ponderacion
+     * @param float $ponderacion
      *
-     * @return Factor
+     * @return Caracteristica_model
      */
     public function setPonderacion($ponderacion)
     {
@@ -147,7 +139,7 @@ class Factor
     /**
      * Get ponderacion
      *
-     * @return int
+     * @return float
      */
     public function getPonderacion()
     {
@@ -155,35 +147,11 @@ class Factor
     }
 
     /**
-     * Set justificacion
-     *
-     * @param string $justificacion
-     *
-     * @return Factor
-     */
-    public function setJustificacion($justificacion)
-    {
-        $this->justificacion = $justificacion;
-
-        return $this;
-    }
-
-    /**
-     * Get justificacion
-     *
-     * @return string
-     */
-    public function getJustificacion()
-    {
-        return $this->justificacion;
-    }
-
-    /**
      * Set valor
      *
      * @param float $valor
      *
-     * @return Factor
+     * @return Caracteristica_model
      */
     public function setValor($valor)
     {
@@ -207,7 +175,7 @@ class Factor
      *
      * @param float $porcentaje
      *
-     * @return Factor
+     * @return Caracteristica_model
      */
     public function setPorcentaje($porcentaje)
     {
@@ -227,39 +195,36 @@ class Factor
     }
 
     /**
-     * Set modelo
+     * Set factorModel
      *
-     * @param \AppBundle\Entity\Modelo $modelo
+     * @param \AppBundle\Entity\Factor_model $factorModel
      *
-     * @return Factor
+     * @return Caracteristica_model
      */
-    public function setModelo(\AppBundle\Entity\Modelo $modelo = null)
+    public function setFactorModel(\AppBundle\Entity\Factor_model $factorModel = null)
     {
-        $this->modelo = $modelo;
+        $this->factor_model = $factorModel;
 
         return $this;
     }
 
     /**
-     * Get modelo
+     * Get factorModel
      *
-     * @return \AppBundle\Entity\Modelo
+     * @return \AppBundle\Entity\Factor_model
      */
-    public function getModelo()
+    public function getFactorModel()
     {
-        return $this->modelo;
-    }
-    
-    public function whereis(){
-        $hasModelo = ( empty($this->getNombre()) ) ? '' : $this->getNombre();
-        return $hasModelo;
+        return $this->factor_model;
     }
 
-     /**
-     * Generates the magic method
-     * 
+    /**
+     * Get factorModel
+     *
+     * @return \AppBundle\Entity\Factor_model
      */
-    public function __toString(){
-        return $this->nombre;
+    public function getFactor_model()
+    {
+        return $this->factor_model;
     }
 }

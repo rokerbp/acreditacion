@@ -3,6 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Programa
@@ -99,10 +101,10 @@ class Programa
     private $lugar;
 
     /**
-     * One Programa has One Modelo.
-     * @ORM\OneToOne(targetEntity="Modelo", mappedBy="programa")
+     * One Programa has many Modelos.
+     * @ORM\OneToMany(targetEntity="Modelo", mappedBy="programa", orphanRemoval=true)
      */
-    private $modelo;
+    private $modelos;
 
     /**
      * Get id
@@ -378,15 +380,22 @@ class Programa
         return $this->lugar;
     }
 
+    public function __construct() {
+        $this->modelos = new ArrayCollection();
+    }
+
     /**
-     * Generates the magic method
-     * 
+     * Add modelo
+     *
+     * @param \AppBundle\Entity\Modelo $modelo
+     *
+     * @return Programa
      */
-    public function __toString(){
-        // to show the name of the Category in the select
-        return $this->nombre;
-        // to show the id of the Category in the select
-        // return $this->id;
+    public function addModelo(\AppBundle\Entity\Modelo $modelo)
+    {
+        $this->modelos[] = $modelo;
+
+        return $this;
     }
 
     /**
@@ -404,12 +413,30 @@ class Programa
     }
 
     /**
-     * Get modelo
-     *
-     * @return \AppBundle\Entity\Modelo
-     */
-    public function getModelo()
+    * Get modelos
+    *
+   * @return \Doctrine\Common\Collections\Collection
+    */
+    public function getModelos()
     {
-        return $this->modelo;
+        return $this->modelos;
+    }
+    
+    /**
+     * Generates the magic method
+     * 
+     */
+    public function __toString(){
+        return $this->nombre;
+    }
+
+    /**
+     * Remove modelo
+     *
+     * @param \AppBundle\Entity\Modelo $modelo
+     */
+    public function removeModelo(\AppBundle\Entity\Modelo $modelo)
+    {
+        $this->modelos->removeElement($modelo);
     }
 }
