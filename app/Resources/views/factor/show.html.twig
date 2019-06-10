@@ -5,12 +5,8 @@
         <div class="row">
     <h1>Factor</h1>
 
-    <table>
+    <table class="table table-bordered">
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ factor.id }}</td>
-            </tr>
             <tr>
                 <th>Nombre</th>
                 <td>{{ factor.nombre }}</td>
@@ -30,6 +26,16 @@
             <tr>
                 <th>Porcentaje</th>
                 <td>{{ factor.porcentaje }}</td>
+            </tr>
+            <tr>
+                <th>Caracteristicas</th>
+                <td><ul>
+                    {% for caracteristica in factor.caracteristicas %}
+                        <li><a href="{{ path('factor_show', { 'id': caracteristica.id }) }}">
+                            {{ caracteristica.nombre}}
+                        </a></li><br>
+                    {% endfor %}</ul>
+                </td>
             </tr>
         </tbody>
     </table>

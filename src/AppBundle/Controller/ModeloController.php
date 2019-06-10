@@ -4,6 +4,8 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Factor;
 use AppBundle\Entity\Factor_model;
+use AppBundle\Entity\Caracteristica;
+use AppBundle\Entity\Caracteristica_model;
 use AppBundle\Entity\Modelo;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -80,7 +82,6 @@ class ModeloController extends Controller
         //$f_m = new Factor();
         $em = $this->getDoctrine()->getManager();
         $factor_model = $em->getRepository('AppBundle:Factor_model')->findAll();
-        $caracteristica_model = $em->getRepository('AppBundle:Caracteristica_model')->findAll();
 
         $form = $this->createForm('AppBundle\Form\ModeloType', $modelo);
         $form->handleRequest($request);
@@ -111,6 +112,33 @@ class ModeloController extends Controller
                 $factor->setModelo($modelo);
                 $this->getDoctrine()->getManager()->persist($factor);
                 $em->flush();
+
+                $caracteristica_model = $em->getRepository('AppBundle:Caracteristica_model')->findBy(Array("factor_model" => $factor_m->getId()));
+                //Aqui meto las caracteristicas
+                foreach ($caracteristica_model as $caracteristica_m)
+                {
+                    $caracteristica = new Caracteristica();
+
+                    $oldReflectionC = new \ReflectionObject($caracteristica_m);
+                    $newReflectionC = new \ReflectionObject($caracteristica);
+                    foreach($oldReflectionC->getProperties() as $property)
+                    {
+                        if ($newReflectionC->hasProperty($property->getName()))
+                        {
+                            $newProperty = $newReflectionC->getProperty($property->getName());
+                            $newProperty->setAccessible(true);
+                            $oldProperty = $oldReflectionC->getProperty($property->getName());
+                            $oldProperty->setAccessible(true);
+                            $newProperty->setValue($caracteristica, $oldProperty->getValue($caracteristica_m));
+                        }
+                    }
+                    $caracteristica->setFactor($factor);
+                    $this->getDoctrine()->getManager()->persist($caracteristica);
+                    $em->flush();
+                }
+
+                //Fin caracteristica
+
             }
 
             return $this->redirectToRoute('modelo_show', array('id' => $modelo->getId()));
