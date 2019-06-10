@@ -230,4 +230,64 @@ class Factor_model
     public function __toString(){
         return $this->nombre;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->caracteristicas_model = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add caracteristicasModel
+     *
+     * @param \AppBundle\Entity\Caracteristica_model $caracteristicasModel
+     *
+     * @return Factor_model
+     */
+    public function addCaracteristicasModel(\AppBundle\Entity\Caracteristica_model $caracteristicasModel)
+    {
+        $this->caracteristicas_model[] = $caracteristicasModel;
+
+        return $this;
+    }
+
+    /**
+     * Remove caracteristicasModel
+     *
+     * @param \AppBundle\Entity\Caracteristica_model $caracteristicasModel
+     */
+    public function removeCaracteristicasModel(\AppBundle\Entity\Caracteristica_model $caracteristicasModel)
+    {
+        $this->caracteristicas_model->removeElement($caracteristicasModel);
+    }
+
+    /**
+     * Get caracteristicasModel
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCaracteristicasModel()
+    {
+        return $this->caracteristicas_model;
+    }
+
+    /**
+    * Clone
+    */
+    public function __clone()
+    {
+        if ($this->id) {
+                $this->setId(null);
+                $sections = $this->getCaracteristicas();
+                $sectionsArray = new ArrayCollection();
+                foreach ($sections as $section) {
+                    /** @var Section $section */
+                    $sectionClone = clone $section;
+                    $sectionClone->setForm($this);
+                    $sectionsArray->add($sectionClone);
+                }
+            $this->sections = $sectionsArray;
+        }
+    }
 }

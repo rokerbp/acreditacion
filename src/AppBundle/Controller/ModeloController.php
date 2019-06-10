@@ -77,10 +77,10 @@ class ModeloController extends Controller
     public function nuevoAction(Request $request)
     {
         $modelo = new Modelo();
-        $f_m = new Factor();
+        //$f_m = new Factor();
         $em = $this->getDoctrine()->getManager();
         $factor_model = $em->getRepository('AppBundle:Factor_model')->findAll();
-        //var_dump($factor_model);
+        $caracteristica_model = $em->getRepository('AppBundle:Caracteristica_model')->findAll();
 
         $form = $this->createForm('AppBundle\Form\ModeloType', $modelo);
         $form->handleRequest($request);
@@ -90,19 +90,26 @@ class ModeloController extends Controller
             $em->persist($modelo);
             $em->flush();
 
-            $model=$f_m->getModelo();
-            $model=$modelo;
             foreach ($factor_model as $factor_m)
             {
                 $factor = new Factor();
-                $factor->setNombre($factor_m->getNombre());
-                $factor->setDescripcion($factor_m->getDescripcion());
-                $factor->setPonderacion($factor_m->getPonderacion());
-                $factor->setJustificacion($factor_m->getJustificacion());
-                $factor->setValor($factor_m->getvalor());
-                $factor->setPorcentaje($factor_m->getporcentaje());
-                $factor->setModelo($model);
-                $em->persist($factor);
+
+                $oldReflection = new \ReflectionObject($factor_m);
+                $newReflection = new \ReflectionObject($factor);
+
+                foreach($oldReflection->getProperties() as $property)
+                {
+                    if ($newReflection->hasProperty($property->getName()))
+                    {
+                        $newProperty = $newReflection->getProperty($property->getName());
+                        $newProperty->setAccessible(true);
+                        $oldProperty = $oldReflection->getProperty($property->getName());
+                        $oldProperty->setAccessible(true);
+                        $newProperty->setValue($factor, $oldProperty->getValue($factor_m));
+                    }
+                }
+                $factor->setModelo($modelo);
+                $this->getDoctrine()->getManager()->persist($factor);
                 $em->flush();
             }
 

@@ -65,7 +65,14 @@ class Factor
     private $porcentaje;
 
     /**
+     * One Factor has Many Caracteristicas.
+     * @ORM\OneToMany(targetEntity="Caracteristica", mappedBy="factor")
+     */
+    private $caracteristicas;
+
+    /**
      * Many Features have One Product.
+     * 
      * @ORM\ManyToOne(targetEntity="Modelo", inversedBy="facts")
      * @ORM\JoinColumn(name="modelo", referencedColumnName="id")
      */
@@ -261,5 +268,46 @@ class Factor
      */
     public function __toString(){
         return $this->nombre;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->caracteristicas = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add caracteristica
+     *
+     * @param \AppBundle\Entity\Caracteristica $caracteristica
+     *
+     * @return Factor
+     */
+    public function addCaracteristica(\AppBundle\Entity\Caracteristica $caracteristica)
+    {
+        $this->caracteristicas[] = $caracteristica;
+
+        return $this;
+    }
+
+    /**
+     * Remove caracteristica
+     *
+     * @param \AppBundle\Entity\Caracteristica $caracteristica
+     */
+    public function removeCaracteristica(\AppBundle\Entity\Caracteristica $caracteristica)
+    {
+        $this->caracteristicas->removeElement($caracteristica);
+    }
+
+    /**
+     * Get caracteristicas
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCaracteristicas()
+    {
+        return $this->caracteristicas;
     }
 }

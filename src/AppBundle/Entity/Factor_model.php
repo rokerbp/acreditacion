@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Factor
@@ -270,5 +271,24 @@ class Factor_model
     public function getCaracteristicasModel()
     {
         return $this->caracteristicas_model;
+    }
+
+    /**
+    * Clone
+    */
+    public function __clone()
+    {
+        if ($this->id) {
+                $this->getId(null);
+                $caracteristicas_model = $this->getCaracteristicasModel();
+                $caracteristicas_modelArray = new ArrayCollection();
+                foreach ($caracteristicas_model as $caracteristica_model) {
+                    /** @var Catacteristica_model $caracteristica_model */
+                    $caractestica = clone $caracteristica_model;
+                    $caractestica->setFactorModel($this);
+                    $caracteristicas_modelArray->add($caractestica);
+                }
+                $this->caracteristicas_model = $caracteristicas_modelArray;
+        }
     }
 }

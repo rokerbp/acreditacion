@@ -65,7 +65,14 @@ class Factor
     private $porcentaje;
 
     /**
+     * One Factor has Many Caracteristicas.
+     * @ORM\OneToMany(targetEntity="Caracteristica", mappedBy="factor")
+     */
+    private $caracteristicas;
+
+    /**
      * Many Features have One Product.
+     * 
      * @ORM\ManyToOne(targetEntity="Modelo", inversedBy="facts")
      * @ORM\JoinColumn(name="modelo", referencedColumnName="id")
      */

@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Caracteristica_model
+ * Caracteristica
  *
- * @ORM\Table(name="caracteristica_model")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\Caracteristica_modelRepository")
+ * @ORM\Table(name="caracteristica")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\CaracteristicaRepository")
  */
-class Caracteristica_model
+class Caracteristica
 {
     /**
      * @var int
@@ -58,10 +58,10 @@ class Caracteristica_model
 
     /**
      * Many Caracteristicas have One Factor.
-     * @ORM\ManyToOne(targetEntity="Factor_model", inversedBy="caracteristicas_model")
-     * @ORM\JoinColumn(name="factor_model", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Factor", inversedBy="caracteristicas", cascade={"persist"})
+     * @ORM\JoinColumn(name="factor", referencedColumnName="id")
      */
-    private $factor_model;
+    private $factor;
 
 
     /**
@@ -79,7 +79,7 @@ class Caracteristica_model
      *
      * @param string $nombre
      *
-     * @return Caracteristica_model
+     * @return Caracteristica
      */
     public function setNombre($nombre)
     {
@@ -103,7 +103,7 @@ class Caracteristica_model
      *
      * @param string $descripcion
      *
-     * @return Caracteristica_model
+     * @return Caracteristica
      */
     public function setDescripcion($descripcion)
     {
@@ -127,7 +127,7 @@ class Caracteristica_model
      *
      * @param float $ponderacion
      *
-     * @return Caracteristica_model
+     * @return Caracteristica
      */
     public function setPonderacion($ponderacion)
     {
@@ -151,7 +151,7 @@ class Caracteristica_model
      *
      * @param float $valor
      *
-     * @return Caracteristica_model
+     * @return Caracteristica
      */
     public function setValor($valor)
     {
@@ -175,7 +175,7 @@ class Caracteristica_model
      *
      * @param float $porcentaje
      *
-     * @return Caracteristica_model
+     * @return Caracteristica
      */
     public function setPorcentaje($porcentaje)
     {
@@ -195,36 +195,26 @@ class Caracteristica_model
     }
 
     /**
-     * Set factorModel
+     * Set factor
      *
-     * @param \AppBundle\Entity\Factor_model $factorModel
+     * @param \AppBundle\Entity\Factor $factor
      *
-     * @return Caracteristica_model
+     * @return Caracteristica
      */
-    public function setFactorModel(\AppBundle\Entity\Factor_model $factorModel = null)
+    public function setFactor(\AppBundle\Entity\Factor $factor = null)
     {
-        $this->factor_model = $factorModel;
+        $this->factor = $factor;
 
         return $this;
     }
 
     /**
-     * Get factorModel
+     * Get factor
      *
-     * @return \AppBundle\Entity\Factor_model
+     * @return \AppBundle\Entity\Factor
      */
-    public function getFactorModel()
+    public function getFactor()
     {
-        return $this->factor_model;
-    }
-
-    /**
-     * Get factorModel
-     *
-     * @return \AppBundle\Entity\Factor_model
-     */
-    public function getFactor_model()
-    {
-        return $this->factor_model;
+        return $this->factor;
     }
 }

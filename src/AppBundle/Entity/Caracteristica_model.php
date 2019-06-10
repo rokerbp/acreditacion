@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Caracteristica_model
@@ -58,7 +59,7 @@ class Caracteristica_model
 
     /**
      * Many Caracteristicas have One Factor.
-     * @ORM\ManyToOne(targetEntity="Factor_model", inversedBy="caracteristicas_model")
+     * @ORM\ManyToOne(targetEntity="Factor_model", inversedBy="caracteristicas_model", cascade={"persist"})
      * @ORM\JoinColumn(name="factor_model", referencedColumnName="id")
      */
     private $factor_model;
@@ -226,5 +227,21 @@ class Caracteristica_model
     public function getFactor_model()
     {
         return $this->factor_model;
+    }
+
+    /**
+    * Clone
+    */
+    public function __clone()
+    {
+        if ($this->id) {
+            $this->getId(null);
+        }
+    }
+    
+    public function __toString(){
+
+        return $this->nombre;
+
     }
 }
