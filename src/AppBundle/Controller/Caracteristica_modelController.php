@@ -10,7 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 /**
  * Caracteristica_model controller.
  *
- * @Route("caracteristica_model")
+ * @Route("admin/caracteristica_model")
  */
 class Caracteristica_modelController extends Controller
 {
@@ -48,7 +48,8 @@ class Caracteristica_modelController extends Controller
             $em->persist($caracteristica_model);
             $em->flush();
 
-            return $this->redirectToRoute('caracteristica_model_show', array('id' => $caracteristica_model->getId()));
+            //return $this->redirectToRoute('caracteristica_model_show', array('id' => $caracteristica_model->getId()));
+            return $this->redirectToRoute('caracteristica_model_index');
         }
 
         return $this->render('caracteristica_model/new.html.twig', array(

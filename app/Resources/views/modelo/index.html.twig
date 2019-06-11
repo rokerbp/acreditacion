@@ -8,9 +8,13 @@
         </div>
     </div>
 
+    <ul>
+        <a class="btn btn-success" href="{{ path('modelo_nuevo') }}">Crear un Modelo</a>
+    </ul>
+
      <div class="row">
         <div class="col-lg-12">
-            <table class="table table-bordered">
+            <table id="model_table" role="grid" class="table table-bordered dataTable display nowrap">
                 <thead>
                     <tr>
                         <!-- <th>Id</th> -->
@@ -48,9 +52,19 @@
                 </tbody>
             </table>
 
-    <ul>
-        <a class="btn btn-success" href="{{ path('modelo_nuevo') }}">Crear a new modelo</a>
-    </ul>
+    
 </div>
 </div>
 {% endblock %}
+{% block javascripts %}
+<script>
+    $(document).ready( function () {
+        $('#model_table').DataTable(
+            {
+                responsive: true
+            }
+        );
+    } );
+</script>
+{% endblock %}
+

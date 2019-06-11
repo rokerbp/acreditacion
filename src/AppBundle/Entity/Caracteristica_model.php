@@ -58,6 +58,12 @@ class Caracteristica_model
     private $porcentaje;
 
     /**
+     * One Caracteristica has Many Indicadores.
+     * @ORM\OneToMany(targetEntity="Indicador_model", mappedBy="caracteristica_model")
+     */
+    private $indicadores_model;
+
+    /**
      * Many Caracteristicas have One Factor.
      * @ORM\ManyToOne(targetEntity="Factor_model", inversedBy="caracteristicas_model", cascade={"persist"})
      * @ORM\JoinColumn(name="factor_model", referencedColumnName="id")
@@ -228,20 +234,48 @@ class Caracteristica_model
     {
         return $this->factor_model;
     }
-
-    /**
-    * Clone
-    */
-    public function __clone()
-    {
-        if ($this->id) {
-            $this->getId(null);
-        }
-    }
     
     public function __toString(){
 
         return $this->nombre;
 
+    }
+
+    public function __construct() {
+        $this->indicadores_model = new ArrayCollection();
+    }
+
+    /**
+     * Add indicadoresModel
+     *
+     * @param \AppBundle\Entity\Indicador_model $indicadoresModel
+     *
+     * @return Caracteristica_model
+     */
+    public function addIndicadoresModel(\AppBundle\Entity\Indicador_model $indicadoresModel)
+    {
+        $this->indicadores_model[] = $indicadoresModel;
+
+        return $this;
+    }
+
+    /**
+     * Remove indicadoresModel
+     *
+     * @param \AppBundle\Entity\Indicador_model $indicadoresModel
+     */
+    public function removeIndicadoresModel(\AppBundle\Entity\Indicador_model $indicadoresModel)
+    {
+        $this->indicadores_model->removeElement($indicadoresModel);
+    }
+
+    /**
+     * Get indicadoresModel
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getIndicadoresModel()
+    {
+        return $this->indicadores_model;
     }
 }

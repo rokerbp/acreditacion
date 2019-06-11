@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Indicador
+ * Indicador_model
  *
- * @ORM\Table(name="indicador")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\IndicadorRepository")
+ * @ORM\Table(name="indicador_model")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\Indicador_modelRepository")
  */
-class Indicador
+class Indicador_model
 {
     /**
      * @var int
@@ -37,10 +37,10 @@ class Indicador
 
     /**
      * Many Indicadores have One Caracteristica.
-     * @ORM\ManyToOne(targetEntity="Caracteristica", inversedBy="indicadores", cascade={"persist"})
-     * @ORM\JoinColumn(name="caracteristica", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Caracteristica_model", inversedBy="indicadores_model", cascade={"persist"})
+     * @ORM\JoinColumn(name="caracteristica_model", referencedColumnName="id")
      */
-    private $caracteristica;
+    private $caracteristica_model;
 
 
     /**
@@ -58,7 +58,7 @@ class Indicador
      *
      * @param string $nombre
      *
-     * @return Indicador
+     * @return Indicador_model
      */
     public function setNombre($nombre)
     {
@@ -82,7 +82,7 @@ class Indicador
      *
      * @param string $descripcion
      *
-     * @return Indicador
+     * @return Indicador_model
      */
     public function setRipcion($descripcion)
     {
@@ -106,7 +106,7 @@ class Indicador
      *
      * @param string $descripcion
      *
-     * @return Indicador
+     * @return Indicador_model
      */
     public function setDescripcion($descripcion)
     {
@@ -126,29 +126,40 @@ class Indicador
     }
 
     /**
-     * Set caracteristica
+     * Set caracteristicaModel
      *
-     * @param \AppBundle\Entity\Caracteristica $caracteristica
+     * @param \AppBundle\Entity\Caracteristica_model $caracteristicaModel
      *
-     * @return Indicador
+     * @return Indicador_model
      */
-    public function setCaracteristica(\AppBundle\Entity\Caracteristica $caracteristica = null)
+    public function setCaracteristicaModel(\AppBundle\Entity\Caracteristica_model $caracteristicaModel = null)
     {
-        $this->caracteristica = $caracteristica;
+        $this->caracteristica_model = $caracteristicaModel;
 
         return $this;
     }
 
     /**
-     * Get caracteristica
+     * Get caracteristicaModel
      *
-     * @return \AppBundle\Entity\Caracteristica
+     * @return \AppBundle\Entity\Caracteristica_model
      */
-    public function getCaracteristica()
+    public function getCaracteristicaModel()
     {
-        return $this->caracteristica;
+        return $this->caracteristica_model;
     }
 
+    /**
+     * Get caracteristicaModel
+     *
+     * @return \AppBundle\Entity\Caracteristica_model
+     */
+    public function getCaracteristica_model()
+    {
+        return $this->caracteristica_model;
+    }
+
+    
     public function __toString(){
         return $this->nombre;
     }

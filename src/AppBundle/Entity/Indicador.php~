@@ -100,56 +100,5 @@ class Indicador
     {
         return $this->descripcion;
     }
-
-    /**
-     * Set descripcion
-     *
-     * @param string $descripcion
-     *
-     * @return Indicador
-     */
-    public function setDescripcion($descripcion)
-    {
-        $this->descripcion = $descripcion;
-
-        return $this;
-    }
-
-    /**
-     * Get descripcion
-     *
-     * @return string
-     */
-    public function getDescripcion()
-    {
-        return $this->descripcion;
-    }
-
-    /**
-     * Set caracteristica
-     *
-     * @param \AppBundle\Entity\Caracteristica $caracteristica
-     *
-     * @return Indicador
-     */
-    public function setCaracteristica(\AppBundle\Entity\Caracteristica $caracteristica = null)
-    {
-        $this->caracteristica = $caracteristica;
-
-        return $this;
-    }
-
-    /**
-     * Get caracteristica
-     *
-     * @return \AppBundle\Entity\Caracteristica
-     */
-    public function getCaracteristica()
-    {
-        return $this->caracteristica;
-    }
-
-    public function __toString(){
-        return $this->nombre;
-    }
 }
+

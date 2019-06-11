@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Indicador
+ * Indicador_model
  *
- * @ORM\Table(name="indicador")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\IndicadorRepository")
+ * @ORM\Table(name="indicador_model")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\Indicador_modelRepository")
  */
-class Indicador
+class Indicador_model
 {
     /**
      * @var int
@@ -37,8 +37,8 @@ class Indicador
 
     /**
      * Many Indicadores have One Caracteristica.
-     * @ORM\ManyToOne(targetEntity="Caracteristica", inversedBy="indicadores", cascade={"persist"})
-     * @ORM\JoinColumn(name="caracteristica", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity="Caracteristica_model", inversedBy="indicadores_model", cascade={"persist"})
+     * @ORM\JoinColumn(name="caracteristica_model", referencedColumnName="id")
      */
     private $caracteristica;
 
@@ -58,7 +58,7 @@ class Indicador
      *
      * @param string $nombre
      *
-     * @return Indicador
+     * @return Indicador_model
      */
     public function setNombre($nombre)
     {
@@ -82,7 +82,7 @@ class Indicador
      *
      * @param string $descripcion
      *
-     * @return Indicador
+     * @return Indicador_model
      */
     public function setRipcion($descripcion)
     {
@@ -100,56 +100,5 @@ class Indicador
     {
         return $this->descripcion;
     }
-
-    /**
-     * Set descripcion
-     *
-     * @param string $descripcion
-     *
-     * @return Indicador
-     */
-    public function setDescripcion($descripcion)
-    {
-        $this->descripcion = $descripcion;
-
-        return $this;
-    }
-
-    /**
-     * Get descripcion
-     *
-     * @return string
-     */
-    public function getDescripcion()
-    {
-        return $this->descripcion;
-    }
-
-    /**
-     * Set caracteristica
-     *
-     * @param \AppBundle\Entity\Caracteristica $caracteristica
-     *
-     * @return Indicador
-     */
-    public function setCaracteristica(\AppBundle\Entity\Caracteristica $caracteristica = null)
-    {
-        $this->caracteristica = $caracteristica;
-
-        return $this;
-    }
-
-    /**
-     * Get caracteristica
-     *
-     * @return \AppBundle\Entity\Caracteristica
-     */
-    public function getCaracteristica()
-    {
-        return $this->caracteristica;
-    }
-
-    public function __toString(){
-        return $this->nombre;
-    }
 }
+

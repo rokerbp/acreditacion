@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Caracteristica
@@ -55,6 +56,12 @@ class Caracteristica
      * @ORM\Column(name="porcentaje", type="float", nullable=true)
      */
     private $porcentaje;
+
+    /**
+     * One Caracteristica has Many Indicadores.
+     * @ORM\OneToMany(targetEntity="Indicador", mappedBy="caracteristica")
+     */
+    private $indicadores;
 
     /**
      * Many Caracteristicas have One Factor.
@@ -216,5 +223,43 @@ class Caracteristica
     public function getFactor()
     {
         return $this->factor;
+    }
+
+    public function __construct() {
+        $this->indicadores = new ArrayCollection();
+    }
+
+    /**
+     * Add indicadore
+     *
+     * @param \AppBundle\Entity\Indicador $indicadore
+     *
+     * @return Caracteristica
+     */
+    public function addIndicadore(\AppBundle\Entity\Indicador $indicadore)
+    {
+        $this->indicadores[] = $indicadore;
+
+        return $this;
+    }
+
+    /**
+     * Remove indicadore
+     *
+     * @param \AppBundle\Entity\Indicador $indicadore
+     */
+    public function removeIndicadore(\AppBundle\Entity\Indicador $indicadore)
+    {
+        $this->indicadores->removeElement($indicadore);
+    }
+
+    /**
+     * Get indicadores
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getIndicadores()
+    {
+        return $this->indicadores;
     }
 }

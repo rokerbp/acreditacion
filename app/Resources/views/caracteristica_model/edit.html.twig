@@ -17,19 +17,13 @@
 
             {{ form_start(edit_form) }}
                 {{ form_widget(edit_form) }}
-                <input type="submit" value="Edit" />
+                <input class="btn btn-success" type="submit" value="Guardar" />
             {{ form_end(edit_form) }}
 
-            <ul>
-                <li>
-                    <a href="{{ path('caracteristica_model_index') }}">Back to the list</a>
-                </li>
-                <li>
-                    {{ form_start(delete_form) }}
-                        <input type="submit" value="Delete">
-                    {{ form_end(delete_form) }}
-                </li>
-            </ul>
+            <a class="btn btn-warning" href="{{ path('caracteristica_model_index') }}">Atras</a>
+            {{ form_start(delete_form) }}
+                <input class="btn btn-danger" type="submit" value="Borrar">
+            {{ form_end(delete_form) }}
 
         </div>
     </div>

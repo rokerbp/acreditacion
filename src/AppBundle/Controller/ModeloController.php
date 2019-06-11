@@ -6,6 +6,8 @@ use AppBundle\Entity\Factor;
 use AppBundle\Entity\Factor_model;
 use AppBundle\Entity\Caracteristica;
 use AppBundle\Entity\Caracteristica_model;
+use AppBundle\Entity\Indicador;
+use AppBundle\Entity\Indicador_model;
 use AppBundle\Entity\Modelo;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -14,7 +16,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 /**
  * Modelo controller.
  *
- * @Route("modelo")
+ * @Route("admin/modelo")
  */
 class ModeloController extends Controller
 {
@@ -135,8 +137,33 @@ class ModeloController extends Controller
                     $caracteristica->setFactor($factor);
                     $this->getDoctrine()->getManager()->persist($caracteristica);
                     $em->flush();
-                }
 
+                     //Aqui ingreso los indicadores
+                        $indicador_model = $em->getRepository('AppBundle:Indicador_model')->findBy(Array("caracteristica_model" => $caracteristica_m->getId()));
+                        foreach ($indicador_model as $indicador_m)
+                        {
+                            $indicador = new Indicador();
+
+                            $oldReflectionI = new \ReflectionObject($indicador_m);
+                            $newReflectionI = new \ReflectionObject($indicador);
+                            foreach($oldReflectionI->getProperties() as $property)
+                            {
+                                if ($newReflectionI->hasProperty($property->getName()))
+                                {
+                                    $newProperty = $newReflectionI->getProperty($property->getName());
+                                    $newProperty->setAccessible(true);
+                                    $oldProperty = $oldReflectionI->getProperty($property->getName());
+                                    $oldProperty->setAccessible(true);
+                                    $newProperty->setValue($indicador, $oldProperty->getValue($indicador_m));
+                                }
+                            }
+                            $indicador->setCaracteristica($caracteristica);
+                            $this->getDoctrine()->getManager()->persist($indicador);
+                            $em->flush();
+                        }
+                        //fin indicadores
+
+                }
                 //Fin caracteristica
 
             }

@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block contenido %}
+<div id="page-wrapper">
+        <div class="row">
+            <h1 class="page-header">{{ indicador_model.nombre }}</h1>
+
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <th>Id</th>
+                            <td>{{ indicador_model.id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Nombre</th>
+                            <td>{{ indicador_model.nombre }}</td>
+                        </tr>
+                        <tr>
+                            <th>Descripcion</th>
+                            <td>{{ indicador_model.descripcion }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+           
+                <a class="btn btn-primary" href="{{ path('indicador_model_index') }}">Atras</a>
+                <a class="btn btn-warning" href="{{ path('indicador_model_edit', { 'id': indicador_model.id }) }}">Editar</a>
+                {{ form_start(delete_form) }}
+                    <input class="btn btn-danger" type="submit" value="Delete">
+                {{ form_end(delete_form) }}
+            </div>
+        </div>
+{% endblock %}

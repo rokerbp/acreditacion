@@ -11,15 +11,15 @@
             <h1 class="page-header">Caracteristicas</h1>
         </div>
     </div>
-
+    <a class="btn btn-success" href="{{ path('caracteristica_model_new') }}">Nueva caracteristica</a>
     <div class="row">
         <div class="col-lg-12">
             <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th>Id</th>
+                        <th>Nombre de la Caracteristica</th>
                         <th>Factor</th>
-                        <th>Nombre</th>
                         <th>Descripcion</th>
                         <th>Ponderacion</th>
                         <th>Valor</th>
@@ -30,9 +30,9 @@
                 <tbody>
                 {% for caracteristica_model in caracteristica_models %}
                     <tr>
-                        <td><a href="{{ path('caracteristica_model_show', { 'id': caracteristica_model.id }) }}">{{ caracteristica_model.id }}</a></td>
-                        <td>{{ caracteristica_model.factor_model }}</td>
+                        <td>{{ caracteristica_model.id }}</a></td>
                         <td>{{ caracteristica_model.nombre }}</td>
+                        <td>{{ caracteristica_model.factor_model }}</td>
                         <td>{{ caracteristica_model.descripcion }}</td>
                         <td>{{ caracteristica_model.ponderacion }}</td>
                         <td>{{ caracteristica_model.valor }}</td>
@@ -52,7 +52,7 @@
                 </tbody>
             </table>
 
-        <a class="btn btn-success" href="{{ path('caracteristica_model_new') }}">Nueva caracteristica_model</a>
+        
 
         </div>
     </div>

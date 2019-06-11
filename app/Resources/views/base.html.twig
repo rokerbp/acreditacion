@@ -94,10 +94,21 @@
                                 <a href="{{ path('programas') }}"><i class="fa fa-university fa-fw"></i> Acreditación<span class="fa arrow"></span></a>
                                     <ul class="nav nav-second-level">
                                         <li>
-                                            <a href="{{ path('programa_index') }}"><i class="fa fa-graduation-cap fa-fw"></i> Programas de Maestría</a>
+                                            <a href="#"><i class="fa fa-archive fa-fw"></i> Plantillas</a>
+                                                <ul class="nav nav-third-level">
+                                                    <li>
+                                                        <a href="{{ path('caracteristica_model_index') }}">Caracteristicas</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="{{ path('indicador_model_index') }}">Indicadores</a>
+                                                    </li>
+                                                </ul>
                                         </li>
                                         <li>
-                                            <a href="{{ path('programa_index') }}"><i class="fa fa-graduation-cap fa-fw"></i> Programas de Doctorado</a>
+                                            <a href="{{ path('programa_index') }}"><i class="fa fa-graduation-cap fa-fw"></i> Programas Académicos</a>
+                                        </li>
+                                        <li>
+                                            <a href="{{ path('modelo_index') }}"><i class="fa fa-cogs fa-fw"></i> Modelos de Autoevaluacion</a>
                                         </li>
                                         <li>
                                             <a href="{{ path('verestudiantes') }}"><i class="fa fa-user fa-fw"></i> Estudiantes</a>

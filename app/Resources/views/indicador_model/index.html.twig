@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block titulo %}
+    Indicadores
+{% endblock %}
+
+{% block contenido %}
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Indicadores</h1>
+        </div>
+    </div>
+    <a class="btn btn-success" href="{{ path('indicador_model_new') }}">Nuevo Indicador</a>
+    <div class="row">
+        <div class="col-lg-12">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nombre del Indicador</th>
+                        <th>Caracteristica</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for indicador_model in indicador_models %}
+                    <tr>
+                        <td>{{ indicador_model.id }}</a></td>
+                        <td>{{ indicador_model.nombre }}</td>
+                        <td>{{ indicador_model.caracteristica_model }}</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('indicador_model_show', { 'id': indicador_model.id }) }}">show</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('indicador_model_edit', { 'id': indicador_model.id }) }}">edit</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div> 
+    </div>
+</div>
+{% endblock %}

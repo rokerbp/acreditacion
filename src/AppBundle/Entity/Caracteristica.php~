@@ -57,8 +57,14 @@ class Caracteristica
     private $porcentaje;
 
     /**
+     * One Caracteristica has Many Indicadores.
+     * @ORM\OneToMany(targetEntity="Indicador", mappedBy="caracteristica")
+     */
+    private $indicadores;
+
+    /**
      * Many Caracteristicas have One Factor.
-     * @ORM\ManyToOne(targetEntity="Factor", inversedBy="caracteristicas")
+     * @ORM\ManyToOne(targetEntity="Factor", inversedBy="caracteristicas", cascade={"persist"})
      * @ORM\JoinColumn(name="factor", referencedColumnName="id")
      */
     private $factor;
@@ -216,5 +222,9 @@ class Caracteristica
     public function getFactor()
     {
         return $this->factor;
+    }
+
+    public function __construct() {
+        $this->indicadores = new ArrayCollection();
     }
 }
