@@ -1,16 +1,16 @@
 {% extends 'base.html.twig' %}
+{% form_theme edit_form 'form/itemForm.html.twig' %}
 
 {% block contenido %}
 <div id="page-wrapper">
         <div class="row">
-   <h1 class="page-header">Indicador modelo</h1>
+   <h1 class="page-header">Editar Indicador</h1>
 
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
         <input class="btn btn-success" type="submit" value="Guardar" />
+        <a class="btn btn-primary" href="{{ path('indicador_model_index') }}">Atras</a>
     {{ form_end(edit_form) }}
-
-    <a class="btn btn-primary" href="{{ path('indicador_model_index') }}">Atras</a>
 
     {{ form_start(delete_form) }}
         <input class="btn btn-danger" type="submit" value="Borrar">

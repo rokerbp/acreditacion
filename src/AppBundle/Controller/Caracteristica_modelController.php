@@ -89,7 +89,8 @@ class Caracteristica_modelController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('caracteristica_model_edit', array('id' => $caracteristica_model->getId()));
+            //return $this->redirectToRoute('caracteristica_model_edit', array('id' => $caracteristica_model->getId()));
+            return $this->redirectToRoute('caracteristica_model_index');
         }
 
         return $this->render('caracteristica_model/edit.html.twig', array(
@@ -102,7 +103,7 @@ class Caracteristica_modelController extends Controller
     /**
      * Deletes a caracteristica_model entity.
      *
-     * @Route("/{id}", name="caracteristica_model_delete")
+     * @Route("/delete/{id}", name="caracteristica_model_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Caracteristica_model $caracteristica_model)

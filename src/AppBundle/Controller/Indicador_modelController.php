@@ -89,7 +89,8 @@ class Indicador_modelController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('indicador_model_edit', array('id' => $indicador_model->getId()));
+            //return $this->redirectToRoute('indicador_model_edit', array('id' => $indicador_model->getId()));
+            return $this->redirectToRoute('indicador_model_index');
         }
 
         return $this->render('indicador_model/edit.html.twig', array(
@@ -102,7 +103,7 @@ class Indicador_modelController extends Controller
     /**
      * Deletes a indicador_model entity.
      *
-     * @Route("/{id}", name="indicador_model_delete")
+     * @Route("/delete/{id}", name="indicador_model_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Indicador_model $indicador_model)
