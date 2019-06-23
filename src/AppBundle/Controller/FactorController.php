@@ -10,7 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 /**
  * Factor controller.
  *
- * @Route("factor")
+ * @Route("admin/factor")
  */
 class FactorController extends Controller
 {

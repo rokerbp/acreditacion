@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block titulo %}
-    Caracteristicas
+    Características
 {% endblock %}
 
 {% block contenido %}
@@ -14,37 +14,27 @@
     <a class="btn btn-success" href="{{ path('caracteristica_model_new') }}">Nueva caracteristica</a>
     <div class="row">
         <div class="col-lg-12">
-            <table class="table table-bordered">
+            <table width="100%" id="caracteristica_table" role="grid" class="table table-bordered dataTable">
                 <thead>
                     <tr>
                         <th>Id</th>
                         <th>Nombre de la Caracteristica</th>
                         <th>Factor</th>
                         <th>Descripcion</th>
-                        <th>Ponderacion</th>
-                        <th>Valor</th>
-                        <th>Porcentaje</th>
-                        <th>Actions</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
                 {% for caracteristica_model in caracteristica_models %}
                     <tr>
-                        <td>{{ caracteristica_model.id }}</a></td>
+                        <td>{{ caracteristica_model.id }}</td>
                         <td>{{ caracteristica_model.nombre }}</td>
                         <td>{{ caracteristica_model.factor_model }}</td>
                         <td>{{ caracteristica_model.descripcion }}</td>
-                        <td>{{ caracteristica_model.ponderacion }}</td>
-                        <td>{{ caracteristica_model.valor }}</td>
-                        <td>{{ caracteristica_model.porcentaje }}</td>
                         <td>
                             <ul>
-                                <li>
-                                    <a href="{{ path('caracteristica_model_show', { 'id': caracteristica_model.id }) }}">show</a>
-                                </li>
-                                <li>
-                                    <a href="{{ path('caracteristica_model_edit', { 'id': caracteristica_model.id }) }}">edit</a>
-                                </li>
+                                <a href="{{ path('caracteristica_model_show', { 'id': caracteristica_model.id }) }}" title="Ver"><i class="fa fa-eye fa-fw"></i></a>
+                                <a href="{{ path('caracteristica_model_edit', { 'id': caracteristica_model.id }) }}" title="Editar"><i class="fa fa-pencil fa-fw"></i></a>
                             </ul>
                         </td>
                     </tr>
@@ -57,4 +47,19 @@
         </div>
     </div>
 </div>
+{% endblock %}
+{% block javascripts %}
+<script>
+    $(document).ready( function () {
+        $('#caracteristica_table').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+            },
+            "columnDefs": [
+                { "visible": false, "targets": 0 }
+            ],
+            "responsive": true
+        });
+    } );
+</script>
 {% endblock %}

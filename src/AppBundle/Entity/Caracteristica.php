@@ -59,7 +59,7 @@ class Caracteristica
 
     /**
      * One Caracteristica has Many Indicadores.
-     * @ORM\OneToMany(targetEntity="Indicador", mappedBy="caracteristica")
+     * @ORM\OneToMany(targetEntity="Indicador", mappedBy="caracteristica", cascade={"persist", "remove"})
      */
     private $indicadores;
 

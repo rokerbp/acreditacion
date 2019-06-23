@@ -14,46 +14,47 @@
 
      <div class="row">
         <div class="col-lg-12">
-            <table id="model_table" role="grid" class="table table-bordered dataTable display nowrap">
-                <thead>
-                    <tr>
-                        <!-- <th>Id</th> -->
-                        <th>Programa</th>
-                        <th>Nombre</th>
-                        <th>Factores</th>
-                        <!-- <th>Actions</th> -->
-                    </tr>
-                </thead>
-                <tbody>
-                {% for modelo in modelos %}
-                    <tr>
-                        <!-- <td>{{ modelo.id }}</td> -->
-                        <td>{{ modelo.programa }}</td>
-                        <td><a href="{{ path('modelo_show', { 'id': modelo.id }) }}">{{ modelo.nombre }}</a></td>
-                        <td><ul>
-                            {% for factor in modelo.facts %}
-                                <li><a href="{{ path('factor_show', { 'id': factor.id }) }}">
-                                    {{ factor.nombre}}
-                                </a></li><br>
-                            {% endfor %}</ul>
-                        </td>
-                        <!-- <td>
-                            <ul>
-                                <li>
-                                    <a href="{{ path('modelo_show', { 'id': modelo.id }) }}">ver</a>
-                                </li>
-                                <li>
-                                    <a href="{{ path('modelo_edit', { 'id': modelo.id }) }}">editar</a>
-                                </li>
-                            </ul>
-                        </td> -->
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-
-    
-</div>
+            <div class="panel-body">
+                <table width="100%" id="model_table" role="grid" class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Programa al que pertenece</th>
+                            <th>Nombre del Modelo</th>
+                            <th>Factores</th>
+                            <!-- <th>Actions</th> -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for modelo in modelos %}
+                        <tr>
+                            <td>{{ modelo.id }}</td>
+                            <td>{{ modelo.programa }}</td>
+                            <td><a href="{{ path('modelo_show', { 'id': modelo.id }) }}">{{ modelo.nombre }}</a></td>
+                            <td><ul>
+                                {% for factor in modelo.facts %}
+                                    <li><a href="{{ path('factor_show', { 'id': factor.id }) }}">
+                                        {{ factor.nombre}}
+                                    </a></li><br>
+                                {% endfor %}</ul>
+                            </td>
+                            <!-- <td>
+                                <ul>
+                                    <li>
+                                        <a href="{{ path('modelo_show', { 'id': modelo.id }) }}">ver</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('modelo_edit', { 'id': modelo.id }) }}">editar</a>
+                                    </li>
+                                </ul>
+                            </td> -->
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}
 {% block javascripts %}
@@ -61,6 +62,12 @@
     $(document).ready( function () {
         $('#model_table').DataTable(
             {
+                "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+                },
+                "columnDefs": [
+                { "visible": false, "targets": 0 }
+                ],
                 responsive: true
             }
         );

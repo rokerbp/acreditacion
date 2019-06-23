@@ -66,7 +66,7 @@ class Factor
 
     /**
      * One Factor has Many Caracteristicas.
-     * @ORM\OneToMany(targetEntity="Caracteristica", mappedBy="factor")
+     * @ORM\OneToMany(targetEntity="Caracteristica", mappedBy="factor", cascade={"persist", "remove"})
      */
     private $caracteristicas;
 
