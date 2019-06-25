@@ -95,16 +95,10 @@ class ProgramaController extends Controller
                 "programa"=>$programa
             ));
     
-            /** @var Modelo $modelo */
-                $modelo = $programa->getModelo();
-                $modelo->setPrograma($programa);
-                $em->persist($modelo);
-            
-    
             $em->persist($programa);
             $em->flush();
 
-            return $this->redirectToRoute('programa_edit', array('id' => $programa->getId()));
+            return $this->redirectToRoute('programa_show', array('id' => $programa->getId()));
         }
 
         return $this->render('programa/edit.html.twig', array(

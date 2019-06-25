@@ -61,7 +61,7 @@
                             <li class="divider"></li>
                             {# {% if app.user %} #}
                                 <li>
-                                    <a href={{ path('logout') }}><i class="fa fa-sign-out fa-fw"></i> Cerrar Sesión</a>
+                                    <a href={{ path('logout') }}><i class="fa fa-sign-out fa-fw"></i> Cerrar Sesión </a>
                                 </li>
                             {# {% endif %} #}
                         </ul>
@@ -90,20 +90,18 @@
                             <li>
                                 <a href="{{ path('admin') }}"><i class="fa fa-home fa-fw"></i> Panel principal</a>
                             </li>
+                            
                             <li>
-                                <a href="{{ path('admin') }}"><i class="fa fa-repeat fa-fw"></i> Plan de Mejoramiento</a>
-                            </li>
-                            <li>
-                                <a href="{{ path('programas') }}"><i class="fa fa-university fa-fw"></i> Acreditación<span class="fa arrow"></span></a>
+                                <a href="{{ path('programas') }}"><i class="fa fa-check fa-fw"></i> Acreditación<span class="fa arrow"></span></a>
                                     <ul class="nav nav-second-level">
                                         <li>
                                             <a href="#"><i class="fa fa-archive fa-fw"></i> Plantillas</a>
                                                 <ul class="nav nav-third-level">
                                                     <li>
-                                                        <a href="{{ path('caracteristica_model_index') }}">Caracteristicas</a>
+                                                        <a href="{{ path('caracteristica_model_index') }}"><i class="fa fa-th-list fa-fw"></i>Caracteristicas</a>
                                                     </li>
                                                     <li>
-                                                        <a href="{{ path('indicador_model_index') }}">Indicadores</a>
+                                                        <a href="{{ path('indicador_model_index') }}"><i class="fa fa-th fa-fw"></i>Indicadores</a>
                                                     </li>
                                                 </ul>
                                         </li>
@@ -122,9 +120,11 @@
                             <li>
                                 <a href="{{ path('encuestas') }}"><i class="fa fa-edit fa-fw"></i> Encuestas</a>
                             </li>
+                            {% if  app.user.roles[0] == "ROLE_ADMIN" %}
                             <li>
                                 <a href="{{ path('verusuarios') }}"><i class="fa fa-user fa-fw"></i> Gestión de Usuarios</span></a>
                             </li>
+                            {% endif %}
                         </ul>
                     </div>
                     <!-- /.sidebar-collapse -->

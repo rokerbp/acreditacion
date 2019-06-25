@@ -7,13 +7,13 @@
             <h1 class="page-header mt-4 mb-3">Nuevo Modelo</h1> 
         </div>
     </div>
-     <div class="row">
+    <div class="row">
         <div class="col-md-6">
-            {{ form_start(form) }}
-                {{ form_widget(form) }}
-                <input type="submit" class="btn btn-success" value="Guardar" />
-                <a class="btn btn-warning" href="{{ path('modelo_index') }}">Atras</a>
-            {{ form_end(form) }}
+                {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                    <input type="submit" class="btn btn-success" value="Guardar" />
+                    <a class="btn btn-warning" href="{{ path('modelo_index') }}">Atras</a>
+                {{ form_end(form) }}
         </div>
     </div>
 </div>

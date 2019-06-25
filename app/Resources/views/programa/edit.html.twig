@@ -1,25 +1,28 @@
 {% extends 'base.html.twig' %}
+{% form_theme edit_form 'form/itemForm.html.twig' %}
+
+{% block titulo %}
+    Editar Programa
+{% endblock %}
 
 {% block contenido %}
 <div id="page-wrapper">
-        <div class="row">
-    <h1 class="page-header">Edicion de Programa</h1>
-
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('programa_index') }}">Back to the list</a>
-        </li>
-        <li>
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Editar Programa</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            {{ form_start(edit_form) }}
+                {{ form_widget(edit_form) }}
+                <p><input class="btn btn-success" type="submit" value="Guardar" />
+                <a class="btn btn-warning" href="{{ path('programa_show', {'id': programa.id}) }}">Cancelar</a></p>
+            {{ form_end(edit_form) }}
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <p><input class="btn btn-danger" type="submit" value="Borrar"></p>
             {{ form_end(delete_form) }}
-        </li>
-    </ul>
-</div>
+        </div>
+    </div>
 </div>
 {% endblock %}
