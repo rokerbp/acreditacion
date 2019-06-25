@@ -27,8 +27,12 @@ class DefaultController extends Controller
      */
     public function adminAction(Request $request)
     {
+        if (!$this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_FULLY')) {
+            throw $this->createAccessDeniedException();
+        }
         // replace this example code with whatever you need
-        return $this->render('/admin/index.html.twig');
+        if ($this->getUser()) {
+        return $this->render('/admin/index.html.twig');}
     }
 
     

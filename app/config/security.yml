@@ -26,9 +26,15 @@ security:
             logout:
                 path:   /logout/
                 target: /login
+    
+    role_hierarchy:
+        ROLE_ADMIN_AUTOEVAL:    ROLE_MONITOR   
+        ROLE_ADMIN_PROGRAMA:    ROLE_MONITOR
+        ROLE_ADMIN:             [ROLE_ADMIN_AUTOEVAL, ROLE_ADMIN_PROGRAMA, ROLE_ALLOWED_TO_SWITCH]
 
     access_control:
-        - { path: ^/admin/, roles: ROLE_ADMIN}        
+        - { path: ^/admin/verUsuario, roles: ROLE_ADMIN}
+        - { path: ^/admin/, role: ROLE_MONITOR}      
 
             # activate different ways to authenticate
 
