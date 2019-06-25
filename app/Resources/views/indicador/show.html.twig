@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block titulo %}
+    Indicador
+{% endblock %}
+
+{% block contenido %}
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Indicador</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ indicador.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nombre</th>
+                        <td>{{ indicador.nombre }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p><a class="btn btn-primary" href="{{ path('caracteristica_show', { 'id': indicador.caracteristica.id }) }}">Volver a Característica</a></p>
+{% endblock %}

@@ -3,7 +3,7 @@
 {% block contenido %}
 <div id="page-wrapper">
         <div class="row">
-    <h1>Factor</h1>
+    <h1>Factor </h1>
 
     <table class="table table-bordered">
         <tbody>
@@ -25,13 +25,13 @@
             </tr>
             <tr>
                 <th>Porcentaje</th>
-                <td>{{ factor.porcentaje }}</td>
+                <td>{{ factor.porcentaje }}%</td>
             </tr>
             <tr>
                 <th>Caracteristicas</th>
                 <td><ul>
                     {% for caracteristica in factor.caracteristicas %}
-                        <li><a href="{{ path('factor_show', { 'id': caracteristica.id }) }}">
+                        <li><a href="{{ path('caracteristica_show', { 'id': caracteristica.id }) }}">
                             {{ caracteristica.nombre}}
                         </a></li><br>
                     {% endfor %}</ul>
@@ -40,19 +40,11 @@
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('factor_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('factor_edit', { 'id': factor.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+     <p>
+        <a class="btn btn-primary" href="{{ path('modelo_show', { 'id': factor.modelo.id }) }}">Atras</a>
+        <a class="btn btn-warning" href="{{ path('factor_edit', { 'id': factor.id }) }}">Editar</a>
+    </p>
     </div>
-    </div>
+</div>
 {% endblock %}
+

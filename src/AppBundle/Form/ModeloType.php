@@ -26,7 +26,8 @@ class ModeloType extends AbstractType
                     'class'=>'AppBundle:Programa',
                     'choice_label'=>'nombre',
                     'label'=>'Programa al que pertenece',
-                    'placeholder'=>'Seleccione una Programa Académico'
+                    'placeholder'=>'Seleccione una Programa Académico',
+                    'required'=>false
                 ])
                 //->add('facts', EntityType::class, array(
                 //    'class' => Factor::class,

@@ -18,24 +18,24 @@
                 <td>{{ modelo.programa }}</td>
                 <td><a href="{{ path('modelo_show', { 'id': modelo.id }) }}">{{ modelo.nombre }}</a></td>
                 <td><ul>
+                {% set i = 1 %}
                     {% for factor in modelo.facts %}
-                        <li><a href="{{ path('factor_show', { 'id': factor.id }) }}">
-                            {{ factor.nombre}}
+                        <li><a href="{{ path('factor_show', { 'id': factor.id}) }}">
+                            {{i}} {{ factor.nombre}}
                         </a></li><br>
+                        {% set i = i + 1 %}
                     {% endfor %}</ul>
                 </td>
             </tr>
         </tbody>
     </table>
 
- 
-    <a class="btn btn-primary" href="{{ path('modelo_index') }}">Volver a la lista</a><br>
+    <p>
+    <a class="btn btn-primary" href="{{ path('modelo_index') }}">Volver a la lista</a>
 
     <a class="btn btn-warning" href="{{ path('modelo_edit', { 'id': modelo.id }) }}">Editar</a>
 
-    {{ form_start(delete_form) }}
-        <input type="submit" class="btn btn-danger" value="Borrar">
-    {{ form_end(delete_form) }}
+    </p>
 
     </div>
     </div>

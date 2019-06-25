@@ -17,7 +17,7 @@
             {{ form_start(edit_form) }}
                 {{ form_widget(edit_form) }}
                 <input class="btn btn-success" type="submit" value="Guardar" />
-                <a class="btn btn-warning" href="{{ path('caracteristica_model_index') }}">Atras</a>
+                <a class="btn btn-warning" href="{{ path('caracteristica_model_show', {'id': caracteristica_model.id}) }}">Atras</a>
             {{ form_end(edit_form) }}
 
 

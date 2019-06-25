@@ -35,9 +35,8 @@ class EncuestasController extends Controller
             /*$encuestaRepository = $this->getDoctrine()->getRepository(EncuestaDoctorado::class);
             $encuestas = $encuestaRepository->findBy(['relprograma'=>$relprograma], ['nombre'=>'DESC']);
             var_dump($encuestas);*/
-
             $em = $this->getDoctrine()->getManager();
-            $data = $em->getRepository(EncuestaDoctorado::class)->findAll();
+            //$data = $em->getRepository(EncuestaDoctorado::class)->findAll();
 
             $query = $em->createQuery(
                 '   SELECT
@@ -64,7 +63,7 @@ class EncuestasController extends Controller
         if($relprograma!=null){
 
             $em = $this->getDoctrine()->getManager();
-            $data = $em->getRepository(EncuestaMaestria::class)->findAll();
+            //$data = $em->getRepository(EncuestaMaestria::class)->findAll();
 
             $query = $em->createQuery(
                 '   SELECT

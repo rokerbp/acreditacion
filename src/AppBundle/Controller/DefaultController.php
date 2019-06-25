@@ -19,7 +19,7 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request,  AuthenticationUtils $authenticationUtils)
     {
-        return $this->redirectToRoute('login');
+        return $this->redirectToRoute('admin');
     }
 
     /**

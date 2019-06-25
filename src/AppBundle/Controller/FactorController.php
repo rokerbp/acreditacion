@@ -88,7 +88,7 @@ class FactorController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('factor_edit', array('id' => $factor->getId()));
+            return $this->redirectToRoute('factor_show', array('id' => $factor->getId()));
         }
 
         return $this->render('factor/edit.html.twig', array(

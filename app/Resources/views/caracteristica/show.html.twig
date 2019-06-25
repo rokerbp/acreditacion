@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block titulo %}
+    Caracteristica
+{% endblock %}
+
+{% block contenido %}
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Caracteristica</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <th>Nombre</th>
+                        <td>{{ caracteristica.nombre }}</td>
+                    </tr>
+                    <tr>
+                        <th>Descripcion</th>
+                        <td>{{ caracteristica.descripcion }}</td>
+                    </tr>
+                    <tr>
+                        <th>Ponderacion</th>
+                        <td>{{ caracteristica.ponderacion }}</td>
+                    </tr>
+                    <tr>
+                        <th>Valor</th>
+                        <td>{{ caracteristica.valor }}</td>
+                    </tr>
+                    <tr>
+                        <th>Porcentaje</th>
+                        <td>{{ caracteristica.porcentaje }}</td>
+                    </tr>
+                    <tr>
+                        <th>Indicadores</th>
+                        <td><ul>{% for indicador in caracteristica.indicadores %}
+                            <li><a href="{{ path('indicador_show', { 'id': indicador.id }) }}">{{ indicador.nombre }}</li>
+                            {% endfor %}</ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>
+            <a class="btn btn-primary" href="{{ path('caracteristica_index', { 'factor': caracteristica.factor.id }) }}">Atras</a>
+            <a class="btn btn-warning" href="{{ path('caracteristica_edit', { 'id': caracteristica.id }) }}">Editar</a>
+            </p>
+
+             <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            Principios de calificación
+                        </div>
+             <!-- .panel-heading -->
+                <div class="panel-body">
+                    <div class="panel-group" id="accordion">
+                        {% for principios in caracteristica.principio %}
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a data-toggle="collapse" data-parent="#accordion" href="#{{principios.id}}">{{ principios.nombre }}</a>
+                                </h4>
+                            </div>
+                            <div id="{{principios.id}}" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                   {{ principios.descripcion }}
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+            <!-- .panel-body -->
+
+        </div>
+    </div>
+</div>
+{% endblock %}

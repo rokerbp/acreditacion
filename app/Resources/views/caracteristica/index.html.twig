@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block titulo %}
+    Características
+{% endblock %}
+
+{% block contenido %}
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Caracteristicas</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <table width="100%" id="caracteristica_table" role="grid" class="table table-bordered dataTable">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nombre de la Caracteristica</th>
+                        <th>Factor</th>
+                        <th>Descripcion</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for caracteristica in caracteristicas %}
+                    <tr>
+                        <td>{{ caracteristica.id }}</td>
+                        <td>{{ caracteristica.nombre }}</td>
+                        <td>{{ caracteristica.factor }}</td>
+                        <td>{{ caracteristica.descripcion }}</td>
+                        <td>
+                            <ul>
+                                <a href="{{ path('caracteristica_show', { 'id': caracteristica.id }) }}" title="Ver"><i class="fa fa-eye fa-fw"></i></a>
+                                <a href="{{ path('caracteristica_edit', { 'id': caracteristica.id }) }}" title="Editar"><i class="fa fa-pencil fa-fw"></i></a>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            <p>
+            <a class="btn btn-primary" href="{{ path('factor_show', { 'id': caracteristicas.0.factor.id }) }}">Volver al factor</a>
+            </p>        
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block javascripts %}
+<script>
+    $(document).ready( function () {
+        $('#caracteristica_table').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+            },
+            "columnDefs": [
+                { "visible": false, "targets": 0 }
+            ],
+            "responsive": true
+        });
+    } );
+</script>
+{% endblock %}

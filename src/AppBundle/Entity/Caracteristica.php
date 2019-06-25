@@ -70,6 +70,13 @@ class Caracteristica
      */
     private $factor;
 
+    /**
+     * Many Caracteristicas have Many Principios.
+     * @ORM\ManyToMany(targetEntity="Principio", inversedBy="caracteristicas")
+     * @ORM\JoinTable(name="principioU")
+     */
+    private $principios;
+
 
     /**
      * Get id
@@ -261,5 +268,15 @@ class Caracteristica
     public function getIndicadores()
     {
         return $this->indicadores;
+    }
+
+    /**
+     * Get principios
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPrincipio()
+    {
+        return $this->principios;
     }
 }
