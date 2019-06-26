@@ -51,6 +51,8 @@ class GestionUsuariosController extends Controller
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($usuario);
             $entityManager->flush();
+            $roless = $usuario->getRoles(){0};
+            if ($roless == "ROLE_MONITOR"){return $this->redirectToRoute('admin');}
             return $this->redirectToRoute('verusuarios');
         }
         //Renderizamos el formulario

@@ -33,7 +33,7 @@ security:
         ROLE_ADMIN:             [ROLE_ADMIN_AUTOEVAL, ROLE_ADMIN_PROGRAMA, ROLE_ALLOWED_TO_SWITCH]
 
     access_control:
-        - { path: ^/admin/verUsuario, roles: ROLE_ADMIN}
+        - { path: ^/admin/verUsuario, roles: ROLE_ADMIN_AUTOEVAL}
         - { path: ^/admin/, role: ROLE_MONITOR}      
 
             # activate different ways to authenticate

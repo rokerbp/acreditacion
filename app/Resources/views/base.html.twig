@@ -54,7 +54,7 @@
                             <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-messages">
-                            <li><a href="#"><i class="fa fa-user fa-fw"></i> {{app.user.username}} </a>
+                            <li><a><i class="fa fa-user fa-fw"></i> {{app.user.username}} </a>
                             </li>
                             <li><a href="{{path('registro', {'id':app.user.id})}}"><i class="fa fa-gear fa-fw"></i> Ajustes</a>
                             </li>
@@ -120,7 +120,7 @@
                             <li>
                                 <a href="{{ path('encuestas') }}"><i class="fa fa-edit fa-fw"></i> Encuestas</a>
                             </li>
-                            {% if  app.user.roles[0] == "ROLE_ADMIN" %}
+                            {% if  app.user.roles[0] == "ROLE_ADMIN_AUTOEVAL" or app.user.roles[0] == "ROLE_ADMIN" %}
                             <li>
                                 <a href="{{ path('verusuarios') }}"><i class="fa fa-user fa-fw"></i> Gestión de Usuarios</span></a>
                             </li>
