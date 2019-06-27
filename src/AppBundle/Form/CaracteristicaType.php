@@ -22,7 +22,7 @@ class CaracteristicaType extends AbstractType
                 [
                     'class'=>'AppBundle:Principio',
                     'choice_label'=>'nombre',
-                    'label'=>'Principios',
+                    'label'=>'Seleccione los principios para la calificación de la característica',
                     'placeholder'=>'Seleccione un Principio',
                     'multiple' => true,
                     'expanded' => true,
