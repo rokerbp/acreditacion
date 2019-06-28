@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Indicador;
+use AppBundle\Entity\Recurso;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -44,4 +45,5 @@ class IndicadorController extends Controller
             'indicador' => $indicador,
         ));
     }
+
 }

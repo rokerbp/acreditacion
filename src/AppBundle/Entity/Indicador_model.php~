@@ -40,7 +40,7 @@ class Indicador_model
      * @ORM\ManyToOne(targetEntity="Caracteristica_model", inversedBy="indicadores_model", cascade={"persist"})
      * @ORM\JoinColumn(name="caracteristica_model", referencedColumnName="id")
      */
-    private $caracteristica;
+    private $caracteristica_model;
 
 
     /**
@@ -100,5 +100,67 @@ class Indicador_model
     {
         return $this->descripcion;
     }
-}
 
+    /**
+     * Set descripcion
+     *
+     * @param string $descripcion
+     *
+     * @return Indicador_model
+     */
+    public function setDescripcion($descripcion)
+    {
+        $this->descripcion = $descripcion;
+
+        return $this;
+    }
+
+    /**
+     * Get descripcion
+     *
+     * @return string
+     */
+    public function getDescripcion()
+    {
+        return $this->descripcion;
+    }
+
+    /**
+     * Set caracteristicaModel
+     *
+     * @param \AppBundle\Entity\Caracteristica_model $caracteristicaModel
+     *
+     * @return Indicador_model
+     */
+    public function setCaracteristicaModel(\AppBundle\Entity\Caracteristica_model $caracteristicaModel = null)
+    {
+        $this->caracteristica_model = $caracteristicaModel;
+
+        return $this;
+    }
+
+    /**
+     * Get caracteristicaModel
+     *
+     * @return \AppBundle\Entity\Caracteristica_model
+     */
+    public function getCaracteristicaModel()
+    {
+        return $this->caracteristica_model;
+    }
+
+    /**
+     * Get caracteristicaModel
+     *
+     * @return \AppBundle\Entity\Caracteristica_model
+     */
+    public function getCaracteristica_model()
+    {
+        return $this->caracteristica_model;
+    }
+
+    
+    public function __toString(){
+        return $this->nombre;
+    }
+}

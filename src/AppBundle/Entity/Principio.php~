@@ -37,10 +37,9 @@ class Principio
 
     /**
      * Many Principios have Many Caracteristicas.
-     * @ORM\ManyToMany(targetEntity="Caracteristica", inversedBy="principios")
-     * @ORM\JoinTable(name="caracteristica")
+     * @ORM\ManyToMany(targetEntity="Caracteristica", mappedBy="principios")
      */
-    private $caracteristics;
+    private $caracteristicas;
 
 
     /**
@@ -100,5 +99,45 @@ class Principio
     {
         return $this->descripcion;
     }
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->caracteristics = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Add caracteristic
+     *
+     * @param \AppBundle\Entity\Caracteristica $caracteristic
+     *
+     * @return Principio
+     */
+    public function addCaracteristic(\AppBundle\Entity\Caracteristica $caracteristic)
+    {
+        $this->caracteristics[] = $caracteristic;
+
+        return $this;
+    }
+
+    /**
+     * Remove caracteristic
+     *
+     * @param \AppBundle\Entity\Caracteristica $caracteristic
+     */
+    public function removeCaracteristic(\AppBundle\Entity\Caracteristica $caracteristic)
+    {
+        $this->caracteristics->removeElement($caracteristic);
+    }
+
+    /**
+     * Get caracteristics
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCaracteristics()
+    {
+        return $this->caracteristics;
+    }
+}

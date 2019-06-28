@@ -129,54 +129,5 @@ class Recurso
     {
         return $this->enlace;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->indicadores = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add indicador
-     *
-     * @param \AppBundle\Entity\Indicador $indicador
-     *
-     * @return Recurso
-     */
-    public function addIndicador(\AppBundle\Entity\Indicador $indicador)
-    {
-        $this->indicadores[] = $indicador;
-
-        return $this;
-    }
-
-    /**
-     * Generates the magic method
-     * 
-     */
-    public function __toString(){
-        return $this->nombre;
-    }
-
-    /**
-     * Remove indicador
-     *
-     * @param \AppBundle\Entity\Indicador $indicador
-     */
-    public function removeIndicadore(\AppBundle\Entity\Indicador $indicador)
-    {
-        $this->indicadores->removeElement($indicador);
-    }
-
-    /**
-     * Get indicadores
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getIndicadores()
-    {
-        return $this->indicadores;
-    }
-
 }
+

@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block titulo %}
+    Recurso
+{% endblock %}
+
+{% block contenido %}
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Recurso</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <th>Nombre</th>
+                        <td>{{ recurso.nombre }}</td>
+                    </tr>
+                    <tr>
+                        <th>Tipo de recurso</th>
+                        <td>{{ recurso.tipo }}</td>
+                    </tr>
+                    <tr>
+                        <th>Enlace al recurso</th>
+                        <td>
+                            <a href="{{ asset('uploads/archivos/' ~ recurso.enlace) }}" target="_blank"><i class="fa fa-folder-open"></i> Ver archivo</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <p>
+            <a class="btn btn-primary" href="{{ path('recurso_index') }}">Atras</a>
+            <a class="btn btn-success" href="{{ path('recurso_edit', { 'id': recurso.id , 'action': 'add'}) }}">Asociar un nuevo Indicador</a>
+            <a class="btn btn-danger" href="{{ path('recurso_edit', { 'id': recurso.id , 'action': 'del'}) }}">Eliminar un Indicador asociado</a>
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

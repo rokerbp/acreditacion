@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block titulo %}
+    Recursos
+{% endblock %}
+
+{% block contenido %}
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Recursos</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <table width="100%" id="recurso_table" role="grid" class="table table-bordered dataTable">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nombre</th>
+                        <th>Indicadores Asociados</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for recurso in recursos %}
+                    <tr>
+                        <td>{{ recurso.id }}</td>
+                        <td><a href="{{ path('recurso_show', { 'id': recurso.id }) }}"><i class="fa fa-folder-open"></i></a> {{ recurso.nombre }}</td>
+                        <td>{% for indicador in recurso.indicadores %}
+                            <p>{{ indicador.nombre }}</p>
+                        {% endfor %}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+    
+{% endblock %}
+{% block javascripts %}
+<script>
+    $(document).ready( function () {
+        $('#recurso_table').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+            },
+            "columnDefs": [
+                { "visible": false, "targets": 0 }
+            ],
+            "responsive": true
+        });
+    } );
+</script>
+{% endblock %}

@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM; 	
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Factor
@@ -40,13 +41,14 @@ class Factor
      * @var int
      *
      * @ORM\Column(name="ponderacion", type="integer", nullable=true)
+     * @Assert\Type("integer")
      */
     private $ponderacion;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="justificacion", type="text")
+     * @ORM\Column(name="justificacion", type="text", nullable=true)
      */
     private $justificacion;
 
@@ -54,6 +56,8 @@ class Factor
      * @var float
      *
      * @ORM\Column(name="valor", type="float", nullable=true)
+     * @Assert\Type("float")
+     * @Assert\Expression("value <= this.getPonderacion()")
      */
     private $valor;
 
@@ -66,7 +70,7 @@ class Factor
 
     /**
      * One Factor has Many Caracteristicas.
-     * @ORM\OneToMany(targetEntity="Caracteristica", mappedBy="factor")
+     * @ORM\OneToMany(targetEntity="Caracteristica", mappedBy="factor", cascade={"persist", "remove"})
      */
     private $caracteristicas;
 
@@ -228,9 +232,20 @@ class Factor
      *
      * @return float
      */
-    public function getPorcentaje()
+    /*public function getPorcentaje()
     {
         return $this->porcentaje;
+    }*/
+    public function getPorcentaje()
+    {
+        $ponderacion = $this->getPonderacion();
+        $valor = $this->getValor();
+        if ($ponderacion==0)
+        {
+            return $this->porcentaje;
+        } 
+        else 
+            return $valor * 100 / $ponderacion;
     }
 
     /**

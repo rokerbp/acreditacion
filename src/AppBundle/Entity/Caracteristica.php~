@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Caracteristica
@@ -58,7 +59,7 @@ class Caracteristica
 
     /**
      * One Caracteristica has Many Indicadores.
-     * @ORM\OneToMany(targetEntity="Indicador", mappedBy="caracteristica")
+     * @ORM\OneToMany(targetEntity="Indicador", mappedBy="caracteristica", cascade={"persist", "remove"})
      */
     private $indicadores;
 
@@ -68,6 +69,13 @@ class Caracteristica
      * @ORM\JoinColumn(name="factor", referencedColumnName="id")
      */
     private $factor;
+
+    /**
+     * Many Caracteristicas have Many Principios.
+     * @ORM\ManyToMany(targetEntity="Principio", inversedBy="caracteristicas")
+     * @ORM\JoinTable(name="principioU")
+     */
+    private $principios;
 
 
     /**
@@ -226,5 +234,49 @@ class Caracteristica
 
     public function __construct() {
         $this->indicadores = new ArrayCollection();
+    }
+
+    /**
+     * Add indicadore
+     *
+     * @param \AppBundle\Entity\Indicador $indicadore
+     *
+     * @return Caracteristica
+     */
+    public function addIndicadore(\AppBundle\Entity\Indicador $indicadore)
+    {
+        $this->indicadores[] = $indicadore;
+
+        return $this;
+    }
+
+    /**
+     * Remove indicadore
+     *
+     * @param \AppBundle\Entity\Indicador $indicadore
+     */
+    public function removeIndicadore(\AppBundle\Entity\Indicador $indicadore)
+    {
+        $this->indicadores->removeElement($indicadore);
+    }
+
+    /**
+     * Get indicadores
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getIndicadores()
+    {
+        return $this->indicadores;
+    }
+
+    /**
+     * Get principios
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPrincipio()
+    {
+        return $this->principios;
     }
 }

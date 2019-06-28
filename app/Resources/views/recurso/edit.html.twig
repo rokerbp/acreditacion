@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+{% form_theme edit_form 'form/itemForm.html.twig' %}
+
+{% block titulo %} 
+    Editar Recurso
+{% endblock %}
+
+{% block contenido %}
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">
+                {% if (action == "add") %}
+                Asociar un nuevo indicador al recurso
+                {% endif %}
+                {% if (action == "del") %}
+                Eliminar un indicador del recurso
+                {% endif %}
+            </h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            {{ form_start(edit_form) }}
+                {{ form_widget(edit_form) }}
+                <input class="btn btn-success" type="submit" value="Guardar cambios" />
+                <a class="btn btn-warning" href="{{ path('recurso_show', {'id': recurso.id}) }}">Atras</a>
+            {{ form_end(edit_form) }}
+        </div>
+    </div>
+</div>
+{% endblock %}

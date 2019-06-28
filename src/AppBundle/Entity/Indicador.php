@@ -42,6 +42,13 @@ class Indicador
      */
     private $caracteristica;
 
+    /**
+     * Many Indicadores have Many Recursos.
+     * @ORM\ManyToMany(targetEntity="Recurso", inversedBy="indicadores")
+     * @ORM\JoinTable(name="recursoU")
+     */
+    private $recursos;
+
 
     /**
      * Get id
@@ -151,5 +158,46 @@ class Indicador
 
     public function __toString(){
         return $this->nombre;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->recursos = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add recurso
+     *
+     * @param \AppBundle\Entity\Recurso $recurso
+     *
+     * @return Indicador
+     */
+    public function addRecurso(\AppBundle\Entity\Recurso $recurso)
+    {
+        $this->recursos[] = $recurso;
+
+        return $this;
+    }
+
+    /**
+     * Remove recurso
+     *
+     * @param \AppBundle\Entity\Recurso $recurso
+     */
+    public function removeRecurso(\AppBundle\Entity\Recurso $recurso)
+    {
+        $this->recursos->removeElement($recurso);
+    }
+
+    /**
+     * Get recursos
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRecursos()
+    {
+        return $this->recursos;
     }
 }

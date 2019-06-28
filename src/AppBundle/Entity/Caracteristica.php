@@ -279,4 +279,38 @@ class Caracteristica
     {
         return $this->principios;
     }
+
+    /**
+     * Add principio
+     *
+     * @param \AppBundle\Entity\Principio $principio
+     *
+     * @return Caracteristica
+     */
+    public function addPrincipio(\AppBundle\Entity\Principio $principio)
+    {
+        $this->principios[] = $principio;
+
+        return $this;
+    }
+
+    /**
+     * Remove principio
+     *
+     * @param \AppBundle\Entity\Principio $principio
+     */
+    public function removePrincipio(\AppBundle\Entity\Principio $principio)
+    {
+        $this->principios->removeElement($principio);
+    }
+
+    /**
+     * Get principios
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPrincipios()
+    {
+        return $this->principios;
+    }
 }

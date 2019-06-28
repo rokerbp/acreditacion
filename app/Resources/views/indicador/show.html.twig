@@ -16,14 +16,21 @@
             <table class="table table-bordered">
                 <tbody>
                     <tr>
-                        <th>Id</th>
-                        <td>{{ indicador.id }}</td>
-                    </tr>
-                    <tr>
                         <th>Nombre</th>
                         <td>{{ indicador.nombre }}</td>
                     </tr>
+                    <tr>
+                        <th>Fuentes</th>
+                        <td>{% for fuente in indicador.recursos %}
+                        <div>
+                            {{ fuente.nombre }}
+                            <a href="{{ asset('uploads/archivos/' ~ fuente.enlace) }}" target="_blank"><i class="fa fa-folder-open"></i> Ver archivo</a>
+                        </div>
+                        {% endfor %}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
+            <p><a class="btn btn-success" href="{{ path('recurso_nuevo', { 'idIndicador':indicador.id }) }}"><i class="fa fa-upload"></i> Agregar y asociar un nuevo documento al Indicador</a></p>
             <p><a class="btn btn-primary" href="{{ path('caracteristica_show', { 'id': indicador.caracteristica.id }) }}">Volver a Característica</a></p>
 {% endblock %}

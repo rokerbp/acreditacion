@@ -140,4 +140,38 @@ class Principio
     {
         return $this->caracteristics;
     }
+
+    /**
+     * Add caracteristica
+     *
+     * @param \AppBundle\Entity\Caracteristica $caracteristica
+     *
+     * @return Principio
+     */
+    public function addCaracteristica(\AppBundle\Entity\Caracteristica $caracteristica)
+    {
+        $this->caracteristicas[] = $caracteristica;
+
+        return $this;
+    }
+
+    /**
+     * Remove caracteristica
+     *
+     * @param \AppBundle\Entity\Caracteristica $caracteristica
+     */
+    public function removeCaracteristica(\AppBundle\Entity\Caracteristica $caracteristica)
+    {
+        $this->caracteristicas->removeElement($caracteristica);
+    }
+
+    /**
+     * Get caracteristicas
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCaracteristicas()
+    {
+        return $this->caracteristicas;
+    }
 }

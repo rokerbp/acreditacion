@@ -10,7 +10,12 @@
 
 {%- block form_widget_simple -%}
     {%- set type = type|default('text') -%}
-    <input type="{{ type }}" class="form-control" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+    <input type="{{ type }}" class="form-control" {{ block('widget_attributes') }} 
+    {% if value is not empty %}value="{{ value }}" 
+    {% endif %}/>
+    {% if type is not defined or 'file' != type %}
+    {% set attr = attr|merge({class: (attr.class|default('') ~ ' form-control')|trim}) %}
+    {% endif %}
 {%- endblock form_widget_simple -%}
 
 {%- block textarea_widget -%}
@@ -57,3 +62,8 @@
     {% endif %}
 {% endspaceless %}
 {% endblock date_widget %}
+
+{%- block submit_widget -%}
+    {%- set type = type|default('submit') -%}
+    {{ block('button_widget') }}
+{%- endblock submit_widget -%}
