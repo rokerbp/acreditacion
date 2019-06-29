@@ -236,6 +236,9 @@ class Caracteristica
         $this->indicadores = new ArrayCollection();
     }
 
+    public function __toString(){
+        return $this->nombre;
+    }
     /**
      * Add indicadore
      *

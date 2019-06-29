@@ -23,6 +23,7 @@ class RecursoEditType extends AbstractType
                 ->add('indicadores', EntityType::class,
                     [
                         'class'=>'AppBundle:Indicador',
+                        'group_by' => 'caracteristica.factor.modelo',
                         'choice_label'=>'nombre',
                         'label'=>'Indicadores a los que esta asociado',
                         'placeholder'=>'Seleccione los indicadores a los que desea asociar el recurso',

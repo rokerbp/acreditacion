@@ -19,10 +19,10 @@ class RecursoType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nombre', TextType::class, array('label' => 'Nombre del nuevo documento PDF que desea relacionar', 'required' => true))
+        $builder->add('nombre', TextType::class, array('label' => 'Nombre del nuevo documento que desea relacionar', 'required' => true))
                 ->add('tipo', ChoiceType::class, array(
                     'choices'=>
-                        ['Documental' => 'documental', 'Encuesta' => 'encuesta'],
+                        ['Documental' => 'Documental', 'Encuesta' => 'Encuesta'],
                 ))
                 /*->add('indicadores', EntityType::class,
                     [

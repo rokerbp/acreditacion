@@ -28,7 +28,6 @@ class RecursoController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $recursos = $em->getRepository('AppBundle:Recurso')->findAll();
-
         return $this->render('recurso/index.html.twig', array(
             'recursos' => $recursos,
         ));
