@@ -18,11 +18,11 @@ class CaracteristicaType extends AbstractType
                 ->add('descripcion')
                 ->add('ponderacion')
                 ->add('valor')
-                ->add('principio', EntityType::class,
+                ->add('criterio', EntityType::class,
                 [
-                    'class'=>'AppBundle:Principio',
+                    'class'=>'AppBundle:Criterio',
                     'choice_label'=>'nombre',
-                    'label'=>'Seleccione los principios para la calificación de la característica',
+                    'label'=>'Seleccione los Criterios de Calidad para la calificación de la característica',
                     'placeholder'=>'Seleccione un Principio',
                     'multiple' => true,
                     'expanded' => true,
