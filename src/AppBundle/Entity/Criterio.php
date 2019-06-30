@@ -5,12 +5,12 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Principio
+ * Criterio
  *
- * @ORM\Table(name="principio")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\PrincipioRepository")
+ * @ORM\Table(name="criterio")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\CriterioRepository")
  */
-class Principio
+class Criterio
 {
     /**
      * @var int
@@ -36,8 +36,8 @@ class Principio
     private $descripcion;
 
     /**
-     * Many Principios have Many Caracteristicas.
-     * @ORM\ManyToMany(targetEntity="Caracteristica", mappedBy="principios")
+     * Many Criterios have Many Caracteristicas.
+     * @ORM\ManyToMany(targetEntity="Caracteristica", mappedBy="criterios")
      */
     private $caracteristicas;
 
@@ -57,7 +57,7 @@ class Principio
      *
      * @param string $nombre
      *
-     * @return Principio
+     * @return Criterio
      */
     public function setNombre($nombre)
     {
@@ -81,7 +81,7 @@ class Principio
      *
      * @param string $descripcion
      *
-     * @return Principio
+     * @return Criterio
      */
     public function setDescripcion($descripcion)
     {
@@ -112,7 +112,7 @@ class Principio
      *
      * @param \AppBundle\Entity\Caracteristica $caracteristic
      *
-     * @return Principio
+     * @return Criterio
      */
     public function addCaracteristic(\AppBundle\Entity\Caracteristica $caracteristic)
     {
@@ -139,5 +139,39 @@ class Principio
     public function getCaracteristics()
     {
         return $this->caracteristics;
+    }
+
+    /**
+     * Add caracteristica
+     *
+     * @param \AppBundle\Entity\Caracteristica $caracteristica
+     *
+     * @return Criterio
+     */
+    public function addCaracteristica(\AppBundle\Entity\Caracteristica $caracteristica)
+    {
+        $this->caracteristicas[] = $caracteristica;
+
+        return $this;
+    }
+
+    /**
+     * Remove caracteristica
+     *
+     * @param \AppBundle\Entity\Caracteristica $caracteristica
+     */
+    public function removeCaracteristica(\AppBundle\Entity\Caracteristica $caracteristica)
+    {
+        $this->caracteristicas->removeElement($caracteristica);
+    }
+
+    /**
+     * Get caracteristicas
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCaracteristicas()
+    {
+        return $this->caracteristicas;
     }
 }

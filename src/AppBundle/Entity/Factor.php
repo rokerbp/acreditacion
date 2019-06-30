@@ -41,7 +41,6 @@ class Factor
      * @var int
      *
      * @ORM\Column(name="ponderacion", type="integer", nullable=true)
-     * @Assert\Type("integer")
      */
     private $ponderacion;
 
@@ -56,7 +55,6 @@ class Factor
      * @var float
      *
      * @ORM\Column(name="valor", type="float", nullable=true)
-     * @Assert\Type("float")
      * @Assert\Expression("value <= this.getPonderacion()")
      */
     private $valor;

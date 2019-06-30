@@ -71,11 +71,11 @@ class Caracteristica
     private $factor;
 
     /**
-     * Many Caracteristicas have Many Principios.
-     * @ORM\ManyToMany(targetEntity="Principio", inversedBy="caracteristicas")
-     * @ORM\JoinTable(name="principioU")
+     * Many Caracteristicas have Many Criterios.
+     * @ORM\ManyToMany(targetEntity="Criterio", inversedBy="caracteristicas")
+     * @ORM\JoinTable(name="criterioU")
      */
-    private $principios;
+    private $criterios;
 
 
     /**
@@ -274,46 +274,46 @@ class Caracteristica
     }
 
     /**
-     * Get principios
+     * Get criterios
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getPrincipio()
+    public function getCriterio()
     {
-        return $this->principios;
+        return $this->criterios;
     }
 
     /**
-     * Add principio
+     * Add criterio
      *
-     * @param \AppBundle\Entity\Principio $principio
+     * @param \AppBundle\Entity\Criterio $criterio
      *
      * @return Caracteristica
      */
-    public function addPrincipio(\AppBundle\Entity\Principio $principio)
+    public function addCriterio(\AppBundle\Entity\Criterio $criterio)
     {
-        $this->principios[] = $principio;
+        $this->criterios[] = $criterio;
 
         return $this;
     }
 
     /**
-     * Remove principio
+     * Remove criterio
      *
-     * @param \AppBundle\Entity\Principio $principio
+     * @param \AppBundle\Entity\Criterio $criterio
      */
-    public function removePrincipio(\AppBundle\Entity\Principio $principio)
+    public function removeCriterio(\AppBundle\Entity\Criterio $criterio)
     {
-        $this->principios->removeElement($principio);
+        $this->criterios->removeElement($criterio);
     }
 
     /**
-     * Get principios
+     * Get criterios
      *
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getPrincipios()
+    public function getCriterios()
     {
-        return $this->principios;
+        return $this->criterios;
     }
 }

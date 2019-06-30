@@ -90,7 +90,6 @@ class FactorController extends Controller
 
             return $this->redirectToRoute('factor_show', array('id' => $factor->getId()));
         }
-
         return $this->render('factor/edit.html.twig', array(
             'factor' => $factor,
             'edit_form' => $editForm->createView(),

@@ -17,9 +17,9 @@ class FactorType extends AbstractType
     {
         $builder->add('nombre', TextType::class, array('label' => 'Nombre del factor', 'required' => true))
                 ->add('descripcion')
-                ->add('ponderacion')
+                ->add('ponderacion', NumberType::class,['invalid_message' => 'Solo se permiten números', 'required'=>false])
                 ->add('justificacion', TextType::class, array('label' => 'Justificación de la ponderación', 'required' => false))
-                ->add('valor', NumberType::class,['invalid_message' => 'La calificación no debe ser mayor que la ponderación'], array('label' => 'Valor obtenido en evaluación', 'required' => false))
+                ->add('valor', NumberType::class,['invalid_message' => 'Solo se permiten números', 'required' => false, 'label' => 'Valor obtenido en la evaluación'])
                 //->add('porcentaje')
                 //->add('modelo')
             ;
