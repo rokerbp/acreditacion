@@ -23,12 +23,14 @@
                         <th>Tipo de recurso</th>
                         <td>{{ recurso.tipo }}</td>
                     </tr>
+                    {% if recurso.enlace != null %}
                     <tr>
                         <th>Enlace al recurso</th>
                         <td>
                             <a href="{{ asset('uploads/archivos/' ~ recurso.enlace) }}" target="_blank"><i class="fa fa-folder-open"></i> Ver archivo</a>
                         </td>
                     </tr>
+                    {% endif %}
                 </tbody>
             </table>
             <p>

@@ -24,7 +24,9 @@
                         <td>{% for fuente in indicador.recursos %}
                         <div>
                             {{ fuente.nombre }}
+                            {% if fuente.enlace != null %}
                             <a href="{{ asset('uploads/archivos/' ~ fuente.enlace) }}" target="_blank"><i class="fa fa-folder-open"></i> Ver archivo</a>
+                            {% endif %}
                         </div>
                         {% endfor %}
                         </td>

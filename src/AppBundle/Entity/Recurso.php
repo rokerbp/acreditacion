@@ -38,7 +38,7 @@ class Recurso
     /**
      * @var string
      *
-     * @ORM\Column(name="enlace", type="string", length=255)
+     * @ORM\Column(name="enlace", type="string", length=255, nullable=true)
      */
     private $enlace;
 

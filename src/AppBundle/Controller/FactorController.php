@@ -81,6 +81,16 @@ class FactorController extends Controller
      */
     public function editAction(Request $request, Factor $factor)
     {
+        $em = $this->getDoctrine()->getManager();
+        $query = $em->createQuery(
+            'SELECT SUM(f.ponderacion)
+            FROM AppBundle:Factor f
+            WHERE f.modelo = 1'
+        );//->setParameter('m', $factor->getModelo()->getId());
+        
+        $variable = $query->getResult()[0][1];
+        //var_dump($variable);
+
         $deleteForm = $this->createDeleteForm($factor);
         $editForm = $this->createForm('AppBundle\Form\FactorType', $factor);
         $editForm->handleRequest($request);
@@ -91,6 +101,7 @@ class FactorController extends Controller
             return $this->redirectToRoute('factor_show', array('id' => $factor->getId()));
         }
         return $this->render('factor/edit.html.twig', array(
+            'pond'=>$variable,
             'factor' => $factor,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
