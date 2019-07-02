@@ -31,6 +31,7 @@ class Indicador_modelType extends AbstractType
                 ->add('caracteristica_model', EntityType::class,
                     [
                         'class'=>'AppBundle:Caracteristica_model',
+                        'group_by' => 'factor_model',
                         'choice_label'=>'nombre',
                         'label'=>'Característica a la que pertenece',
                         'placeholder'=>'Seleccione una Característica'
