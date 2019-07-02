@@ -5,13 +5,16 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 
 /**
  * Usuario
  *
  * @ORM\Table(name="usuario")
+ * @UniqueEntity(fields={"email"}, message="Esta dirección de email ya está en uso")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UsuarioRepository")
+ *
  */
 class Usuario implements UserInterface, \Serializable
 {
@@ -53,6 +56,7 @@ class Usuario implements UserInterface, \Serializable
 
     /**
      * @ORM\Column(type="string", length=254, unique=true)
+     * @Assert\Email()
      */
     private $email;
 
