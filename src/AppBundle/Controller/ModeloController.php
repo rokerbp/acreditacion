@@ -229,7 +229,7 @@ class ModeloController extends Controller
             $em->persist($modelo);
             $em->flush();
 
-            return $this->redirectToRoute('modelo_edit', array('id' => $modelo->getId()));
+            return $this->redirectToRoute('modelo_show', array('id' => $modelo->getId()));
         }
 
         return $this->render('modelo/edit.html.twig', array(

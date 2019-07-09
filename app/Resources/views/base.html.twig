@@ -98,7 +98,7 @@
                                             <a href="#"><i class="fa fa-archive fa-fw"></i> Plantillas</a>
                                                 <ul class="nav nav-third-level">
                                                     <li>
-                                                        <a href="{{ path('caracteristica_model_index') }}"><i class="fa fa-th-list fa-fw"></i>Caracteristicas</a>
+                                                        <a href="{{ path('caracteristica_model_index') }}"><i class="fa fa-th-list fa-fw"></i>Características</a>
                                                     </li>
                                                     <li>
                                                         <a href="{{ path('indicador_model_index') }}"><i class="fa fa-th fa-fw"></i>Indicadores</a>
@@ -109,7 +109,7 @@
                                             <a href="{{ path('programa_index') }}"><i class="fa fa-graduation-cap fa-fw"></i> Programas Académicos</a>
                                         </li>
                                         <li>
-                                            <a href="{{ path('modelo_index') }}"><i class="fa fa-cogs fa-fw"></i> Modelos de Autoevaluacion</a>
+                                            <a href="{{ path('modelo_index') }}"><i class="fa fa-cogs fa-fw"></i> Modelos de Autoevaluación</a>
                                         </li>
                                         <li>
                                             <a href="{{ path('recurso_index') }}"><i class="fa fa-archive fa-fw"></i> Gestor de Archivos</a>
@@ -153,6 +153,16 @@
         <script type="text/javascript" src="{{asset('js/controlBorrado.js')}}"></script>
         
         <script src="{{ asset ('js/sb-admin-2.js') }}"></script>
+
+        <script>
+            jQuery('option').mousedown(function(e) {
+                e.preventDefault();
+                jQuery(this).toggleClass('selected');
+            
+                jQuery(this).prop('selected', !jQuery(this).prop('selected'));
+                return false;
+            });
+        </script>
         
     
         {% block javascripts %}

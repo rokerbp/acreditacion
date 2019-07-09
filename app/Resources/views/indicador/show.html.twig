@@ -20,12 +20,17 @@
                         <td>{{ indicador.nombre }}</td>
                     </tr>
                     <tr>
+                        <th>Observaciones sobre fuentes de información</th>
+                        <td>{{ indicador.descripcion }}</td>
+                    </tr>
+                    <tr>
                         <th>Fuentes</th>
                         <td>{% for fuente in indicador.recursos %}
                         <div>
+                            <a href="{{ path('recurso_show', {'id':fuente.id }) }}"><span title="Ir al recurso"><i class="fa fa-sign-in"></i></span></a>
                             {{ fuente.nombre }}
                             {% if fuente.enlace != null %}
-                            <a href="{{ asset('uploads/archivos/' ~ fuente.enlace) }}" target="_blank"><i class="fa fa-folder-open"></i> Ver archivo</a>
+                            | <a href="{{ asset('uploads/archivos/' ~ fuente.enlace) }}" target="_blank"><i class="fa fa-folder-open"></i>Ver archivo</a>
                             {% endif %}
                         </div>
                         {% endfor %}
@@ -33,6 +38,7 @@
                     </tr>
                 </tbody>
             </table>
-            <p><a class="btn btn-success" href="{{ path('recurso_nuevo', { 'idIndicador':indicador.id }) }}"><i class="fa fa-upload"></i> Agregar y asociar un nuevo documento al Indicador</a></p>
+            <p><a class="btn btn-warning" href="{{ path('indicador_edit', { 'id': indicador.id }) }}">Editar Indicador</a>
+            <a class="btn btn-success" href="{{ path('recurso_nuevo', { 'idIndicador':indicador.id }) }}"><i class="fa fa-upload"></i> Agregar y asociar un nuevo documento al Indicador</a></p>
             <p><a class="btn btn-primary" href="{{ path('caracteristica_show', { 'id': indicador.caracteristica.id }) }}">Volver a Característica</a></p>
 {% endblock %}

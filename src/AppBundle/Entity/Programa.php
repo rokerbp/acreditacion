@@ -102,7 +102,7 @@ class Programa
 
     /**
      * One Programa has many Modelos.
-     * @ORM\OneToMany(targetEntity="Modelo", mappedBy="programa", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="Modelo", mappedBy="programa", cascade="remove")
      */
     private $modelos;
 

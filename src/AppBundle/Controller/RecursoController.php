@@ -94,7 +94,7 @@ class RecursoController extends Controller
             return $this->redirectToRoute('indicador_show', array('id' => $idIndicador));
         }
 
-        return $this->render('indicador/edit.html.twig', array(
+        return $this->render('indicador/new.html.twig', array(
             'recurso' => $recurso,
             'edit_form' => $edit_form->createView(),
         ));
