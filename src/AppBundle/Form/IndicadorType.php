@@ -32,7 +32,7 @@ class IndicadorType extends AbstractType
                 [
                     'class'=>'AppBundle:Recurso',
                     'choice_label'=>'nombre',
-                    'label'=>'Seleccione los Criterios de Calidad para la calificación de la característica',
+                    'label'=>'Seleccione los archivos que desea asociar a la caracteristica (des-seleccione los que desee eliminar)',
                     'placeholder'=>'Seleccione un Recurso',
                     'multiple' => true,
                     'expanded' => false,

@@ -26,7 +26,16 @@
                 <input class="btn btn-success" type="submit" value="Guardar cambios" />
                 <a class="btn btn-warning" href="{{ path('recurso_show', {'id': recurso.id}) }}">Atras</a>
             {{ form_end(edit_form) }}
+            <p>{{ form_start(delete_form) }}
+                <input class="btn btn-danger" type="submit" value="Borrar Recurso" onclick="confirm('Estas seguro que desea borrar este recurso?') || event.preventDefault()">
+            {{ form_end(delete_form) }}</p>
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block javascripts %}
+<script>
+
+</script>
 {% endblock %}

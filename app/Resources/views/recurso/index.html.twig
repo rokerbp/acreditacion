@@ -27,7 +27,7 @@
                         <td>{{ recurso.id }}</td>
                         <td><a href="{{ path('recurso_show', { 'id': recurso.id }) }}"><i class="fa fa-sign-in"></i></a> {{ recurso.nombre }}</td>
                         <td>{% for indicador in recurso.indicadores %}
-                            <p>{{ indicador.nombre }} | <b>MODELO:</b> {{ indicador.caracteristica.factor.modelo }}</p>
+                            <p><a href="{{ path('indicador_show', { 'id': indicador.id }) }}" target="_blank"><span title="Ir al factor"><i class="fa fa-sign-in"></i></span> </a>{{ indicador.nombre }} | <b>MODELO:</b> {{ indicador.caracteristica.factor.modelo }}</p>
                         {% endfor %}</td>
                     </tr>
                 {% endfor %}

@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
  * Recurso controller.
@@ -95,6 +96,7 @@ class RecursoController extends Controller
         }
 
         return $this->render('indicador/new.html.twig', array(
+            'indicador'=> $idIndicador,
             'recurso' => $recurso,
             'edit_form' => $edit_form->createView(),
         ));
@@ -166,6 +168,7 @@ class RecursoController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            //$recurso->removeFile();
             $em->remove($recurso);
             $em->flush();
         }
